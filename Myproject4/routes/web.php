@@ -21,3 +21,7 @@ Route::get('/', function () {
 Route::get('/ho', function () {
     return "Welcome home!";
 });
+
+Route::get('/vue', function() {
+	return view('vue');
+});
