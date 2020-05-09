@@ -6,6 +6,7 @@
 <div id="app">
 <h1>Jamboo!</h1>
 <example-component></example-component>
+<login></login>
 </div>
 
 <script src="{{ asset('/js/app.js') }}"></script>
