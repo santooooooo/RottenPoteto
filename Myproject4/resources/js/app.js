@@ -1,25 +1,27 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-import Example from './components/ExampleComponent.vue';
-import Login from './components/Login.vue'; 
+import Contribute from './components/Contribute.vue';
+import Login from './components/Login.vue';
 
 window.Vue = Vue;
 Vue.use(VueRouter);
 
+const axios = require('axios');
+
 const router = new VueRouter({
 	routes: [
-	 {
-	 	path: '/',
-		component: Example
-	 },
-	 {
-		path: '/login',
-		component: Login
-	 } 
+		{
+			path: '/',
+			component: Contribute
+		},
+		{
+			path: '/login',
+			component: Login
+		}
 	]
 });
 
 const app = new Vue({
     el: '#app',
-    router:router 
+    router:router,
 });

@@ -18,10 +18,14 @@ Route::get('/', function () {
 	return view('welcome');
 });
 
-Route::get('/ho', function () {
-    return "Welcome home!";
-});
-
-Route::get('/vue', function() {
+Route::get('/vue', function()
+{
 	return view('vue');
 });
+
+Route::get('/contribute', function(){
+	return view('contribute');
+});
+Route::post('/contribute', 'Contribute@record');
+
+Route::get('top', 'Contribute@response');
