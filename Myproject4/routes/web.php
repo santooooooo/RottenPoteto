@@ -18,14 +18,21 @@ Route::get('/', function () {
 	return view('welcome');
 });
 
-Route::get('/vue', function()
+//home view
+Route::get('/home', function()
 {
-	return view('vue');
+	return view('top');
 });
 
+//contribute view & func
 Route::get('/contribute', function(){
 	return view('contribute');
 });
 Route::post('/contribute', 'Contribute@record');
 
+//get contribution's info
 Route::get('top', 'Contribute@response');
+
+//recording users or authorize users
+Route::get('/login/google', 'GoogleOAuth@redirectToGoogle');
+Route::get('/login/google/callback', 'GoogleOAuth@handleGoogleCallback');

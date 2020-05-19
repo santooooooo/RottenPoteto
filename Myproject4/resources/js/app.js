@@ -13,10 +13,6 @@ const router = new VueRouter({
 		{
 			path: '/',
 			component: Contribute
-		},
-		{
-			path: '/login',
-			component: Login
 		}
 	]
 });
@@ -24,4 +20,7 @@ const router = new VueRouter({
 const app = new Vue({
     el: '#app',
     router:router,
+		components: {
+			'login': Login,
+		}
 });

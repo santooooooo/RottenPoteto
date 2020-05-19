@@ -4,10 +4,10 @@
 </head>
 <body>
 <div id="app">
+<login></login>
 <h1>Jamboo!</h1>
 <nav>
 <router-link to="/">Example</router-link>
-<router-link to="/login">Login</router-link>
 </nav>
 <router-view></router-view>
 </div>
