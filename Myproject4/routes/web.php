@@ -34,5 +34,5 @@ Route::post('/contribute', 'Contribute@record');
 Route::get('top', 'Contribute@response');
 
 //recording users or authorize users
-Route::get('/login/google', 'GoogleOAuth@redirectToGoogle');
-Route::get('/login/google/callback', 'GoogleOAuth@handleGoogleCallback');
+Route::get('/login/oauth', 'OAuth@redirect');
+Route::get('/login/oauth/callback', 'OAuth@handle');

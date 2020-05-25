@@ -2508,7 +2508,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("nav", [
-      _c("a", { attrs: { href: "/login/google" } }, [_vm._v("新規登録")]),
+      _c("a", { attrs: { href: "/login/oauth" } }, [_vm._v("新規登録")]),
       _vm._v(" "),
       _c("a", { attrs: { href: "#" } }, [_vm._v("ログイン")])
     ])

@@ -5,8 +5,10 @@ namespace App\Model\Contribute;
 
 use App\Eloquent\Contribute;
 
-class Output
+final class Output
 {
+	private $eloquent;
+
 	function __construct()
 	{
 		$this->eloquent = Contribute::all();

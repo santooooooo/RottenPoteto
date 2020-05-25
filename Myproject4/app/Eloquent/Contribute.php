@@ -5,11 +5,12 @@ namespace App\Eloquent;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Contribute extends Model
+final class Contribute extends Model
 {
 	protected $fillable = [
 		'title',
 		'contents',
-		'picture'
+		'picture',
+		'genre'
 	];
 }

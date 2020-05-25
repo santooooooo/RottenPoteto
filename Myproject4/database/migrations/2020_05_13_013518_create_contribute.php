@@ -18,6 +18,7 @@ class CreateContribute extends Migration
 	    			$table->string('title');
 	    			$table->text('contents');
 	    			$table->string('picture');
+						$table->string('genre');
             $table->timestamps();
         });
     }
