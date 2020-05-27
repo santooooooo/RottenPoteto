@@ -15,7 +15,7 @@ class GoogleUsers extends Migration
     {
         Schema::create('google_users', function (Blueprint $table) {
             $table->bigIncrements('id');
-	    			$table->unsignedBigInteger('google_id')->unique();
+	    			$table->string('gmail')->unique();
 	    			$table->string('name');
 	    			$table->text('profile')->nullable();
 	    			$table->string('icon')->nullable();

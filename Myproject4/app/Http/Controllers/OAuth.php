@@ -12,6 +12,7 @@ use App\Model\User\SignUp;
 final class OAuth extends Controller
 {
     private $info = [];
+    static $userInfo;
 
     public function redirect()
     {
@@ -19,21 +20,22 @@ final class OAuth extends Controller
 	    return $aouth->redirectToGoogle();
     }
 
-    public function handle(): void
+    public function handle()
     {
 	    $user = new GoogleOAuth();
-	    dd($user->googleUser());
+	    $gUser = $user->googleUser();
 
-	    //$this->info['id'] = $gUser['id'];
-	    //$this->info['name'] = $gUser['nickname'] ?? $gUser['name'];
+	    $this->info['gmail'] = $gUser['email'];
+	    $this->info['name'] = $gUser['nickname'] ?? $gUser['name'];
 
-	    //$is_user = Judge::judge($this->info);
-	    //if($is_user)
-	    //{
-		  //  SignIn::signIn($this->info);
-		  //  return;
-	    //}
-	    //SignUp::signUp($this->info);
-	    //return;
+	    $is_user = Judge::judge($this->info['gmail']);
+	    if(!$is_user)
+	    {
+		    SignUp::signUp($this->info);
+	    }
+
+	    $jsonData = SignIn::signIn($this->info['gmail']);
+
+	    return redirect('/home')->with('user', $jsonData);
     }
 }

@@ -4,8 +4,13 @@
 </head>
 <body>
 <div id="app">
-<login></login>
+
+@if (session('user'))
+<div v-bind:value="user = {{session('user')}}"></div>
+@endif
+
 <h1>Jamboo!</h1>
+<login v-bind:user-info='user'></login>
 <nav>
 <router-link to="/">Example</router-link>
 </nav>

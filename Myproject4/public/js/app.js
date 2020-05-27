@@ -1961,8 +1961,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
-  created: function created() {
-    console.log('Login!');
+  props: {
+    userInfo: {
+      type: Object
+    }
   }
 });
 
@@ -2500,20 +2502,13 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", { attrs: { name: "nav" } }, [
+    _c("a", { attrs: { href: "login/oauth" } }, [_vm._v("login")]),
+    _vm._v(" "),
+    _c("p", [_vm._v(_vm._s(_vm.userInfo.name))])
+  ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("nav", [
-      _c("a", { attrs: { href: "/login/oauth" } }, [_vm._v("新規登録")]),
-      _vm._v(" "),
-      _c("a", { attrs: { href: "#" } }, [_vm._v("ログイン")])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -17600,9 +17595,6 @@ __webpack_require__.r(__webpack_exports__);
 
 window.Vue = vue__WEBPACK_IMPORTED_MODULE_0___default.a;
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]);
-
-var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-
 var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
   routes: [{
     path: '/',
@@ -17611,6 +17603,9 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
 });
 var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
   el: '#app',
+  data: {
+    user: []
+  },
   router: router,
   components: {
     'login': _components_Login_vue__WEBPACK_IMPORTED_MODULE_3__["default"]

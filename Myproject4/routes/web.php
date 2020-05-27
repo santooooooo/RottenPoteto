@@ -34,5 +34,9 @@ Route::post('/contribute', 'Contribute@record');
 Route::get('top', 'Contribute@response');
 
 //recording users or authorize users
-Route::get('/login/oauth', 'OAuth@redirect');
+Route::get('login/oauth', 'OAuth@redirect');
 Route::get('/login/oauth/callback', 'OAuth@handle');
+
+//get user's info
+Route::get('login/oauth/info', 'OAuth@redirect');
+

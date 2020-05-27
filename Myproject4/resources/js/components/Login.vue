@@ -1,12 +1,17 @@
 <template>
-	<nav>
-		<a href="/login/oauth">新規登録</a>
-		<a href="#">ログイン</a>
-	</nav>
+<div name="nav">
+<a href="login/oauth">login</a>
+<p>{{userInfo.name}}</p>
+</div>
 </template>
 
 <script>
-export default {
+    export default {
+	    props:
+	    {
+		    userInfo: {
+			    type: Object
+		    }
+	    },
     }
-}
 </script>
