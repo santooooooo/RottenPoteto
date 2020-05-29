@@ -30,13 +30,18 @@ Route::get('/contribute', function(){
 });
 Route::post('/contribute', 'Contribute@record');
 
-//get contribution's info
+//getting contribution's info
 Route::get('top', 'Contribute@response');
 
 //recording users or authorize users
 Route::get('login/oauth', 'OAuth@redirect');
 Route::get('/login/oauth/callback', 'OAuth@handle');
 
-//get user's info
-Route::get('login/oauth/info', 'OAuth@redirect');
+//AdminerLogin view
+Route::get('/adminer', function()
+{
+	return view('adminerLogin');
+});
 
+//authorize adminer
+Route::post('/adminer', 'AdminerController@adminerAuth');

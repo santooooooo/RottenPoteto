@@ -6,7 +6,7 @@
 <div id="app">
 
 @if (session('user'))
-<div v-bind:value="user = {{session('user')}}"></div>
+<div :value="user = {{session('user')}}"></div>
 @endif
 
 <h1>Jamboo!</h1>

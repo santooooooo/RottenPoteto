@@ -17,7 +17,7 @@ final class Contribute extends Controller
 		return view('contribute');
 	}
 
-	function response()
+	function response(): string
 	{
 		$outputs = new Output();
 		$json = $outputs->jsonData();

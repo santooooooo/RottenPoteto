@@ -3,7 +3,6 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers;
 
-use Laravel\Socialite\Facades\Socialite;
 use App\Model\User\GoogleOAuth;
 use App\Model\User\Judge;
 use App\Model\User\SignIn;
@@ -36,6 +35,8 @@ final class OAuth extends Controller
 
 	    $jsonData = SignIn::signIn($this->info['gmail']);
 
-	    return redirect('/home')->with('user', $jsonData);
+	    session(['user' => $jsonData]);
+
+	    return redirect('/home');
     }
 }
