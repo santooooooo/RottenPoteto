@@ -45,3 +45,6 @@ Route::get('/adminer', function()
 
 //authorize adminer
 Route::post('/adminer', 'AdminerController@adminerAuth');
+
+//changing user safety
+Route::post('/adminer/safety', 'AdminerController@controllUser');

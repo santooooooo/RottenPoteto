@@ -6,6 +6,8 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Tests\TestCase;
+use Illuminate\Support\Facades\DB;
+use App\Eloquent\GoogleUser;
 
 class HttpTest extends TestCase
 {
@@ -25,7 +27,7 @@ class HttpTest extends TestCase
 
     /**
      * Adminer authorization test
-     * @test
+     * 
      * @return void
      */
     public function postAdminerLoginTest()
@@ -36,5 +38,24 @@ class HttpTest extends TestCase
 	    ]);
 
 	    $response->assertSessionHas('message', '管理者として認証できませんでした。');
+    }
+
+    /**
+     * @test
+     * @return void
+     */
+    public function postControllUserTest()
+    {
+	    factory(GoogleUser::class)->create();
+
+	    $testData = DB::table('google_users')->where('id', 1)->value('gmail');
+
+	    $response = $this->post('/adminer/safety', [
+		    'email' => $testData,
+	    ]);
+
+	    $testSafety = DB::table('google_users')->where('id', 1)->value('safety');
+
+	    $this->assertEquals(0, $testSafety);
     }
 }

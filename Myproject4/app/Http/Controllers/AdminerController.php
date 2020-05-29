@@ -4,14 +4,19 @@ namespace App\Http\Controllers;
 
 use App\Model\Adminer\CheckAdminer;
 use App\Http\Requests\AdminerAuthForm;
+use Illuminate\Http\Request;
+use Illuminate\View\View; 
+use Illuminate\Http\RedirectResponse;
+use App\Model\Adminer\ChangeSafety;
 
 class AdminerController extends Controller
 {
-	/*
-	 * @var string $email
-	 * @var string $password
-	 * @var bool $auth
-	 */
+		/**
+		 * @var string $email
+		 * @var string $password
+		 * @var bool $auth
+		 * @return View | RedirectResponse
+		 */
     public function adminerAuth(AdminerAuthForm $request)
     {
 	    $email = $request->input('email');
@@ -25,5 +30,17 @@ class AdminerController extends Controller
 	    }
 
 	    return redirect('/adminer')->with('message', '管理者として認証できませんでした。');
+    }
+
+    /**
+     * @var string $email
+     * @return View
+     */
+    public function controllUser(Request $request)
+    {
+	    $email = $request->input('email');
+	    ChangeSafety::change($email);
+
+	    return view('adminerHome');
     }
 }
