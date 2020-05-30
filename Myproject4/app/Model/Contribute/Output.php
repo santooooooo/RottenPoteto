@@ -7,6 +7,9 @@ use App\Eloquent\Contribute;
 
 final class Output
 {
+/**
+ * @var object $eloquent
+ */
 	private $eloquent;
 
 	function __construct()
@@ -14,7 +17,7 @@ final class Output
 		$this->eloquent = Contribute::all();
 	}
 
-	public function jsonData()
+	public function jsonData(): string
 	{
 		$json = $this->eloquent->toJson();
 		return $json;

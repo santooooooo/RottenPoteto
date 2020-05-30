@@ -27,11 +27,11 @@ class HttpTest extends TestCase
     }
 
 		/**
-     * A eloquent test.
+     * Contribute::record() test.
      * @test
      * @return void
      */
-    public function inputAllTest()
+    public function recordTest()
     {
 	    $file = UploadedFile::fake()->image('cinema.gif');
 

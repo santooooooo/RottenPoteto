@@ -33,11 +33,11 @@ class HttpTest extends TestCase
     public function postAdminerLoginTest()
     {
 	    $response = $this->post('/adminer', [
-		    'email' => 'santo.shunsuke@gmail.com',
+		    'gmail' => 'santo.shunsuke@gmail.com',
 		    'password' => 'fjhvhervheusheuhjihmnv,klsheish@p-9-0'
 	    ]);
 
-	    $response->assertSessionHas('message', '管理者として認証できませんでした。');
+	    $response->assertLocation('/adminer');
     }
 
     /**
@@ -51,7 +51,7 @@ class HttpTest extends TestCase
 	    $testData = DB::table('google_users')->where('id', 1)->value('gmail');
 
 	    $response = $this->post('/adminer/safety', [
-		    'email' => $testData,
+		    'gmail' => $testData,
 	    ]);
 
 	    $testSafety = DB::table('google_users')->where('id', 1)->value('safety');

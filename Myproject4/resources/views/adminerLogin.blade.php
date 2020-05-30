@@ -11,7 +11,7 @@
 
 <form action="/adminer" method="post">
 @csrf
-<input type="email" name="email">
+<input type="email" name="gmail">
 <input type="password" name="password">
 <input type="submit" value="認証">
 </form>

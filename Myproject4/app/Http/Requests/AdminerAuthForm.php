@@ -24,7 +24,7 @@ class AdminerAuthForm extends FormRequest
     public function rules()
     {
         return [
-            'email' => 'email|required',
+            'gmail' => 'email|required',
             'password' => 'required',
         ];
     }

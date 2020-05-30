@@ -6,9 +6,13 @@ namespace App\Http\Controllers;
 use App\Http\Requests\ContributeForm;
 use App\Model\Contribute\Input;
 use App\Model\Contribute\Output;
+use Illuminate\View\View; 
 
 final class Contribute extends Controller
 {
+	/**
+	 * @return View
+	 */
 	function record(ContributeForm $request)
 	{
 		$input = new Input($request);
@@ -16,7 +20,10 @@ final class Contribute extends Controller
 		return view('contribute');
 	}
 
-	function response(): string
+	/**
+	 * @return string
+	 */
+	function response()
 	{
 		$outputs = new Output();
 		$json = $outputs->jsonData();

@@ -7,6 +7,9 @@ use Illuminate\Support\Facades\DB;
 
 class ChangeSafety
 {
+	/**
+	 * @var int $safety
+	 */
     static function change(string $gmail): void
     {
 	    $safety = DB::table('google_users')->where('gmail', $gmail)->value('safety');

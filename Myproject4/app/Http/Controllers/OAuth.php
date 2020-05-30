@@ -7,18 +7,27 @@ use App\Model\User\GoogleOAuth;
 use App\Model\User\Judge;
 use App\Model\User\SignIn;
 use App\Model\User\SignUp;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 
 final class OAuth extends Controller
 {
+/**
+ * @var array<string, string> $info
+ */
     private $info = [];
-    static $userInfo;
 
+    /**
+     * @return RedirectResponse
+     */
     public function redirect()
     {
 	    $aouth = new GoogleOAuth();
 	    return $aouth->redirectToGoogle();
     }
 
+    /**
+     * @return RedirectResponse
+     */
     public function handle()
     {
 	    $user = new GoogleOAuth();

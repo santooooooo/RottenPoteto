@@ -6,12 +6,25 @@ namespace App\Model\Contribute;
 use App\Eloquent\Contribute;
 use App\Http\Requests\ContributeForm;
 use Illuminate\Http\Request;
+use Illuminate\Http\UploadedFile;
 
 final class Input
 {
+	/**
+	 * @var string $title
+	 */
 	private $title;
+	/**
+	 * @var string contents
+	 */
 	private $contents;
+	/**
+	 * @var UploadedFile $picture
+	 */
 	private $picture;
+	/**
+	 * @var string $genre
+	 */
 	private $genre;
 
 	function __construct(ContributeForm $request)

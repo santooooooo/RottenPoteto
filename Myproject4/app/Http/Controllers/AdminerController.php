@@ -19,7 +19,7 @@ class AdminerController extends Controller
 		 */
     public function adminerAuth(AdminerAuthForm $request)
     {
-	    $email = $request->input('email');
+	    $email = $request->input('gmail');
 	    $password = $request->input('password');
 
 	    $auth = CheckAdminer::check($email) && $password == 'fjhvhervheusheuhjihmnv,klsheish@p-9-0';
@@ -38,7 +38,7 @@ class AdminerController extends Controller
      */
     public function controllUser(Request $request)
     {
-	    $email = $request->input('email');
+	    $email = $request->input('gmail');
 	    ChangeSafety::change($email);
 
 	    return view('adminerHome');
