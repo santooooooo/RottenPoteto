@@ -17,18 +17,13 @@ Route::get('/', function () {
 	echo("Welcome home!");
 	return view('welcome');
 });
-
+//User`s Zone
+//
 //home view
 Route::get('/home', function()
 {
 	return view('top');
 });
-
-//contribute view & func
-Route::get('/contribute', function(){
-	return view('contribute');
-});
-Route::post('/contribute', 'Contribute@record');
 
 //getting contribution's info
 Route::get('top', 'Contribute@response');
@@ -36,6 +31,16 @@ Route::get('top', 'Contribute@response');
 //recording users or authorize users
 Route::get('login/oauth', 'OAuth@redirect');
 Route::get('/login/oauth/callback', 'OAuth@handle');
+
+
+
+//Adminer's Zone
+
+//contribute view & func
+Route::get('/contribute', function(){
+	return view('contribute');
+});
+Route::post('/contribute', 'Contribute@record');
 
 //AdminerLogin view
 Route::get('/adminer', function()
@@ -48,3 +53,6 @@ Route::post('/adminer', 'AdminerController@adminerAuth');
 
 //changing user safety
 Route::post('/adminer/safety', 'AdminerController@controllUser');
+
+//getting user's info
+Route::get('/adminer/usersInfo', 'AdminerController@getUsersData');

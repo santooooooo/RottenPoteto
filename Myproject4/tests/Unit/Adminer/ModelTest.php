@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\DB;
 use App\Eloquent\GoogleUser;
 use App\Model\Adminer\CheckAdminer;
 use App\Model\Adminer\ChangeSafety;
+use App\Model\Adminer\UsersData;
 
 final class ModelTest extends TestCase
 {
@@ -38,7 +39,7 @@ final class ModelTest extends TestCase
 
 	 /**
 	  * ChangeSafety::change test
-	  * @test
+	  * 
 	  * @return void
 	  */
 	public function changeSafetyTest()
@@ -51,5 +52,21 @@ final class ModelTest extends TestCase
 	    $safety = DB::table('google_users')->where('id', 1)->value('safety');
 
 	    $this->assertEquals(0, $safety);
+	}
+
+	 /**
+	  * usersData::jsonData test
+	  * @test
+	  * @return void
+	  */
+	public function usersDataTest()
+	{
+		 factory(GoogleUser::class)->create();
+		 $eloquent = GoogleUser::all();
+		 $testData = $eloquent->toJson();
+
+		 $jsonData = usersData::jsonData();
+
+		 $this->assertEquals($testData, $jsonData);
 	}
 }

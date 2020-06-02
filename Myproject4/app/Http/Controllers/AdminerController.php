@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\View\View; 
 use Illuminate\Http\RedirectResponse;
 use App\Model\Adminer\ChangeSafety;
+use App\Model\Adminer\UsersData;
 
 class AdminerController extends Controller
 {
@@ -42,5 +43,15 @@ class AdminerController extends Controller
 	    ChangeSafety::change($email);
 
 	    return view('adminerHome');
+    }
+
+    /**
+     * @var string $usersData
+     */
+    public function getUsersData(): string
+    {
+	    $usersData = UsersData::jsonData();
+
+	    return $usersData;
     }
 }
