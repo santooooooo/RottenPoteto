@@ -37,9 +37,9 @@ Route::get('/login/oauth/callback', 'OAuth@handle');
 //Adminer's Zone
 
 //contribute view & func
-Route::get('/contribute', function(){
-	return view('contribute');
-});
+//Route::get('/contribute', function(){
+//	return view('contribute');
+//});
 Route::post('/contribute', 'Contribute@record');
 
 //AdminerLogin view

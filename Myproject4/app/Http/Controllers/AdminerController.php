@@ -35,14 +35,14 @@ class AdminerController extends Controller
 
     /**
      * @var string $email
-     * @return View
+     * @return RedirectResponse
      */
     public function controllUser(Request $request)
     {
 	    $email = $request->input('gmail');
 	    ChangeSafety::change($email);
 
-	    return view('adminerHome');
+	    return redirect('adminer')->with('message', 'アカウントの設定変更が完了しました。');
     }
 
     /**

@@ -6,18 +6,18 @@ namespace App\Http\Controllers;
 use App\Http\Requests\ContributeForm;
 use App\Model\Contribute\Input;
 use App\Model\Contribute\Output;
-use Illuminate\View\View; 
+use Symfony\Component\HttpFoundation\RedirectResponse;
 
 final class Contribute extends Controller
 {
 	/**
-	 * @return View
+	 * @return RedirectResponse
 	 */
 	function record(ContributeForm $request)
 	{
 		$input = new Input($request);
 		$input->writeDB();
-		return view('contribute');
+		return redirect('adminer')->with('message', 'レビュー記事の投稿が成功しました。');
 	}
 
 	/**

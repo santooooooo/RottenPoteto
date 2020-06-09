@@ -1,7 +1,10 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-import Contribute from './components/Contribute.vue';
+import ContributeInfo from './components/ContributeInfo.vue';
 import Login from './components/Login.vue';
+import Contribute from './components/Contribute.vue';
+import ControllUsers from './components/ControllUsers.vue';
+require('./bootstrap');
 
 window.Vue = Vue;
 Vue.use(VueRouter);
@@ -10,7 +13,7 @@ const router = new VueRouter({
 	routes: [
 		{
 			path: '/',
-			component: Contribute
+			component: ContributeInfo
 		},
 	]
 });
@@ -25,3 +28,22 @@ const app = new Vue({
 			'login': Login,
 		}
 		});
+
+const adminerRouter = new VueRouter({
+	routes: [
+		{
+			path: '/contribute',
+			component: Contribute
+		},
+		{
+			path: '/controll-users',
+			component: ControllUsers
+		},
+	]
+});
+
+const appAdminer = new Vue({
+    el: '#adminerApp',
+    router:adminerRouter,
+		})
+
