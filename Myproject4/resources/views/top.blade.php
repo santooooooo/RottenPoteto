@@ -18,5 +18,10 @@
 </div>
 
 <script src="{{ asset('/js/app.js') }}"></script>
+<script>
+$('body').on('submit', 'form', function () {
+	$(this).append('@csrf')
+});
+</script>
 </body>
 </html>

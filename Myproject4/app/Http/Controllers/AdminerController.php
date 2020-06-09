@@ -27,7 +27,7 @@ class AdminerController extends Controller
 
 	    if($auth)
 	    {
-		    return view('adminerHome');
+		    return view('contribute');
 	    }
 
 	    return redirect('/adminer')->with('message', '管理者として認証できませんでした。');

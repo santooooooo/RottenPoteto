@@ -16,6 +16,6 @@ class UsersData
 	    $eloquent = GoogleUser::all();
 	    $jsonData = $eloquent->toJson();
 
-	    return $jsonData;
+	    return base64_encode($jsonData);
     }
 }

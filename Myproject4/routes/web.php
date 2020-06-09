@@ -32,14 +32,14 @@ Route::get('top', 'Contribute@response');
 Route::get('login/oauth', 'OAuth@redirect');
 Route::get('/login/oauth/callback', 'OAuth@handle');
 
+//deleting user's account
+Route::post('/signout', 'UsersController@UserSignOut');
+
 
 
 //Adminer's Zone
 
-//contribute view & func
-//Route::get('/contribute', function(){
-//	return view('contribute');
-//});
+//contribute func
 Route::post('/contribute', 'Contribute@record');
 
 //AdminerLogin view
@@ -50,9 +50,3 @@ Route::get('/adminer', function()
 
 //authorize adminer
 Route::post('/adminer', 'AdminerController@adminerAuth');
-
-//changing user safety
-Route::post('/adminer/safety', 'AdminerController@controllUser');
-
-//getting user's info
-Route::get('/adminer/usersInfo', 'AdminerController@getUsersData');

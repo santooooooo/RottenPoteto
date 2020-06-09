@@ -64,9 +64,10 @@ final class ModelTest extends TestCase
 		 factory(GoogleUser::class)->create();
 		 $eloquent = GoogleUser::all();
 		 $testData = $eloquent->toJson();
+		 $encodeData = base64_encode($testData);
 
 		 $jsonData = usersData::jsonData();
 
-		 $this->assertEquals($testData, $jsonData);
+		 $this->assertEquals($encodeData, $jsonData);
 	}
 }
