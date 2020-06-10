@@ -17,6 +17,7 @@ final class SignIn
 
 	    $dataArray = [
 		    'id' => $eloquent->id,
+		    'gmail' => $eloquent->gmail,
 		    'name' => $eloquent->name,
 		    'profile' => $eloquent->profile,
 		    'icon' => $eloquent->icon,

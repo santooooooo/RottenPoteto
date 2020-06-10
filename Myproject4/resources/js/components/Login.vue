@@ -1,6 +1,12 @@
 <template>
 <div name="nav">
-<a href="login/oauth">login</a>
+<a v-if="!isUser" href="login/oauth">新規登録orログイン</a>
+<a v-if="isUser" href="/logout">ログアウト</a>
+<p v-if="isUser" @click="signOutForm">退会</p>
+<form v-if="doSignOut" action="/signout" method="post">
+	<input type="hidden" name="gmail" :value="userInfo.gmail">
+	<input type="submit" value="退会を実行">
+</form>
 <p>{{userInfo.name}}</p>
 </div>
 </template>
@@ -10,8 +16,38 @@
 	    props:
 	    {
 		    userInfo: {
-			    type: Object
+			    type: Object,
 		    }
 	    },
+	    data: function() {
+		    return {
+			    signOut: false,
+		    }
+	    },
+	    computed: 
+	    {
+		    isUser: function() {
+			    if(this.userInfo.length != 0)
+			    {
+				    return true
+			    }
+			    return false
+		    },
+		    doSignOut: function() {
+			    if(this.signOut)
+			    {
+				    return true
+			    }
+			    return false
+		    }
+	    },
+	    methods: {
+		    signOutForm: function() {
+			    return this.signOut = true
+		    }
+	    },
+	    mounted: function() {
+		    console.log(this.userInfo)
+	    }
     }
 </script>

@@ -28,22 +28,3 @@ const app = new Vue({
 			'login': Login,
 		}
 		});
-
-const adminerRouter = new VueRouter({
-	routes: [
-		{
-			path: '/contribute',
-			component: Contribute
-		},
-		{
-			path: '/controll-users',
-			component: ControllUsers
-		},
-	]
-});
-
-const appAdminer = new Vue({
-    el: '#adminerApp',
-    router:adminerRouter,
-		})
-

@@ -33,7 +33,10 @@ Route::get('login/oauth', 'OAuth@redirect');
 Route::get('/login/oauth/callback', 'OAuth@handle');
 
 //deleting user's account
-Route::post('/signout', 'UsersController@UserSignOut');
+Route::post('/signout', 'UsersController@userSignOut');
+
+//log out func for users
+Route::get('/logout', 'UsersController@userLogOut');
 
 
 

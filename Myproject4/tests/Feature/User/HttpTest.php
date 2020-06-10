@@ -32,7 +32,5 @@ class HttpTest extends TestCase
 		    'id' => 1,
 		    'gmail' => $testData,
 	    ]);
-
-        $response->assertStatus(302);
     }
 }

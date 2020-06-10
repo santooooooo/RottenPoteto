@@ -15,8 +15,6 @@ class SignOut
 	    if($is_users)
 	    {
 		    DB::table('google_users')->where('gmail', $gmail)->delete();
-		    return;
 	    }
-	    return;
     }
 }

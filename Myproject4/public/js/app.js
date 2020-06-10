@@ -2030,11 +2030,46 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     userInfo: {
       type: Object
     }
+  },
+  data: function data() {
+    return {
+      signOut: false
+    };
+  },
+  computed: {
+    isUser: function isUser() {
+      if (this.userInfo.length != 0) {
+        return true;
+      }
+
+      return false;
+    },
+    doSignOut: function doSignOut() {
+      if (this.signOut) {
+        return true;
+      }
+
+      return false;
+    }
+  },
+  methods: {
+    signOutForm: function signOutForm() {
+      return this.signOut = true;
+    }
+  },
+  mounted: function mounted() {
+    console.log(this.userInfo);
   }
 });
 
@@ -37867,7 +37902,30 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { attrs: { name: "nav" } }, [
-    _c("a", { attrs: { href: "login/oauth" } }, [_vm._v("login")]),
+    !_vm.isUser
+      ? _c("a", { attrs: { href: "login/oauth" } }, [
+          _vm._v("新規登録orログイン")
+        ])
+      : _vm._e(),
+    _vm._v(" "),
+    _vm.isUser
+      ? _c("a", { attrs: { href: "/logout" } }, [_vm._v("ログアウト")])
+      : _vm._e(),
+    _vm._v(" "),
+    _vm.isUser
+      ? _c("p", { on: { click: _vm.signOutForm } }, [_vm._v("退会")])
+      : _vm._e(),
+    _vm._v(" "),
+    _vm.doSignOut
+      ? _c("form", { attrs: { action: "/signout", method: "post" } }, [
+          _c("input", {
+            attrs: { type: "hidden", name: "gmail" },
+            domProps: { value: _vm.userInfo.gmail }
+          }),
+          _vm._v(" "),
+          _c("input", { attrs: { type: "submit", value: "退会を実行" } })
+        ])
+      : _vm._e(),
     _vm._v(" "),
     _c("p", [_vm._v(_vm._s(_vm.userInfo.name))])
   ])
@@ -53014,19 +53072,6 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
   components: {
     'login': _components_Login_vue__WEBPACK_IMPORTED_MODULE_3__["default"]
   }
-});
-var adminerRouter = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
-  routes: [{
-    path: '/contribute',
-    component: _components_Contribute_vue__WEBPACK_IMPORTED_MODULE_4__["default"]
-  }, {
-    path: '/controll-users',
-    component: _components_ControllUsers_vue__WEBPACK_IMPORTED_MODULE_5__["default"]
-  }]
-});
-var appAdminer = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
-  el: '#adminerApp',
-  router: adminerRouter
 });
 
 /***/ }),
