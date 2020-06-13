@@ -51,7 +51,12 @@
 	    },
 	    methods: {
 		    signOutForm: function() {
-			    return this.signOut = true
+			    const check = window.confirm("本当に退会しますか？")
+			    if(check)
+			    {
+				    return this.signOut = true
+			    }
+			    return ;
 		    }
 	    },
     }

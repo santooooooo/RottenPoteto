@@ -2073,7 +2073,13 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     signOutForm: function signOutForm() {
-      return this.signOut = true;
+      var check = window.confirm("本当に退会しますか？");
+
+      if (check) {
+        return this.signOut = true;
+      }
+
+      return;
     }
   }
 });
