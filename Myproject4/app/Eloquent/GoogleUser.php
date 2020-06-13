@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 final class GoogleUser extends Model
 {
 	protected $fillable = [
-		'google_id',
+		'gmail',
 		'name',
 		'profile',
 		'icon',

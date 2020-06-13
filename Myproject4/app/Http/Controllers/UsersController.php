@@ -7,6 +7,9 @@ use App\Http\Requests\UsersSignOut;
 use App\Model\User\SignOut;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Routing\Redirector;
+use App\Model\User\UpdateProfile;
+use App\Http\Requests\UserProfile;
+use Illuminate\Http\Request;
 
 class UsersController extends Controller
 {
@@ -30,6 +33,18 @@ class UsersController extends Controller
     public function userLogOut()
     {
 	    session(['user' => null]);
+
+	    return redirect('/home');
+    }
+
+    /**
+     * @var object $update
+     * @return RedirectResponse | Redirector;
+     */
+    public function updateUserProfile(UserProfile $request)
+    {
+	    $update = new UpdateProfile($request);
+	    $update->update();
 
 	    return redirect('/home');
     }

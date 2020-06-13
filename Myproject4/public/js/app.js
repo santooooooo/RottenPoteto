@@ -2036,6 +2036,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     userInfo: {
@@ -2067,9 +2075,6 @@ __webpack_require__.r(__webpack_exports__);
     signOutForm: function signOutForm() {
       return this.signOut = true;
     }
-  },
-  mounted: function mounted() {
-    console.log(this.userInfo);
   }
 });
 
@@ -37925,6 +37930,46 @@ var render = function() {
           _vm._v(" "),
           _c("input", { attrs: { type: "submit", value: "退会を実行" } })
         ])
+      : _vm._e(),
+    _vm._v(" "),
+    _vm.isUser
+      ? _c(
+          "form",
+          {
+            attrs: {
+              action: "/update",
+              method: "post",
+              enctype: "multipart/form-data"
+            }
+          },
+          [
+            _c("input", {
+              attrs: { type: "hidden", name: "gmail" },
+              domProps: { value: _vm.userInfo.gmail }
+            }),
+            _vm._v(" "),
+            _c("input", {
+              attrs: { type: "text", name: "name" },
+              domProps: { value: _vm.userInfo.name }
+            }),
+            _vm._v(" "),
+            _c("textarea", {
+              attrs: { name: "profile", rows: "6", cols: "30" },
+              domProps: { value: _vm.userInfo.profile }
+            }),
+            _vm._v(" "),
+            _c("input", { attrs: { type: "file", name: "icon" } }),
+            _vm._v(" "),
+            _c("input", {
+              attrs: { type: "text", name: "best" },
+              domProps: { value: _vm.userInfo.best }
+            }),
+            _vm._v(" "),
+            _c("input", {
+              attrs: { type: "submit", value: "アカウント情報更新" }
+            })
+          ]
+        )
       : _vm._e(),
     _vm._v(" "),
     _c("p", [_vm._v(_vm._s(_vm.userInfo.name))])

@@ -5,7 +5,6 @@ namespace App\Model\Contribute;
 
 use App\Eloquent\Contribute;
 use App\Http\Requests\ContributeForm;
-use Illuminate\Http\Request;
 use Illuminate\Http\UploadedFile;
 
 final class Input

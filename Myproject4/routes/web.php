@@ -38,6 +38,9 @@ Route::post('/signout', 'UsersController@userSignOut');
 //log out func for users
 Route::get('/logout', 'UsersController@userLogOut');
 
+//updating user's account info
+Route::post('/update', 'UsersController@updateUserProfile');
+
 
 
 //Adminer's Zone
