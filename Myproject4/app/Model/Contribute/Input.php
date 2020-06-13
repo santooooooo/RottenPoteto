@@ -43,10 +43,14 @@ final class Input
 	public function writeDB(): void
 	{
 		$eloquent = new Contribute();
-		$eloquent->title = $this->title;
-		$eloquent->contents = $this->contents;
-		$eloquent->picture = $this->picturePath();
-		$eloquent->genre = $this->genre;
+
+		$eloquent->fill([
+			'title' => $this->title,
+			'contents' => $this->contents,
+			'picture' => $this->picturePath(),
+			'genre' => $this->genre,
+		]);
+
 		$eloquent->save();
 	}
 }

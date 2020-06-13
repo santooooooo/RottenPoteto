@@ -54,7 +54,7 @@ class UpdateProfile
 		return $path;
 	}
 
-	public function deleteIcon(string $path): void
+	public function deleteIcon($path): void
 	{
 			if($path != null)
 			{
@@ -86,7 +86,8 @@ class UpdateProfile
 			$eloquent->fill(
 				['name' => $this->name, 
 				'profile' => $this->profile,
-				'best' => $this->best]);
+				'best' => $this->best
+			]);
 
 			$eloquent->save();
 

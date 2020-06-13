@@ -27,7 +27,7 @@ class UserProfile extends FormRequest
             'gmail' => 'required | email',
 	    			'name' => 'required | max:255',
 						'profile' => 'nullable | max:1000',
-//						'icon' => 'nullable | file',
+						'icon' => 'nullable | image',
 						'best' => 'nullable | max:255',
         ];
     }

@@ -42,7 +42,7 @@ class HttpTest extends TestCase
 		    'genre' => 'アニメ'
 	    ]);
 
-	    $response->assertStatus(200);
+	    $response->assertStatus(302);
 	    $this->assertDatabaseHas('contributes', [
 		     'id' => 1,
 	     ]);

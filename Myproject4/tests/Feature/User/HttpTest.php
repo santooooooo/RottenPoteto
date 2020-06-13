@@ -49,15 +49,15 @@ class HttpTest extends TestCase
 	    $setGmail = DB::table('google_users')->where('id', '4')->value('gmail');
 	    $name = "mikel";
 	    $profile = "スプラッター系の映画が大好きです！";
-	    $icon = UploadedFile::fake()->image('account.gif');
+	    $icon = UploadedFile::fake()->image('account.png');
 	    $best = "Friday 13";
 
 	    $response = $this->post('/update', [
 		    'gmail' => $setGmail,
 		    'name' => $name,
-		    'profile' => null,
+		    'profile' => $profile,
 		    'icon' => $icon,
-		    'best' => null,
+		    'best' => $best,
 	    ]);
 
 	    $response->assertStatus(302);
@@ -66,8 +66,8 @@ class HttpTest extends TestCase
 		    'id' => 4,
 		    'gmail' => $setGmail,
 		    'name' => $name,
-		    'profile' => null,
-		    'best' => null,
+		    'profile' => $profile,
+		    'best' => $best,
 	    ]);
 	 }
 }
