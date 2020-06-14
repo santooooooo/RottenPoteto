@@ -19,6 +19,8 @@ class CreateContribute extends Migration
 	    			$table->text('contents');
 	    			$table->string('picture');
 						$table->string('genre');
+						$table->unsignedInteger('satisfaction')->default(0);
+						$table->unsignedInteger('recommended')->default(0);
             $table->timestamps();
         });
     }
