@@ -22,6 +22,16 @@ class InputReview
 		return $is_user;
 	}
 
+	static function existReview(int $contributeId, int $userId): bool
+	{
+		$exist_review = DB::table('user_reviews')->where([
+			['contribute_id', $contributeId],
+			['google_user_id', $userId]
+		])->exists();
+
+		return $exist_review;
+	}
+
 	static function input(
 		int $contributeId,
 		int $userId,
@@ -29,9 +39,10 @@ class InputReview
 		string $review,
 		int $satisfaction,
 		int $recommended
-	): void
+	): bool
 	{
-		$check = self::isContribute($contributeId) && self::isUser($userId);
+		$check = self::isContribute($contributeId) && self::isUser($userId) && 
+							!self::existReview($contributeId, $userId);
 
 		if($check)
 		{
@@ -48,8 +59,8 @@ class InputReview
 
 			$eloquent->save();
 
-			return;
+			return true;
 		}
-		return;
+		return false;
 	}
 }

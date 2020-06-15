@@ -9,6 +9,7 @@ use App\Eloquent\UserReview;
 use App\Eloquent\GoogleUser;
 use App\Eloquent\Contribute;
 use App\Model\User\InputReview;
+use App\Model\User\DeleteReview;
 
 class ModelTwo extends TestCase
 {
@@ -47,9 +48,10 @@ class ModelTwo extends TestCase
 	{
 	    factory(Contribute::class, 10)->create();
 	    factory(GoogleUser::class, 10)->create();
+	    factory(UserReview::class)->create();
 
-	    $contribute_id = 4;
-	    $google_user_id = 5;
+	    $contribute_id = 1;
+	    $google_user_id = 2;
 	    $title = 'てすとだよ。';
 	    $review = 'てすとだよ。てすとだよ。てすとだよ。';
 	    $satisfaction = 3;
@@ -86,6 +88,8 @@ class ModelTwo extends TestCase
 	    factory(UserReview::class)->create();
 
 	    $eloquent = DB::table('user_reviews')->where('id', 1)->first();
+
+	    DeleteReview::delete($eloquent->contribute_id, $eloquent->google_user_id);
 
 	    $this->assertDatabaseMissing('user_reviews', [
 		    'id' => $eloquent->id,
