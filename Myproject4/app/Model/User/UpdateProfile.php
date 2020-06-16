@@ -54,6 +54,9 @@ class UpdateProfile
 		return $path;
 	}
 
+	/**
+	 * I can't understand type of $path
+	 */
 	public function deleteIcon($path): void
 	{
 			if($path != null)

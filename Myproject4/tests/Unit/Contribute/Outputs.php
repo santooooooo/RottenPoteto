@@ -12,7 +12,7 @@ class Outputs extends TestCase
 	use RefreshDatabase;
     /**
      * Check Eloquent.
-     *
+     * @test
      * @return void
      */
     public function eloquentTest()
@@ -26,7 +26,7 @@ class Outputs extends TestCase
 
 	 /**
 		 * Check Output.php.
-		 * @test
+		 * 
 		 * @return void
 	  */
 		public function outputTest()

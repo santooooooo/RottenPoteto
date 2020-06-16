@@ -11,6 +11,8 @@ final class Contribute extends Model
 		'title',
 		'contents',
 		'picture',
-		'genre'
+		'genre',
+		'satisfaction',
+		'recommended',
 	];
 }
