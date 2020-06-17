@@ -19,6 +19,7 @@ class GradeCinema
 		    $allSatisfaction += $contribute->satisfaction;
 		    $allRecommended += $contribute->recommended;
 	    }
+	    unset($contribute);
 
 	    $number = DB::table('user_reviews')->where('contribute_id', $contributeId)->count();
 	    if($number != 0)
