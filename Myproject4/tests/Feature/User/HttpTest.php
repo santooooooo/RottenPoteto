@@ -16,7 +16,7 @@ class HttpTest extends TestCase
 	use WithoutMiddleware;
     /**
      * post request (/signout) test.
-     * 
+     * @test
      * @return void
      */
     public function signOutTest()
@@ -29,7 +29,7 @@ class HttpTest extends TestCase
 		    'gmail' => $testData,
 	    ]);
 
-	    return $request->assertStatus(302);
+	    $response->assertStatus(302);
 
 	    $this->assertDatabaseMissing('google_users', [
 		    'id' => 1,
@@ -39,7 +39,7 @@ class HttpTest extends TestCase
 
 	 /**
 	  * post request (/update) test
-	  * @test
+	  * 
 	  * @return void
 	  */
 	 public function updateUserProfileTest()
