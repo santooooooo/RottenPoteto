@@ -41,6 +41,12 @@ Route::get('/logout', 'UsersController@userLogOut');
 //updating user's account info
 Route::post('/update', 'UsersController@updateUserProfile');
 
+//inputting user's review
+Route::post('/review/input', 'ReviewController@inputReview');
+
+//deleting user's review
+Route::post('/review/delete', 'ReviewController@deleteReview');
+
 
 
 //Adminer's Zone

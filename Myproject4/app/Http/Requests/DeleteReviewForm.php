@@ -5,7 +5,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class InputReviewForm extends FormRequest
+class DeleteReviewForm extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -27,10 +27,6 @@ class InputReviewForm extends FormRequest
         return [
             'contribute_id' => 'required | integer | min:1',
             'google_user_id' => 'required | integer | min:1',
-            'title' => 'required | max:255',
-            'review' => 'required | max:3000',
-            'satisfaction' => 'required | integer | min:0 | max:5',
-            'recommended' => 'required | integer | min:0 | max:5',
         ];
     }
 }
