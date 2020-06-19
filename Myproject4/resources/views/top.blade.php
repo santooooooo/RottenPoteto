@@ -12,7 +12,7 @@
 <h1>Jamboo!</h1>
 <login v-bind:user-info='user'></login>
 <nav>
-<router-link to="/">Example</router-link>
+<router-link to="/contribute">Example</router-link>
 </nav>
 <router-view></router-view>
 </div>

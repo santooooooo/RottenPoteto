@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace App\Model\Contribute;
 
 use App\Eloquent\Contribute;
+use Illuminate\Support\Facades\DB;
 
 final class Output
 {
@@ -14,12 +15,12 @@ final class Output
 
 	function __construct()
 	{
-		$this->eloquent = Contribute::all();
+		$this->eloquent = DB::table('contributes')->orderBy('id', 'desc')->get();
 	}
 
 	public function jsonData(): string
 	{
-		$json = $this->eloquent->toJson();
+		$json = json_encode($this->eloquent);
 		return $json;
 	}
 }

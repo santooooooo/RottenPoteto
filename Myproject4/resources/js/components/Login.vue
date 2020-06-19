@@ -25,6 +25,7 @@
 	    {
 		    userInfo: {
 			    type: Object,
+			    required: false,
 		    }
 	    },
 	    data: function() {

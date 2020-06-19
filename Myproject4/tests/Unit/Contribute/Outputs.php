@@ -6,13 +6,14 @@ use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use App\Eloquent\Contribute;
 use App\Model\Contribute\Output;
+use Illuminate\Support\Facades\DB;
 
 class Outputs extends TestCase
 {
 	use RefreshDatabase;
     /**
      * Check Eloquent.
-     * @test
+     * test
      * @return void
      */
     public function eloquentTest()
@@ -26,14 +27,14 @@ class Outputs extends TestCase
 
 	 /**
 		 * Check Output.php.
-		 * 
+		 * @test
 		 * @return void
 	  */
 		public function outputTest()
 		{
-	    factory(Contribute::class)->create();
-	    $eloquent = Contribute::all();
-	    $jsonData = $eloquent->toJson();
+	    factory(Contribute::class, 10)->create();
+	    $eloquent = DB::table('contributes')->orderBy('id', 'desc')->get();
+	    $jsonData = json_encode($eloquent);
 
 	    $output = new Output();
 	    $outputData = $output->jsonData();
