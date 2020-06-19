@@ -11,6 +11,7 @@
                 </div>
             </div>
         </div>
+    <p>{{userInfo}}</p>
     </div>
 </template>
 
@@ -22,9 +23,16 @@
 		    contributes: [],
 	    }
 	  },
+	  props:
+	  {
+		    userInfo: {
+			    type: Object,
+			    required: false,
+		    }
+	  },
 		mounted: function()
 		{
 			axios.get('/top').then(response => this.contributes = response.data)
 		},
-    }
+   }
 </script>

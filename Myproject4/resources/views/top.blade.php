@@ -10,11 +10,11 @@
 @endif
 
 <h1>Jamboo!</h1>
-<login v-bind:user-info='user'></login>
+<login :user-info='user'></login>
 <nav>
 <router-link to="/contribute">Example</router-link>
 </nav>
-<router-view></router-view>
+<router-view :user-info='user'></router-view>
 </div>
 
 <script src="{{ asset('/js/app.js') }}"></script>

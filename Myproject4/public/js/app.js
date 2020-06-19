@@ -1966,11 +1966,18 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       contributes: []
     };
+  },
+  props: {
+    userInfo: {
+      type: Object,
+      required: false
+    }
   },
   mounted: function mounted() {
     var _this = this;
@@ -37833,7 +37840,9 @@ var render = function() {
           2
         )
       ])
-    ])
+    ]),
+    _vm._v(" "),
+    _c("p", [_vm._v(_vm._s(_vm.userInfo))])
   ])
 }
 var staticRenderFns = []
