@@ -32,6 +32,17 @@ class InputReview
 		return $exist_review;
 	}
 
+	static function badSafety(int $userId): bool
+	{
+		$safety = DB::table('google_users')->where('id', $userId)->value('safety');
+
+		if($safety == 1)
+		{
+			return false;
+		}
+		return true;
+	}
+
 	static function input(
 		int $contributeId,
 		int $userId,
@@ -42,7 +53,7 @@ class InputReview
 	): bool
 	{
 		$check = self::isContribute($contributeId) && self::isUser($userId) && 
-							!self::existReview($contributeId, $userId);
+							!self::existReview($contributeId, $userId) && !self::badSafety($userId);
 
 		if($check)
 		{

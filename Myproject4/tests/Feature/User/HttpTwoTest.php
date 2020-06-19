@@ -18,7 +18,7 @@ class HttpTwoTest extends TestCase
 
     /**
      * post request(/review) test
-     * test
+     * @test
      * @return void
      */
     public function reviewTest()
@@ -63,7 +63,7 @@ class HttpTwoTest extends TestCase
 
 	/**
 	 * post request(/review/delete) test
-	 * @test
+	 * test
 	 * @return void
 	 */
 	public function deleteReviewTest()
