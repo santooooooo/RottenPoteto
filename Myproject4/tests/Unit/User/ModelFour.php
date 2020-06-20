@@ -89,7 +89,6 @@ class ModelFour extends TestCase
 	    'user_review_id' => $goodEloquent->user_review_id,
     ]);
 
-    //if $eloquent->good_point = 1
     $this->assertDatabaseHas('user_reviews', [
 	    'id' => $goodEloquent->user_review_id,
 	    'good_point' => $reviewEloquent->good_point - 1,
