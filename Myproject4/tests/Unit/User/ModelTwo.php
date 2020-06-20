@@ -41,7 +41,7 @@ class ModelTwo extends TestCase
 
 	/**
 	 * Model/User/InputReview test
-	 * @test
+	 * test
 	 * @return void
 	 */
 	public function inputReviewTest()
@@ -78,13 +78,13 @@ class ModelTwo extends TestCase
 
 	/**
 	 * Model/User/DeleteReview
-	 * test
+	 * @test
 	 * @return void
 	 */
 	public function deleteReviewTest()
 	{
-	    factory(Contribute::class)->create();
-	    factory(GoogleUser::class)->create();
+	    factory(Contribute::class, 10)->create();
+	    factory(GoogleUser::class, 10)->create();
 	    factory(UserReview::class)->create();
 
 	    $eloquent = DB::table('user_reviews')->where('id', 1)->first();

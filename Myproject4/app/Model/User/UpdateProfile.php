@@ -66,19 +66,19 @@ class UpdateProfile
 	}
 
 	/**
-	 * @var string $is_user
+	 * @var string $isUser
 	 * @var string $iconPath
 	 * @var object $eloquent
 	 */
 	public function update(): void
 	{
-		$is_user = DB::table('google_users')->where('gmail', $this->gmail)->value('id');
+		$isUser = DB::table('google_users')->where('gmail', $this->gmail)->value('id');
 
-		if($is_user != null)
+		if($isUser != null)
 		{
 			$iconPath = $this->iconPath();
 
-			$eloquent = GoogleUser::find($is_user);
+			$eloquent = GoogleUser::find($isUser);
 
 			if($iconPath != null)
 			{

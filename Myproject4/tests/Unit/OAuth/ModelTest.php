@@ -29,7 +29,7 @@ class ModelTest extends TestCase
 
     /**
      * Elouent Test.
-     * 
+     * @test
      * @return void
      */
     public function judgeTest()
@@ -64,7 +64,7 @@ class ModelTest extends TestCase
 
     /**
      * Sign in test.
-     * @test
+     * test
      *
      * @return void
      */

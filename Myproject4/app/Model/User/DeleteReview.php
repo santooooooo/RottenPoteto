@@ -9,12 +9,12 @@ class DeleteReview
 {
 	static function existReview(int $contributeId, int $userId): bool
 	{
-		$exist_review = DB::table('user_reviews')->where([
+		$existReview = DB::table('user_reviews')->where([
 			['contribute_id', $contributeId],
 			['google_user_id', $userId]
 		])->exists();
 
-		return $exist_review;
+		return $existReview;
 	}
 
   static function delete(int $contributeId, int $userId): bool

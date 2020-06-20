@@ -16,7 +16,7 @@ class HttpTest extends TestCase
 	use WithoutMiddleware;
     /**
      * post request (/signout) test.
-     * @test
+     * test
      * @return void
      */
     public function signOutTest()
@@ -39,7 +39,7 @@ class HttpTest extends TestCase
 
 	 /**
 	  * post request (/update) test
-	  * 
+	  * @test
 	  * @return void
 	  */
 	 public function updateUserProfileTest()

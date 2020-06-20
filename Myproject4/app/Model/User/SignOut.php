@@ -10,9 +10,9 @@ class SignOut
 {
     static function signOut(string $gmail): void
     {
-	    $is_users = DB::table('google_users')->where('gmail', $gmail)->exists();
+	    $isUsers = DB::table('google_users')->where('gmail', $gmail)->exists();
 
-	    if($is_users)
+	    if($isUsers)
 	    {
 		    DB::table('google_users')->where('gmail', $gmail)->delete();
 	    }
