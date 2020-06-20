@@ -10,6 +10,7 @@ use App\Eloquent\GoogleUser;
 use App\Eloquent\Contribute;
 use App\Eloquent\GoodPoint;
 use App\Model\User\PushGood;
+use App\Model\User\DeleteGood;
 
 class ModelFour extends TestCase
 {
@@ -50,11 +51,48 @@ class ModelFour extends TestCase
     $reviewEloquent = DB::table('user_reviews')->where('id', 1)->first();
 
     PushGood::push($userEloquent->id, $reviewEloquent->id);
+    PushGood::push($userEloquent->id + 1, $reviewEloquent->id);
 
     $this->assertDatabaseHas('good_points', [
 	    'id' => 1,
 	    'google_user_id' => $userEloquent->id,
 	    'user_review_id' => $reviewEloquent->id,
+    ]);
+
+    $this->assertDatabaseHas('user_reviews', [
+	    'id' => $reviewEloquent->id,
+	    'good_point' => $reviewEloquent->good_point + 2,
+    ]);
+	}
+
+	/**
+	 * App\Model\User\DeleteGood test
+	 * test
+	 * @return void
+	 */
+	public function deleteGoodTest()
+	{
+    factory(Contribute::class, 10)->create();
+    factory(GoogleUser::class, 10)->create();
+    factory(UserReview::class, 10)->create();
+    factory(GoodPoint::class)->create();
+
+    $goodEloquent = DB::table('good_points')->where('id', 1)->first();
+
+    $reviewEloquent = DB::table('user_reviews')->where('id', $goodEloquent->user_review_id)->first();
+
+    DeleteGood::delete($goodEloquent->google_user_id, $goodEloquent->user_review_id);
+
+    $this->assertDatabaseMissing('good_points', [
+	    'id' => 1,
+	    'google_user_id' => $goodEloquent->google_user_id,
+	    'user_review_id' => $goodEloquent->user_review_id,
+    ]);
+
+    //if $eloquent->good_point = 1
+    $this->assertDatabaseHas('user_reviews', [
+	    'id' => $goodEloquent->user_review_id,
+	    'good_point' => $reviewEloquent->good_point - 1,
     ]);
 	}
 }

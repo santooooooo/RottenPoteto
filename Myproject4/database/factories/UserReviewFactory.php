@@ -14,6 +14,7 @@ $factory->define(UserReview::class, function (Faker $faker) {
        'review' => $faker->text($maxNbChars = 1000), 
        'satisfaction' => $faker->numberBetween($min = 0, $max = 5), 
        'recommended' => $faker->numberBetween($min = 0, $max = 5), 
+       'good_point' => $faker->numberBetween($min = 1, $max = 10),
        'created_at' => $now,
        'updated_at' => $now,
     ];
