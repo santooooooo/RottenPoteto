@@ -10,26 +10,26 @@ class InputReview
 {
 	static function isContribute(int $contributeId): bool
 	{
-		$is_contribute = DB::table('contributes')->where('id', $contributeId)->exists();
+		$isContribute = DB::table('contributes')->where('id', $contributeId)->exists();
 
-		return $is_contribute;
+		return $isContribute;
 	}
 
 	static function isUser(int $userId): bool
 	{
-		$is_user = DB::table('google_users')->where('id', $userId)->exists();
+		$isUser = DB::table('google_users')->where('id', $userId)->exists();
 
-		return $is_user;
+		return $isUser;
 	}
 
 	static function existReview(int $contributeId, int $userId): bool
 	{
-		$exist_review = DB::table('user_reviews')->where([
+		$existReview = DB::table('user_reviews')->where([
 			['contribute_id', $contributeId],
 			['google_user_id', $userId]
 		])->exists();
 
-		return $exist_review;
+		return $existReview;
 	}
 
 	static function badSafety(int $userId): bool
