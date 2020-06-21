@@ -1967,9 +1967,15 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+var categories = ['アニメ', 'アクション', 'アドベンチャー', 'SF', 'コメディ', 'サスペンス', '青春', '戦争', 'ドキュメンタリー', 'ドラマ', 'ファンタジー', 'ホラー', 'ミュージカル・音楽', '恋愛', '指定なし'];
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
+      genre: null,
+      categories: categories,
       contributes: []
     };
   },
@@ -1985,6 +1991,26 @@ __webpack_require__.r(__webpack_exports__);
     axios.get('/top').then(function (response) {
       return _this.contributes = response.data;
     });
+  },
+  computed: {
+    contributesInfo: function contributesInfo() {
+      if (this.genre != '指定なし' && this.genre != null) {
+        var results = [];
+
+        for (var i = 0; i < this.contributes.length; i++) {
+          if (this.contributes[i].genre == this.genre) {
+            results[i] = this.contributes[i];
+          }
+        }
+
+        return results;
+      }
+
+      return this.contributes;
+    }
+  },
+  methods: {
+    inputGenre: function inputGenre() {}
   }
 });
 
@@ -37816,33 +37842,50 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "container" }, [
-    _c("div", { staticClass: "row justify-content-center" }, [
-      _c("div", { staticClass: "col-md-8" }, [
-        _c(
-          "div",
-          { staticClass: "card" },
-          [
-            _c("div", { staticClass: "card-header" }, [
-              _vm._v("Example Component")
-            ]),
-            _vm._v(" "),
-            _vm._l(_vm.contributes, function(contribute) {
-              return _c("div", { staticClass: "card-body" }, [
-                _vm._v(
-                  "\n                        Jamboo, I'm an example component.\n\t\t\t\t\t\t\t\t\t\t\t\t" +
-                    _vm._s(contribute) +
-                    "\n                    "
-                )
-              ])
-            })
-          ],
-          2
-        )
-      ])
-    ]),
+  return _c("div", [
+    _c("p", [_vm._v("映画一覧")]),
     _vm._v(" "),
-    _c("p", [_vm._v(_vm._s(_vm.userInfo))])
+    _c(
+      "div",
+      [
+        _c("p", [_vm._v("ジャンル別")]),
+        _vm._v(" "),
+        _vm._l(_vm.categories, function(category) {
+          return _c("div", [
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.genre,
+                  expression: "genre"
+                }
+              ],
+              attrs: { type: "radio" },
+              domProps: {
+                value: category,
+                checked: _vm._q(_vm.genre, category)
+              },
+              on: {
+                change: function($event) {
+                  _vm.genre = category
+                }
+              }
+            }),
+            _vm._v(_vm._s(category) + "\n\t\t")
+          ])
+        })
+      ],
+      2
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      _vm._l(_vm.contributesInfo, function(info) {
+        return _c("div", [_vm._v("\n\t\t" + _vm._s(info) + "\n\t\t")])
+      }),
+      0
+    )
   ])
 }
 var staticRenderFns = []
