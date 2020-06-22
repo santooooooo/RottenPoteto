@@ -39,23 +39,4 @@ class HttpTest extends TestCase
 
 	    $response->assertLocation('/adminer');
     }
-
-    /**
-     * @test
-     * @return void
-     */
-    public function postControllUserTest()
-    {
-	    factory(GoogleUser::class)->create();
-
-	    $testData = DB::table('google_users')->where('id', 1)->value('gmail');
-
-	    $response = $this->post('/adminer/safety', [
-		    'gmail' => $testData,
-	    ]);
-
-	    $testSafety = DB::table('google_users')->where('id', 1)->value('safety');
-
-	    $this->assertEquals(0, $testSafety);
-    }
 }
