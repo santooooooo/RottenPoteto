@@ -16,8 +16,8 @@ final class CheckAdminer
     {
 	    $eloquent = DB::table('google_users')->where('gmail', 'santo.shunsuke@gmail.com')->first();
 
-	    $is_adminer = optional($eloquent)->gmail == $info;
+	    $isAdminer = optional($eloquent)->gmail == $info;
 
-	    return $is_adminer;
+	    return $isAdminer;
     }
 }
