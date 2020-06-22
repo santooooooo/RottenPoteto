@@ -50,7 +50,7 @@ class UpdateProfile
 		{
 			return null;
 		}
-		$path = $this->icon->store('user');
+		$path = $this->icon->store('public/user');
 		return $path;
 	}
 

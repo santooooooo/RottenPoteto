@@ -36,7 +36,7 @@ final class Input
 
 	public function picturePath(): string
 	{
-		$path = $this->picture->store('contribute');
+		$path = $this->picture->store('public/contribute');
 		return $path;
 	}
 

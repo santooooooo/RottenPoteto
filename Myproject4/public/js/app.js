@@ -1970,6 +1970,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 var categories = ['アニメ', 'アクション', 'アドベンチャー', 'SF', 'コメディ', 'サスペンス', '青春', '戦争', 'ドキュメンタリー', 'ドラマ', 'ファンタジー', 'ホラー', 'ミュージカル・音楽', '恋愛', '指定なし'];
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -1994,23 +2002,28 @@ var categories = ['アニメ', 'アクション', 'アドベンチャー', 'SF',
   },
   computed: {
     contributesInfo: function contributesInfo() {
-      if (this.genre != '指定なし' && this.genre != null) {
-        var results = [];
+      var results = [];
 
+      if (this.genre != '指定なし' && this.genre != null) {
         for (var i = 0; i < this.contributes.length; i++) {
           if (this.contributes[i].genre == this.genre) {
-            results[i] = this.contributes[i];
+            results[i] = this.contributes[i]; //to display pictures on views.
+
+            results[i].picture = '/storage' + this.contributes[i].picture.slice(6);
           }
         }
 
         return results;
       }
 
-      return this.contributes;
+      for (var _i = 0; _i < this.contributes.length; _i++) {
+        //to display pictures on views.
+        results[_i] = this.contributes[_i];
+        results[_i].picture = '/storage' + this.contributes[_i].picture.slice(6);
+      }
+
+      return results;
     }
-  },
-  methods: {
-    inputGenre: function inputGenre() {}
   }
 });
 
@@ -37882,7 +37895,29 @@ var render = function() {
     _c(
       "div",
       _vm._l(_vm.contributesInfo, function(info) {
-        return _c("div", [_vm._v("\n\t\t" + _vm._s(info) + "\n\t\t")])
+        return _c(
+          "div",
+          [
+            _c("p", [_vm._v("タイトル")]),
+            _vm._v(" "),
+            _c("p", [_vm._v(_vm._s(info.title))]),
+            _vm._v(" "),
+            _c("p", [_vm._v("ジャンル")]),
+            _vm._v(" "),
+            _c("p", [_vm._v(_vm._s(info.genre))]),
+            _vm._v(" "),
+            _c("p", [_vm._v("満足度")]),
+            _vm._v(" "),
+            _c("p", [_vm._v(_vm._s(info.satisfaction))]),
+            _vm._v(" "),
+            _c("P", [_vm._v("オススメ度")]),
+            _vm._v(" "),
+            _c("p", [_vm._v(_vm._s(info.recommended))]),
+            _vm._v(" "),
+            _c("img", { attrs: { src: info.picture, alt: "picture" } })
+          ],
+          1
+        )
       }),
       0
     )
