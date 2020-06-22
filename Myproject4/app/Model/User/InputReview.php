@@ -48,6 +48,7 @@ class InputReview
 		int $userId,
 		string $title,
 		string $review,
+		string $spoiler,
 		int $satisfaction,
 		int $recommended
 	): bool
@@ -64,6 +65,7 @@ class InputReview
 				'google_user_id' => $userId,
 				'title' => $title,
 				'review' => $review,
+				'spoiler' => $spoiler,
 				'satisfaction' => $satisfaction,
 				'recommended' => $recommended,
 			]);

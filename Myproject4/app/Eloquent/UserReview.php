@@ -11,6 +11,7 @@ class UserReview extends Model
 		'google_user_id',
 		'title',
 		'review',
+		'spoiler',
 		'satisfaction',
 		'recommended',
 		'goog_point',

@@ -21,6 +21,7 @@ class CreateUserReviewsTable extends Migration
 	    			$table->foreign('google_user_id')->references('id')->on('google_users');
 						$table->string('title');
 						$table->text('review');
+						$table->string('spoiler')->nullable();
 						$table->unsignedInteger('satisfaction');
 						$table->unsignedInteger('recommended');
 						$table->unsignedInteger('good_point')->default(0);

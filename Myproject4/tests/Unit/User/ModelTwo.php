@@ -54,6 +54,7 @@ class ModelTwo extends TestCase
 	    $google_user_id = 2;
 	    $title = 'てすとだよ。';
 	    $review = 'てすとだよ。てすとだよ。てすとだよ。';
+	    $spoiler = 'ネタばれ有り';
 	    $satisfaction = 3;
 	    $recommended = 4;
 
@@ -62,6 +63,7 @@ class ModelTwo extends TestCase
 		    $google_user_id,
 		    $title,
 		    $review,
+		    $spoiler,
 		    $satisfaction,
 		    $recommended
 	    );
@@ -71,6 +73,7 @@ class ModelTwo extends TestCase
 				'google_user_id' => $google_user_id,
 				'title' => $title,
 				'review' => $review,
+				'spoiler' => $spoiler,
 				'satisfaction' => $satisfaction,
 				'recommended' => $recommended,
 			]);
@@ -97,6 +100,7 @@ class ModelTwo extends TestCase
 		    'google_user_id' => $eloquent->google_user_id,
 		    'title' => $eloquent->title,
 		    'review' => $eloquent->review,
+		    'spoiler' => $eloquent->spoiler,
 		    'satisfaction' => $eloquent->satisfaction,
 		    'recommended' => $eloquent->recommended,
 		    'good_point' => $eloquent->good_point,

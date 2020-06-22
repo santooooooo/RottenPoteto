@@ -12,6 +12,7 @@ $factory->define(UserReview::class, function (Faker $faker) {
        'google_user_id' => $faker->numberBetween($min = 1, $max = 10), 
        'title' => $faker->word,
        'review' => $faker->text($maxNbChars = 1000), 
+       'spoiler' => '',
        'satisfaction' => $faker->numberBetween($min = 0, $max = 5), 
        'recommended' => $faker->numberBetween($min = 0, $max = 5), 
        'good_point' => $faker->numberBetween($min = 1, $max = 10),
