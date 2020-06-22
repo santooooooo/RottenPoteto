@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\AdminerAuthForm;
 use Illuminate\View\View; 
-use Illuminate\Http\RedirectResponse;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 
 class AdminerController extends Controller
 {

@@ -5,13 +5,12 @@ namespace App\Http\Controllers;
 use App\Http\Requests\GoodForm;
 use App\Model\User\PushGood;
 use App\Model\User\DeleteGood;
-use Illuminate\Http\RedirectResponse;
-use Illuminate\Routing\Redirector;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 
 class GoodController extends Controller
 {
 	/**
-	 * @return RedirectResponse | Redirector
+	 * @return RedirectResponse
 	 */
     public function pushGood(GoodForm $request)
     {
@@ -28,7 +27,7 @@ class GoodController extends Controller
     }
 
 	/**
-	 * @return RedirectResponse | Redirector
+	 * @return RedirectResponse
 	 */
     public function deleteGood(GoodForm $request)
     {

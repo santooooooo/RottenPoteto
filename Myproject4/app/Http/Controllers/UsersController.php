@@ -6,8 +6,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\UsersSignOut;
 use App\Http\Requests\UserSignOutForm;
 use App\Model\User\SignOut;
-use Illuminate\Http\RedirectResponse;
-use Illuminate\Routing\Redirector;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use App\Model\User\UpdateProfile;
 use App\Http\Requests\UserProfile;
 use Illuminate\Http\Request;
@@ -16,7 +15,7 @@ class UsersController extends Controller
 {
 	/**
 	 * @var string $gail
-	 * @return RedirectResponse | Redirector
+	 * @return RedirectResponse
 	 */
     public function userSignOut(UserSignOutForm $request)
     {
@@ -29,7 +28,7 @@ class UsersController extends Controller
     }
 
     /**
-     * @return RedirectResponse | Redirector
+     * @return RedirectResponse
      */
     public function userLogOut()
     {
@@ -40,7 +39,7 @@ class UsersController extends Controller
 
     /**
      * @var object $update
-     * @return RedirectResponse | Redirector;
+     * @return RedirectResponse
      */
     public function updateUserProfile(UserProfile $request)
     {

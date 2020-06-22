@@ -5,8 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests\InputReviewForm;
 use App\Http\Requests\DeleteReviewForm;
-use Illuminate\Http\RedirectResponse;
-use Illuminate\Routing\Redirector;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use App\Model\User\DeleteReview;
 use App\Model\User\GradeCinema;
 use App\Model\User\InputReview;
@@ -39,7 +38,7 @@ class ReviewController extends Controller
 		private $recommended;
 
 		/**
-		 * @return RedirectResponse | Redirector
+		 * @return RedirectResponse
 		 * @var bool $inputSuccess
 		 */
     public function inputReview(InputReviewForm $request)
@@ -71,7 +70,7 @@ class ReviewController extends Controller
     }
 
 		/**
-		 * @return RedirectResponse | Redirector
+		 * @return RedirectResponse
 		 * @var bool $deleteSuccess
 		 */
     public function deleteReview(DeleteReviewForm $request)
