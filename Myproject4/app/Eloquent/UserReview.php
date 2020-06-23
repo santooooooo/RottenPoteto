@@ -16,4 +16,9 @@ class UserReview extends Model
 		'recommended',
 		'goog_point',
 	];
+
+	public function user()
+	{
+		return $this->belongsTo('App\Eloquent\GoogleUser', 'google_user_id');
+	}
 }

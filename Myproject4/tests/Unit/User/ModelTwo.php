@@ -41,7 +41,7 @@ class ModelTwo extends TestCase
 
 	/**
 	 * Model/User/InputReview test
-	 * test
+	 * @test
 	 * @return void
 	 */
 	public function inputReviewTest()
@@ -81,7 +81,7 @@ class ModelTwo extends TestCase
 
 	/**
 	 * Model/User/DeleteReview
-	 * @test
+	 * test
 	 * @return void
 	 */
 	public function deleteReviewTest()

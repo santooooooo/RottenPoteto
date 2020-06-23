@@ -15,4 +15,9 @@ final class Contribute extends Model
 		'satisfaction',
 		'recommended',
 	];
+
+	public function reviews()
+	{
+		return $this->hasMany('App\Eloquent\UserReview');
+	}
 }
