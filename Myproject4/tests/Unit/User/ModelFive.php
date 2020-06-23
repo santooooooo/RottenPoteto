@@ -42,7 +42,7 @@ class ModelFive extends TestCase
 
 	    $jsonTestData = json_encode($testData);
 
-	    $jsonReviewData = ReviewPageInfo::reviewInfo($id);
+	    $jsonReviewData = ReviewPageInfo::outputInfo($id);
 
       $this->assertEquals($jsonTestData, $jsonReviewData);
     }

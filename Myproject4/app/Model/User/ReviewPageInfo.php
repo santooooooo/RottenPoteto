@@ -7,7 +7,7 @@ use App\Eloquent\Contribute;
 
 class ReviewPageInfo
 {
-    static function reviewInfo(int $contributeId): string
+    static function outputInfo(int $contributeId): string
     {
 	    $contribute = Contribute::find($contributeId)->first();
 	    $data = [];
