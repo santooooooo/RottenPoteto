@@ -12,7 +12,8 @@
 		<div>
 			<div v-for="info in contributesInfo">
 				<p>タイトル</p>
-				<p>{{info.title}}</p>
+				<p>{{info.title}}
+				</p>
 				<p>ジャンル</p>
 				<p>{{info.genre}}</p>
 				<p>満足度</p>
@@ -55,26 +56,37 @@ const categories = ['アニメ','アクション','アドベンチャー','SF','
 		  contributesInfo: function()
 		  {
 			  let results = [];
+			  let contribute;
+			  let contributePath;
+
 
 			  if(this.genre != '指定なし' && this.genre != null)
 			  {
+
 				  for(let i = 0; i < this.contributes.length; i++)
 				  {
 					  if(this.contributes[i].genre == this.genre)
 					  {
-						  results[i] = this.contributes[i];
-						  //to display pictures on views.
-						  results[i].picture = '/storage' + this.contributes[i].picture.slice(6);
+						  contribute = this.contributes[i];
+						  contributePath = '/storage' + contribute.picture.slice(6);
+
+						  results[i] = {id: contribute.id,title: contribute.title,picture: contributePath,
+							  genre: contribute.genre,satisfaction: contribute.satisfaction,
+							  recommended: contribute.recommended};
 					  }
 				  }
 				  return results;
 			  }
 
+
 			  for(let i = 0; i < this.contributes.length; i++)
 			  {
-					  //to display pictures on views.
-					  results[i] = this.contributes[i];
-					  results[i].picture = '/storage' + this.contributes[i].picture.slice(6);
+						contribute = this.contributes[i];
+					  contributePath = '/storage' + contribute.picture.slice(6);
+
+					  results[i] = {id: contribute.id,title: contribute.title,picture: contributePath,
+						  genre: contribute.genre,satisfaction: contribute.satisfaction,
+						  recommended: contribute.recommended};
 			  }
 			  return results;
 		  }
