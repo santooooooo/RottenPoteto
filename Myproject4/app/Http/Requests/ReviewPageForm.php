@@ -24,7 +24,7 @@ class ReviewPageForm extends FormRequest
     public function rules()
     {
         return [
-           'contribute_id' => 'required | integer | min:0',
+           'contribute_id' => 'required | string',
         ];
     }
 }

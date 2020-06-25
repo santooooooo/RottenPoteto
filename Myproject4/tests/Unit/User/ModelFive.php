@@ -25,13 +25,13 @@ class ModelFive extends TestCase
 	    factory(GoogleUser::class, 10)->create();
 	    factory(UserReview::class, 10)->create();
 
-	    $id = 3;
+	    $id = '3';
 	    $testData = [];
-	    $contribute = Contribute::find($id)->first();
+	    $contribute = DB::table('contributes')->where('id', $id)->first();
 		  $testData["contribute"] = [$contribute->title, $contribute->contents, $contribute->picture,
 		  $contribute->genre, $contribute->satisfaction,$contribute->recommended];
 
-	    $eloquents = Contribute::find($id)->reviews;
+	    $eloquents = Contribute::find($contribute->id)->reviews;
 	    for($i = 0; $i < count($eloquents); $i++)
 	    {
 		    $eloquent = $eloquents[$i];

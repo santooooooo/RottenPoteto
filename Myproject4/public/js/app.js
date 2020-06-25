@@ -1954,12 +1954,21 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
-    return {};
+    return {
+      detailInfo: []
+    };
   },
-  created: function created() {
-    return console.log($route.params.contributeId);
+  mounted: function mounted() {
+    var _this = this;
+
+    axios.get('/review-page?contribute_id=' + this.$route.params.contributeId).then(function (response) {
+      return _this.detailInfo = response.data;
+    });
   }
 });
 
@@ -2021,7 +2030,7 @@ var categories = ['アニメ', 'アクション', 'アドベンチャー', 'SF',
   mounted: function mounted() {
     var _this = this;
 
-    axios.get('/top').then(function (response) {
+    axios.get('top').then(function (response) {
       return _this.contributes = response.data;
     });
   },
@@ -37896,7 +37905,10 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div")
+  return _c("div", [
+    _vm._v("\n\t" + _vm._s(_vm.$route.params.contributeId) + "\n\t"),
+    _c("p", [_vm._v(_vm._s(_vm.detailInfo))])
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -37965,7 +37977,11 @@ var render = function() {
           [
             _c("p", [_vm._v("タイトル")]),
             _vm._v(" "),
-            _c("p", [_vm._v(_vm._s(info.title) + "\n\t\t\t")]),
+            _c(
+              "router-link",
+              { attrs: { to: { path: "/contribute/" + info.id } } },
+              [_vm._v(_vm._s(info.title) + "\n\t\t\t")]
+            ),
             _vm._v(" "),
             _c("p", [_vm._v("ジャンル")]),
             _vm._v(" "),

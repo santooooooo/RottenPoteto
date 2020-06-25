@@ -27,12 +27,15 @@ class HttpFourTest extends TestCase
 	    factory(GoogleUser::class, 10)->create();
 	    factory(UserReview::class, 10)->create();
 
-	    $id = 4;
+	    $id = '4';
 
-	    $response = $this->call('GET', '/review-page/', [
-		    'contribute_id' => $id,
-	    ]);
+	    $response = $this->call('GET', '/review-page?contribute_id='.$id);
+		  //  , [
+		  //  'contribute_id' => $id,
+	    //]);
 
-      $response->assertStatus(200);
+	    //test that whether $response has jsonData or not.
+	    //Don't be worry if $response has more than one data.
+      $response->assertJsonCount(1);
     }
 }

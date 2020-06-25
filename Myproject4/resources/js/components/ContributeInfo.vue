@@ -12,8 +12,8 @@
 		<div>
 			<div v-for="info in contributesInfo">
 				<p>タイトル</p>
-				<p>{{info.title}}
-				</p>
+				<router-link :to="{ path: '/contribute/' + info.id }">{{info.title}}
+				</router-link>
 				<p>ジャンル</p>
 				<p>{{info.genre}}</p>
 				<p>満足度</p>
@@ -50,7 +50,7 @@ const categories = ['アニメ','アクション','アドベンチャー','SF','
 	  },
 		mounted: function()
 		{
-			axios.get('/top').then(response => this.contributes = response.data)
+			axios.get('top').then(response => this.contributes = response.data)
 		},
 	  computed: {
 		  contributesInfo: function()
@@ -67,6 +67,8 @@ const categories = ['アニメ','アクション','アドベンチャー','SF','
 				  {
 					  if(this.contributes[i].genre == this.genre)
 					  {
+						  //わざわざオブジェクトの変数と写真のパスの変数を作成したのは、computed特有の環境を保持
+						  //し続ける状況でも、常に同じ値を参照し続けるようにするため
 						  contribute = this.contributes[i];
 						  contributePath = '/storage' + contribute.picture.slice(6);
 
@@ -81,6 +83,8 @@ const categories = ['アニメ','アクション','アドベンチャー','SF','
 
 			  for(let i = 0; i < this.contributes.length; i++)
 			  {
+						//わざわざオブジェクトの変数と写真のパスの変数を作成したのは、computed特有の環境を保持
+						//し続ける状況でも、常に同じ値を参照し続けるようにするため
 						contribute = this.contributes[i];
 					  contributePath = '/storage' + contribute.picture.slice(6);
 

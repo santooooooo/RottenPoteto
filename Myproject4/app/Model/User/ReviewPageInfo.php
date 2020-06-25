@@ -4,18 +4,19 @@ declare(strict_types=1);
 namespace App\Model\User;
 
 use App\Eloquent\Contribute;
+use Illuminate\Support\Facades\DB;
 
 class ReviewPageInfo
 {
-    static function outputInfo(int $contributeId): string
+    static function outputInfo(string $contributeId): string
     {
-	    $contribute = Contribute::find($contributeId)->first();
+	    $contribute = DB::table('contributes')->where('id', $contributeId)->first();
 	    $data = [];
 
 		  $data["contribute"] = [$contribute->title, $contribute->contents, $contribute->picture,
 		  $contribute->genre, $contribute->satisfaction,$contribute->recommended];
 
-	    $eloquents = Contribute::find($contributeId)->reviews;
+	    $eloquents = Contribute::find($contribute->id)->reviews;
 	    for($i = 0; $i < count($eloquents); $i++)
 	    {
 		    $eloquent = $eloquents[$i];
