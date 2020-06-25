@@ -35,6 +35,8 @@ class ReviewPageInfo
 			    'spoiler' => $eloquent->spoiler,
 			    'satisfaction' => $eloquent->satisfaction,
 			    'recommended' => $eloquent->recommended,
+			    'goodPoint' => $eloquent->good_point,
+			    'userId' => $eloquent->user->id,
 			    'userName' => $eloquent->user->name,
 			    'userIcon' => $eloquent->user->icon
 		    ];

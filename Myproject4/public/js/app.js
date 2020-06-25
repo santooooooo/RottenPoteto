@@ -1978,6 +1978,44 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -37937,11 +37975,88 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c("div", [
-      _c("p", [_vm._v(_vm._s(_vm.userInfo))]),
-      _vm._v(" "),
-      _c("p", [_vm._v(_vm._s(_vm.detailInfo))])
-    ]),
+    _c(
+      "div",
+      [
+        _c("p", [_vm._v(_vm._s(_vm.userInfo))]),
+        _vm._v(" "),
+        _c("div", [
+          _c("p", [_vm._v(_vm._s(_vm.detailInfo.contribute.title))]),
+          _vm._v(" "),
+          _c("p", [_vm._v(_vm._s(_vm.detailInfo.contribute.contents))]),
+          _vm._v(" "),
+          _c("img", {
+            attrs: {
+              src: "/storage" + _vm.detailInfo.contribute.picture.slice(6),
+              alt: "picture"
+            }
+          }),
+          _vm._v(" "),
+          _c("p", [_vm._v(_vm._s(_vm.detailInfo.contribute.genre))]),
+          _vm._v(" "),
+          _c("p", [_vm._v(_vm._s(_vm.detailInfo.contribute.satisfaction))]),
+          _vm._v(" "),
+          _c("p", [_vm._v(_vm._s(_vm.detailInfo.contribute.recommended))])
+        ]),
+        _vm._v(" "),
+        _vm._l(_vm.detailInfo.reviews, function(review) {
+          return _c("div", [
+            _c("p", [_vm._v(_vm._s(review.title))]),
+            _vm._v(" "),
+            _c("p", [_vm._v(_vm._s(review.review))]),
+            _vm._v(" "),
+            _c("p", [_vm._v(_vm._s(review.spoiler))]),
+            _vm._v(" "),
+            _c("p", [_vm._v(_vm._s(review.satisfaction))]),
+            _vm._v(" "),
+            _c("p", [_vm._v(_vm._s(review.recommended))]),
+            _vm._v(" "),
+            _c("p", [_vm._v(_vm._s(review.goodPoint))]),
+            _vm._v(" "),
+            _c("p", [_vm._v(_vm._s(review.userName))]),
+            _vm._v(" "),
+            _c("p", [_vm._v(_vm._s(review.userIcon))]),
+            _vm._v(" "),
+            _c("div", [
+              _c("form", { attrs: { action: "/good/push", method: "post" } }, [
+                _c("input", {
+                  attrs: { type: "hidden", name: "google_user_id" },
+                  domProps: { value: _vm.userInfo.id }
+                }),
+                _vm._v(" "),
+                _c("input", {
+                  attrs: { type: "hidden", name: "user_review_id" },
+                  domProps: { value: review.reviewId }
+                }),
+                _vm._v(" "),
+                _c("input", {
+                  attrs: { type: "submit", value: "ポテトを送る" }
+                })
+              ]),
+              _vm._v(" "),
+              _c(
+                "form",
+                { attrs: { action: "/good/delete", method: "post" } },
+                [
+                  _c("input", {
+                    attrs: { type: "hidden", name: "google_user_id" },
+                    domProps: { value: _vm.userInfo.id }
+                  }),
+                  _vm._v(" "),
+                  _c("input", {
+                    attrs: { type: "hidden", name: "user_review_id" },
+                    domProps: { value: review.reviewId }
+                  }),
+                  _vm._v(" "),
+                  _c("input", { attrs: { type: "submit", value: "取り消し" } })
+                ]
+              )
+            ])
+          ])
+        })
+      ],
+      2
+    ),
     _vm._v(" "),
     _c("div", [
       _c("form", { attrs: { action: "/review/input", method: "post" } }, [
@@ -37994,6 +38109,22 @@ var render = function() {
         }),
         _vm._v(" "),
         _c("input", { attrs: { type: "submit", value: "レビューを送る" } })
+      ])
+    ]),
+    _vm._v(" "),
+    _c("div", [
+      _c("form", { attrs: { action: "/review/delete", method: "post" } }, [
+        _c("input", {
+          attrs: { type: "hidden", name: "contribute_id" },
+          domProps: { value: _vm.detailInfo.contribute.id }
+        }),
+        _vm._v(" "),
+        _c("input", {
+          attrs: { type: "hidden", name: "google_user_id" },
+          domProps: { value: _vm.userInfo.id }
+        }),
+        _vm._v(" "),
+        _c("input", { attrs: { type: "submit", value: "レビューを削除する" } })
       ])
     ])
   ])

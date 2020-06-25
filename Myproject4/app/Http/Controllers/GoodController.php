@@ -21,7 +21,7 @@ class GoodController extends Controller
 
 	    if($success)
 	    {
-		    return redirect('/home')->with('message', 'レビューへGoodを送りました。');
+		    return redirect('/home')->with('message', 'レビューへポテトを送りました。');
 	    }
 	    return redirect('/home');
     }
@@ -38,7 +38,7 @@ class GoodController extends Controller
 
 	    if($success)
 	    {
-		    return redirect('/home')->with('message', 'レビューへGoodを送りました。');
+		    return redirect('/home')->with('message', 'レビューへのポテトを取り消しました。');
 	    }
 	    return redirect('/home');
     }
