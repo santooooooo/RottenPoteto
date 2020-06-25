@@ -13,16 +13,31 @@ class ReviewPageInfo
 	    $contribute = DB::table('contributes')->where('id', $contributeId)->first();
 	    $data = [];
 
-		  $data["contribute"] = [$contribute->title, $contribute->contents, $contribute->picture,
-		  $contribute->genre, $contribute->satisfaction,$contribute->recommended];
+	    $data["contribute"] = [
+		    'id' => $contribute->id,
+		    'title' => $contribute->title,
+		    'contents' => $contribute->contents,
+		    'picture' => $contribute->picture,
+		    'genre' => $contribute->genre,
+		    'satisfaction' => $contribute->satisfaction,
+		    'recommended' => $contribute->recommended
+	    ];
 
-	    $eloquents = Contribute::find($contribute->id)->reviews;
+	    $eloquents = Contribute::find($contribute->id)->reviews()->orderBy('id', 'desc')->get();
 	    for($i = 0; $i < count($eloquents); $i++)
 	    {
 		    $eloquent = $eloquents[$i];
 
-		    $data["reviews"][$i] = [$eloquent->title, $eloquent->review, $eloquent->spoiler,
-		    $eloquent->satisfaction, $eloquent->recommended, $eloquent->user->name, $eloquent->user->icon];
+		    $data["reviews"][$i] = [
+			    'reviewId' => $eloquent->id,
+			    'title' => $eloquent->title,
+			    'review' => $eloquent->review,
+			    'spoiler' => $eloquent->spoiler,
+			    'satisfaction' => $eloquent->satisfaction,
+			    'recommended' => $eloquent->recommended,
+			    'userName' => $eloquent->user->name,
+			    'userIcon' => $eloquent->user->icon
+		    ];
 	    }
 
 	    $jsonData = json_encode($data);

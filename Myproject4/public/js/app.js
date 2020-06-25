@@ -1957,11 +1957,25 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       detailInfo: []
     };
+  },
+  props: {
+    userInfo: {
+      type: Object,
+      required: false
+    }
   },
   mounted: function mounted() {
     var _this = this;
@@ -2043,6 +2057,8 @@ var categories = ['アニメ', 'アクション', 'アドベンチャー', 'SF',
       if (this.genre != '指定なし' && this.genre != null) {
         for (var i = 0; i < this.contributes.length; i++) {
           if (this.contributes[i].genre == this.genre) {
+            //わざわざオブジェクトの変数と写真のパスの変数を作成したのは、computed特有の環境を保持
+            //し続ける状況でも、常に同じ値を参照し続けるようにするため
             contribute = this.contributes[i];
             contributePath = '/storage' + contribute.picture.slice(6);
             results[i] = {
@@ -2060,6 +2076,8 @@ var categories = ['アニメ', 'アクション', 'アドベンチャー', 'SF',
       }
 
       for (var _i = 0; _i < this.contributes.length; _i++) {
+        //わざわざオブジェクトの変数と写真のパスの変数を作成したのは、computed特有の環境を保持
+        //し続ける状況でも、常に同じ値を参照し続けるようにするため
         contribute = this.contributes[_i];
         contributePath = '/storage' + contribute.picture.slice(6);
         results[_i] = {
@@ -37906,11 +37924,25 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _vm._v("\n\t" + _vm._s(_vm.$route.params.contributeId) + "\n\t"),
-    _c("p", [_vm._v(_vm._s(_vm.detailInfo))])
+    _c("div", [
+      _c("p", [_vm._v(_vm._s(_vm.userInfo))]),
+      _vm._v(" "),
+      _c("p", [_vm._v(_vm._s(_vm.detailInfo))])
+    ]),
+    _vm._v(" "),
+    _vm._m(0)
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", [
+      _c("form", { attrs: { action: "/review/input", method: "post" } })
+    ])
+  }
+]
 render._withStripped = true
 
 

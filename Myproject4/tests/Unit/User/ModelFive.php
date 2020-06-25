@@ -23,21 +23,36 @@ class ModelFive extends TestCase
     {
 	    factory(Contribute::class, 10)->create();
 	    factory(GoogleUser::class, 10)->create();
-	    factory(UserReview::class, 10)->create();
+	    factory(UserReview::class, 50)->create();
 
 	    $id = '3';
 	    $testData = [];
 	    $contribute = DB::table('contributes')->where('id', $id)->first();
-		  $testData["contribute"] = [$contribute->title, $contribute->contents, $contribute->picture,
-		  $contribute->genre, $contribute->satisfaction,$contribute->recommended];
+	    $testData["contribute"] = [
+				'id' => $contribute->id,
+		    'title' => $contribute->title,
+		    'contents' => $contribute->contents,
+		    'picture' => $contribute->picture,
+		    'genre' => $contribute->genre,
+		    'satisfaction' => $contribute->satisfaction,
+		    'recommended' => $contribute->recommended
+		  ];
 
-	    $eloquents = Contribute::find($contribute->id)->reviews;
+	    $eloquents = Contribute::find($contribute->id)->reviews()->orderBy('id', 'desc')->get();
 	    for($i = 0; $i < count($eloquents); $i++)
 	    {
 		    $eloquent = $eloquents[$i];
 
-		    $testData["reviews"][$i] = [$eloquent->title, $eloquent->review, $eloquent->spoiler,
-		    $eloquent->satisfaction, $eloquent->recommended, $eloquent->user->name, $eloquent->user->icon];
+		    $testData["reviews"][$i] = [
+			    'reviewId' => $eloquent->id,
+			    'title' => $eloquent->title,
+			    'review' => $eloquent->review,
+			    'spoiler' => $eloquent->spoiler,
+			    'satisfaction' => $eloquent->satisfaction,
+			    'recommended' => $eloquent->recommended,
+			    'userName' => $eloquent->user->name,
+			    'userIcon' => $eloquent->user->icon
+		    ];
 	    }
 
 	    $jsonTestData = json_encode($testData);
