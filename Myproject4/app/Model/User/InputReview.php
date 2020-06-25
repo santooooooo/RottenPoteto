@@ -48,7 +48,7 @@ class InputReview
 		int $userId,
 		string $title,
 		string $review,
-		string $spoiler,
+		int $spoiler,
 		int $satisfaction,
 		int $recommended
 	): bool
@@ -58,6 +58,8 @@ class InputReview
 
 		if($check)
 		{
+			$spoilerVal = $spoiler == 1 ? 'ネタばれ有り': '';
+
 			$eloquent = new UserReview();
 
 			$eloquent->fill([
@@ -65,7 +67,7 @@ class InputReview
 				'google_user_id' => $userId,
 				'title' => $title,
 				'review' => $review,
-				'spoiler' => $spoiler,
+				'spoiler' => $spoilerVal,
 				'satisfaction' => $satisfaction,
 				'recommended' => $recommended,
 			]);

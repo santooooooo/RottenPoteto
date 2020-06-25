@@ -9,6 +9,10 @@
 <div :value="user = {{session('user')}}"></div>
 @endif
 
+@if (session('message'))
+<p>{{session('message')}}</p>
+@endif
+
 <h1>Jamboo!</h1>
 <login :user-info='user'></login>
 <nav>

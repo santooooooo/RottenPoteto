@@ -54,7 +54,7 @@ class ModelTwo extends TestCase
 	    $google_user_id = 2;
 	    $title = 'てすとだよ。';
 	    $review = 'てすとだよ。てすとだよ。てすとだよ。';
-	    $spoiler = 'ネタばれ有り';
+	    $spoiler = 0;
 	    $satisfaction = 3;
 	    $recommended = 4;
 
@@ -73,7 +73,7 @@ class ModelTwo extends TestCase
 				'google_user_id' => $google_user_id,
 				'title' => $title,
 				'review' => $review,
-				'spoiler' => $spoiler,
+				'spoiler' => '',
 				'satisfaction' => $satisfaction,
 				'recommended' => $recommended,
 			]);

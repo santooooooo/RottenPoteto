@@ -16,23 +16,27 @@ class ReviewController extends Controller
 	 * @var int $contributeId
 	 */
 		private $contributeId;
-/**
+	/**
 	 * @var int $googleUserId
 	 */
 		private $googleUserId;
-/**
+	/**
 	 * @var string $title
 	 */
 		private $title;
-/**
+	/**
 	 * @var string $review
 	 */
 		private $review;
-/**
+	/**
+	 * @var int $spoiler
+	 */
+		private $spoiler;
+	/**
 	 * @var int $satisfaction
 	 */
 		private $satisfaction;
-/**
+	/**
 	 * @var int $recommended
 	 */
 		private $recommended;
@@ -47,6 +51,7 @@ class ReviewController extends Controller
 	    $this->googleUserId = $request->input('google_user_id');
 	    $this->title = $request->input('title');
 	    $this->review = $request->input('review');
+	    $this->spoiler = $request->input('spoiler');
 	    $this->satisfaction = $request->input('satisfaction');
 	    $this->recommended = $request->input('recommended');
 
@@ -55,6 +60,7 @@ class ReviewController extends Controller
 		    $this->googleUserId,
 		    $this->title,
 		    $this->review,
+		    $this->spoiler,
 		    $this->satisfaction,
 		    $this->recommended
 	    );

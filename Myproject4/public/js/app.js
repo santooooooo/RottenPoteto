@@ -1965,6 +1965,19 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -37930,19 +37943,62 @@ var render = function() {
       _c("p", [_vm._v(_vm._s(_vm.detailInfo))])
     ]),
     _vm._v(" "),
-    _vm._m(0)
+    _c("div", [
+      _c("form", { attrs: { action: "/review/input", method: "post" } }, [
+        _c("input", {
+          attrs: { type: "hidden", name: "contribute_id" },
+          domProps: { value: _vm.detailInfo.contribute.id }
+        }),
+        _vm._v(" "),
+        _c("input", {
+          attrs: { type: "hidden", name: "google_user_id" },
+          domProps: { value: _vm.userInfo.id }
+        }),
+        _vm._v(" "),
+        _c("p", [_vm._v("タイトル")]),
+        _vm._v(" "),
+        _c("input", { attrs: { type: "text", name: "title" } }),
+        _vm._v(" "),
+        _c("p", [_vm._v("レビュー")]),
+        _vm._v(" "),
+        _c("textarea", { attrs: { name: "review", rows: "7", cols: "50" } }),
+        _vm._v(" "),
+        _c("p", [_vm._v("ネタばれ")]),
+        _vm._v(" "),
+        _c("input", { attrs: { type: "radio", name: "spoiler", value: "0" } }),
+        _vm._v("有り\n\t\t\t"),
+        _c("input", { attrs: { type: "radio", name: "spoiler", value: "1" } }),
+        _vm._v("無し\n\t\t\t"),
+        _c("p", [_vm._v("満足度")]),
+        _vm._v(" "),
+        _c("input", {
+          attrs: {
+            type: "number",
+            name: "satisfaction",
+            min: "0",
+            max: "5",
+            step: "1"
+          }
+        }),
+        _vm._v(" "),
+        _c("p", [_vm._v("オススメ度")]),
+        _vm._v(" "),
+        _c("input", {
+          attrs: {
+            type: "number",
+            name: "recommended",
+            min: "0",
+            max: "5",
+            step: "1"
+          }
+        }),
+        _vm._v(" "),
+        _c("input", { attrs: { type: "submit", value: "レビューを送る" } })
+      ])
+    ])
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", [
-      _c("form", { attrs: { action: "/review/input", method: "post" } })
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 

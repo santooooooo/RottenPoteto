@@ -29,6 +29,7 @@ class InputReviewForm extends FormRequest
             'google_user_id' => 'required | integer | min:1',
             'title' => 'required | max:255',
             'review' => 'required | max:3000',
+	          'spoiler' => 'required | integer | min:0 | max:1',
             'satisfaction' => 'required | integer | min:0 | max:5',
             'recommended' => 'required | integer | min:0 | max:5',
         ];

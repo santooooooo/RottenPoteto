@@ -17,11 +17,11 @@ class HttpTwoTest extends TestCase
 	use WithoutMiddleware;
 
     /**
-     * post request(/review) test
+     * post request(/review/input) test
      * @test
      * @return void
      */
-    public function reviewTest()
+    public function inputReviewTest()
     {
 	    factory(Contribute::class, 10)->create();
 	    factory(GoogleUser::class, 10)->create();
@@ -30,6 +30,7 @@ class HttpTwoTest extends TestCase
 	    $googleUserId = 9;
 	    $title = 'おもしろかったかなーーーーーーーーーーーーー';
 	    $review = 'ああああああああああああああああああああああああああああああああああああああああ';
+	    $spoiler = 0;
 	    $satisfaction = 3;
 	    $recommended = 2;
 
@@ -38,6 +39,7 @@ class HttpTwoTest extends TestCase
 		    'google_user_id' => $googleUserId,
 		    'title' => $title,
 		    'review' => $review,
+		    'spoiler' => $spoiler,
 		    'satisfaction' => $satisfaction,
 		    'recommended' => $recommended,
 	    ]);
@@ -50,6 +52,7 @@ class HttpTwoTest extends TestCase
 		    'google_user_id' => $googleUserId,
 		    'title' => $title,
 		    'review' => $review,
+		    'spoiler' => '',
 		    'satisfaction' => $satisfaction,
 		    'recommended' => $recommended,
 	    ]);
