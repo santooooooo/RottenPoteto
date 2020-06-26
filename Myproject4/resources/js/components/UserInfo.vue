@@ -1,7 +1,12 @@
 <template>
 	<div>
 		<p>ユーザー情報</p>
-		{{userInfo}}
+		<div>
+			<p>{{userInfo.name}}</p>
+			<p>{{userInfo.profile}}</p>
+			<img :src="'/storage' + userInfo.icon.slice(6)">
+			<p>{{userInfo.best}}</p>
+		</div>
 	</div>
 </template>
 

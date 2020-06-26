@@ -17,7 +17,7 @@
 				<router-link :to="{ path: '/user/' + review.userId }">
 					<p>{{review.userName}}</p>
 				</router-link>
-				<p>{{review.userIcon}}</p>
+				<img :src="'/storage' + review.userIcon.slice(6)" alt="picture">
 				<p>{{review.title}}</p>
 				<p>{{review.review}}</p>
 				<p>{{review.spoiler}}</p>
