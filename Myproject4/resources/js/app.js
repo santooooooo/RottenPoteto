@@ -4,6 +4,7 @@ import ContributeInfo from './components/ContributeInfo.vue';
 import Login from './components/Login.vue';
 import Contribute from './components/Contribute.vue';
 import ContributeDetails from './components/ContributeDetails.vue';
+import UserInfo from './components/UserInfo.vue';
 require('./bootstrap');
 
 window.Vue = Vue;
@@ -18,6 +19,10 @@ const router = new VueRouter({
 		{
 			path: '/contribute/:contributeId',
 			component: ContributeDetails
+		},
+		{
+			path: '/user/:userId',
+			component: UserInfo,
 		}
 	]
 });

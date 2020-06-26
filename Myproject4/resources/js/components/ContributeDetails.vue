@@ -1,8 +1,10 @@
 <template>
 	<div>
+
 		<div>
-			<p>{{userInfo}}</p>
+
 			<div>
+
 				<p>{{detailInfo.contribute.title}}</p>
 				<p>{{detailInfo.contribute.contents}}</p>
 				<img :src="'/storage' + detailInfo.contribute.picture.slice(6)" alt="picture">
@@ -10,15 +12,19 @@
 				<p>{{detailInfo.contribute.satisfaction}}</p>
 				<p>{{detailInfo.contribute.recommended}}</p>
 			</div>
+
 			<div v-for="review in detailInfo.reviews">
+				<router-link :to="{ path: '/user/' + review.userId }">
+					<p>{{review.userName}}</p>
+				</router-link>
+				<p>{{review.userIcon}}</p>
 				<p>{{review.title}}</p>
 				<p>{{review.review}}</p>
 				<p>{{review.spoiler}}</p>
 				<p>{{review.satisfaction}}</p>
 				<p>{{review.recommended}}</p>
 				<p>{{review.goodPoint}}</p>
-				<p>{{review.userName}}</p>
-				<p>{{review.userIcon}}</p>
+
 				<div>
 					<form action="/good/push" method="post">
 						<input type="hidden" name="google_user_id" :value="userInfo.id">
@@ -31,7 +37,9 @@
 						<input type="submit" value="取り消し">
 					</form>
 				</div>
+
 			</div>
+
 		</div>
 
 		<div>
