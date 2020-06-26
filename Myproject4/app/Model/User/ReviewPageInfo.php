@@ -8,6 +8,9 @@ use Illuminate\Support\Facades\DB;
 
 class ReviewPageInfo
 {
+	/**
+	 * outputInfo's parameter is string because type of parameter from get request is string.
+	 */
     static function outputInfo(string $contributeId): string
     {
 	    $contribute = DB::table('contributes')->where('id', $contributeId)->first();
