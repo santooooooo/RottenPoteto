@@ -31,9 +31,17 @@ const app = new Vue({
     el: '#app',
 		data: {
 			user: [],
+			message: null,
 		},
     router:router,
 		components: {
 			'login': Login,
 		},
+		mounted: function()
+		{
+			if(this.message != null)
+			{
+				alert(this.message)
+			}
+		}
 		});

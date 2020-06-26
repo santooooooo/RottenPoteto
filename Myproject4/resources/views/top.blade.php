@@ -10,7 +10,7 @@
 @endif
 
 @if (session('message'))
-<p>{{session('message')}}</p>
+<div :value="message = {{session('message')}}"></div>
 @endif
 
 <h1>Jamboo!</h1>

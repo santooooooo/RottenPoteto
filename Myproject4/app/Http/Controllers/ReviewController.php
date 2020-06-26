@@ -72,7 +72,9 @@ class ReviewController extends Controller
 
 	    GradeCinema::grade($this->contributeId);
 
-	    return redirect('home')->with('message', 'レビューの投稿に成功しました。');
+	    $messageVal = json_encode('レビューの投稿に成功しました。');
+
+	    return redirect('home')->with('message', $messageVal);
     }
 
 		/**
@@ -92,6 +94,8 @@ class ReviewController extends Controller
 	    }
 
 	    GradeCinema::grade($this->contributeId);
+
+	    $messageVal = json_encode('レビューの削除に成功しました。');
 
 	    return redirect('/home')->with('message', 'レビューの削除に成功しました。');
     }

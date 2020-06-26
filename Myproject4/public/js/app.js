@@ -53557,11 +53557,17 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
 var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
   el: '#app',
   data: {
-    user: []
+    user: [],
+    message: null
   },
   router: router,
   components: {
     'login': _components_Login_vue__WEBPACK_IMPORTED_MODULE_3__["default"]
+  },
+  mounted: function mounted() {
+    if (this.message != null) {
+      alert(this.message);
+    }
   }
 });
 
