@@ -8,7 +8,7 @@ use App\Eloquent\UserReview;
 use Illuminate\Support\Facades\DB;
 use App\Eloquent\GoodPoint;
 
-class PushGood
+final class PushGood
 {
 		static function isUser(int $userId): bool
 		{

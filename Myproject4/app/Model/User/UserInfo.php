@@ -5,7 +5,7 @@ namespace App\Model\User;
 
 use Illuminate\Support\Facades\DB;
 
-class UserInfo
+final class UserInfo
 {
 	/**
 	 * output's parameter is string because type of parameter from get request is string.

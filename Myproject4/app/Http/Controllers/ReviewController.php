@@ -10,7 +10,7 @@ use App\Model\User\DeleteReview;
 use App\Model\User\GradeCinema;
 use App\Model\User\InputReview;
 
-class ReviewController extends Controller
+final class ReviewController extends Controller
 {
 	/**
 	 * @var int $contributeId

@@ -5,7 +5,7 @@ namespace App\Model\User;
 
 use Illuminate\Support\Facades\DB;
 
-class DeleteGood
+final class DeleteGood
 {
     static function existsGood(int $userId, int $reviewId): bool
     {

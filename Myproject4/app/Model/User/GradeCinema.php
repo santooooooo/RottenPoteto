@@ -6,7 +6,7 @@ namespace App\Model\User;
 use Illuminate\Support\Facades\DB;
 use App\Eloquent\Contribute;
 
-class GradeCinema
+final class GradeCinema
 {
     static function grade(string $contributeId): void
     {

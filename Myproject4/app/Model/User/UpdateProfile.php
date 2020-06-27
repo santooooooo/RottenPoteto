@@ -9,7 +9,7 @@ use App\Http\Requests\UserProfile;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\UploadedFile;
 
-class UpdateProfile
+final class UpdateProfile
 {
 	/**
 	 * @var string $gmail

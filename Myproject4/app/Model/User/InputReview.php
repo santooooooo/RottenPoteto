@@ -6,7 +6,7 @@ namespace App\Model\User;
 use App\Eloquent\UserReview;
 use Illuminate\Support\Facades\DB;
 
-class InputReview
+final class InputReview
 {
 	static function isContribute(int $contributeId): bool
 	{

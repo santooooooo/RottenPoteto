@@ -7,7 +7,7 @@ use App\Model\User\PushGood;
 use App\Model\User\DeleteGood;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 
-class GoodController extends Controller
+final class GoodController extends Controller
 {
 	/**
 	 * @return RedirectResponse

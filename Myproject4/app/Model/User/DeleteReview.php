@@ -5,7 +5,7 @@ namespace App\Model\User;
 
 use Illuminate\Support\Facades\DB;
 
-class DeleteReview
+final class DeleteReview
 {
 	static function existReview(int $contributeId, int $userId): bool
 	{

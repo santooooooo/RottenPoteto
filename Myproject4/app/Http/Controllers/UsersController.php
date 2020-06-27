@@ -11,7 +11,7 @@ use App\Model\User\UpdateProfile;
 use App\Http\Requests\UserProfile;
 use Illuminate\Http\Request;
 
-class UsersController extends Controller
+final class UsersController extends Controller
 {
 	/**
 	 * @var string $gail

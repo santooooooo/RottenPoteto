@@ -9,7 +9,7 @@ use App\Http\Requests\OutputUserInfoForm;
 use App\Model\User\ReviewPageInfo;
 use App\Model\User\UserInfo;
 
-class ReviewPageController extends Controller
+final class ReviewPageController extends Controller
 {
     public function outputInfo(ReviewPageForm $request): string
     {

@@ -6,7 +6,7 @@ namespace App\Model\User;
 use Illuminate\Support\Facades\DB;
 use App\Eloquent\GoogleUser;
 
-class SignOut
+final class SignOut
 {
     static function signOut(string $gmail): void
     {

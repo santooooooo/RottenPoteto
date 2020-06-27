@@ -6,7 +6,7 @@ use App\Http\Requests\AdminerAuthForm;
 use Illuminate\View\View; 
 use Symfony\Component\HttpFoundation\RedirectResponse;
 
-class AdminerController extends Controller
+final class AdminerController extends Controller
 {
 		/**
 		 * @var string $gmail
