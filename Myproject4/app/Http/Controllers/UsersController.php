@@ -25,7 +25,9 @@ final class UsersController extends Controller
 
 	    session(['user' => null]);
 
-	    return redirect('/home');
+	    $messageVal = json_encode("アカウントを削除しました。");
+
+	    return redirect('/home')->with('message', $messageVal);
     }
 
     /**

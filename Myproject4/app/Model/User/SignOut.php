@@ -10,10 +10,19 @@ final class SignOut
 {
     static function signOut(string $gmail): void
     {
-	    $isUsers = DB::table('google_users')->where('gmail', $gmail)->exists();
+	    $isUser = DB::table('google_users')->where('gmail', $gmail)->value('id');
 
-	    if($isUsers)
+	    if($isUser != null)
 	    {
+		    //compare satisfaction and recommende in each contributes.
+		    $eloquents = DB::table('user_reviews')->where('google_user_id', $isUser)->get();
+		    DB::table('user_reviews')->where('google_user_id', $isUser)->delete();
+
+		    foreach($eloquents as $eloquent)
+		    {
+			    GradeCinema::grade($eloquent->contribute_id);
+		    }
+
 		    DB::table('google_users')->where('gmail', $gmail)->delete();
 	    }
     }

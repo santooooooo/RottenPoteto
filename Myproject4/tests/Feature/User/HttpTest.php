@@ -8,6 +8,8 @@ use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Support\Facades\DB;
 use App\Eloquent\GoogleUser;
+use App\Eloquent\UserReview;
+use App\Eloquent\Contribute;
 use Illuminate\Http\UploadedFile;
 
 class HttpTest extends TestCase
@@ -16,14 +18,17 @@ class HttpTest extends TestCase
 	use WithoutMiddleware;
     /**
      * post request (/signout) test.
-     * test
+     * @test
      * @return void
      */
     public function signOutTest()
     {
-	    factory(GoogleUser::class)->create();
+	    factory(Contribute::class, 10)->create();
+	    factory(GoogleUser::class, 10)->create();
+	    factory(UserReview::class)->create();
 
-	    $testData = DB::table('google_users')->where('id', '1')->value('gmail');
+	    $userId = 4;
+	    $testData = DB::table('google_users')->where('id', $userId)->value('gmail');
 
 	    $response = $this->post('/signout', [
 		    'gmail' => $testData,
@@ -32,8 +37,12 @@ class HttpTest extends TestCase
 	    $response->assertStatus(302);
 
 	    $this->assertDatabaseMissing('google_users', [
-		    'id' => 1,
+		    'id' => $userId,
 		    'gmail' => $testData,
+	    ]);
+
+      $this->assertDatabaseMissing('user_reviews', [
+		    'google_user_id' => $userId,
 	    ]);
     }
 
@@ -73,7 +82,7 @@ class HttpTest extends TestCase
 
 	  /**
 	   * get('/user-info') request test.
-	   * @test
+	   * test
 		 * @return void
 	   */
 	   public function outputUserInfoTest()

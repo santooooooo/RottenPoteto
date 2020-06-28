@@ -8,7 +8,7 @@ use App\Eloquent\Contribute;
 
 final class GradeCinema
 {
-    static function grade(string $contributeId): void
+    static function grade(int $contributeId): void
     {
 	    $contributes = DB::table('user_reviews')->where('contribute_id', $contributeId)->get();
 	    $allSatisfaction = 0;
