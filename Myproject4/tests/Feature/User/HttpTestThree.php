@@ -35,7 +35,9 @@ class HttpTestThree extends TestCase
 		    'user_review_id' => $reviewEloquent->id,
 	    ]);
 
-      $response->assertSessionHas('message');
+		  $messageVal = json_encode('レビューへポテトを送りました。');
+
+      $response->assertSessionHas('message', $messageVal);
 
 	    $this->assertDatabaseHas('good_points', [
 		    'id' => 1,
@@ -70,7 +72,9 @@ class HttpTestThree extends TestCase
 	    'user_review_id' => $goodEloquent->user_review_id,
     ]);
 
-    $response->assertSessionHas('message');
+    $messageVal = json_encode('レビューへのポテトを取り消しました。');
+
+    $response->assertSessionHas('message', $messageVal);
 
     $this->assertDatabaseMissing('good_points', [
 	    'id' => 1,
