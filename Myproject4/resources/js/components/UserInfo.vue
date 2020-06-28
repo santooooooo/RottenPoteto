@@ -4,7 +4,7 @@
 		<div>
 			<p>{{userInfo.name}}</p>
 			<p>{{userInfo.profile}}</p>
-			<img :src="'/storage' + userInfo.icon.slice(6)">
+			<img :src="userPicture">
 			<p>{{userInfo.best}}</p>
 		</div>
 	</div>
@@ -16,6 +16,16 @@ export default {
 	{
 		return {
 			userInfo: [],
+		}
+	},
+	computed: {
+		userPicture: function()
+		{
+			if(this.userInfo.icon == null)
+			{
+				return '/storage/home/userPotatoImage';
+			}
+			return '/storage' + this.userInfo.icon.slice(6);
 		}
 	},
 	mounted: function()

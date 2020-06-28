@@ -7,15 +7,8 @@
 	<input type="hidden" name="gmail" :value="userInfo.gmail">
 	<input type="submit" value="退会を実行">
 </form>
-<form v-if="isUser" action="/update" method="post" enctype="multipart/form-data">
-	<input type="hidden" name="gmail" :value="userInfo.gmail">
-	<input type="text" name="name" :value="userInfo.name">
-	<textarea name="profile" rows="6" cols="30" :value="userInfo.profile"></textarea>
-	<input type="file" name="icon">
-	<input type="text" name="best" :value="userInfo.best">
-	<input type="submit" value="アカウント情報更新">
-</form>
-<p>{{userInfo.name}}</p>
+<router-link v-if="isUser" :to="{ path: '/user-profile/' + userInfo.gmail }">プロフィールの変更
+</router-link>
 </div>
 </template>
 

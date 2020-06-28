@@ -5,6 +5,7 @@ import Login from './components/Login.vue';
 import Contribute from './components/Contribute.vue';
 import ContributeDetails from './components/ContributeDetails.vue';
 import UserInfo from './components/UserInfo.vue';
+import UserProfile from './components/UserProfile';
 require('./bootstrap');
 
 window.Vue = Vue;
@@ -23,6 +24,10 @@ const router = new VueRouter({
 		{
 			path: '/user/:userId',
 			component: UserInfo,
+		},
+		{
+			path: '/user-profile/:userGmail',
+			component: UserProfile
 		}
 	]
 });

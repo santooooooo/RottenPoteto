@@ -41,6 +41,9 @@ Route::get('/logout', 'UsersController@userLogOut');
 //updating user's account info
 Route::post('/update', 'UsersController@updateUserProfile');
 
+//showing own info on user's page
+Route::get('/user-info', 'UsersController@outputInfo');
+
 //inputting user's review
 Route::post('/review/input', 'ReviewController@inputReview');
 

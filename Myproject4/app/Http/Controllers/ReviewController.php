@@ -101,6 +101,6 @@ final class ReviewController extends Controller
 
 	    $messageVal = json_encode('レビューの削除に成功しました。');
 
-	    return redirect('/home')->with('message', 'レビューの削除に成功しました。');
+	    return redirect('/home')->with('message', $messageVal);
     }
 }

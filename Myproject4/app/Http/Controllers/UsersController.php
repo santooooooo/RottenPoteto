@@ -5,11 +5,12 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\UsersSignOut;
 use App\Http\Requests\UserSignOutForm;
+use App\Http\Requests\OutputProfileForm;
+use App\Http\Requests\UserProfile;
 use App\Model\User\SignOut;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use App\Model\User\UpdateProfile;
-use App\Http\Requests\UserProfile;
-use Illuminate\Http\Request;
+use App\Model\User\Profile;
 
 final class UsersController extends Controller
 {
@@ -47,5 +48,17 @@ final class UsersController extends Controller
 	    $update->update();
 
 	    return redirect('/home');
+    }
+
+    /**
+     * @return void | string
+     */
+    public function outputInfo(OutputProfileForm $request)
+    {
+	    $gmail = $request->input('google_user_gmail');
+
+	    $jsonData = Profile::output($gmail);
+
+	    return $jsonData;
     }
 }

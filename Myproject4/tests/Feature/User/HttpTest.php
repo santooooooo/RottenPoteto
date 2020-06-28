@@ -39,7 +39,7 @@ class HttpTest extends TestCase
 
 	 /**
 	  * post request (/update) test
-	  * @test
+	  * test
 	  * @return void
 	  */
 	 public function updateUserProfileTest()
@@ -49,7 +49,7 @@ class HttpTest extends TestCase
 	    $setGmail = DB::table('google_users')->where('id', '4')->value('gmail');
 	    $name = "mikel";
 	    $profile = "スプラッター系の映画が大好きです！";
-	    $icon = UploadedFile::fake()->image('account.png');
+	    $icon = null;//UploadedFile::fake()->image('account.png');
 	    $best = "Friday 13";
 
 	    $response = $this->post('/update', [
@@ -70,4 +70,30 @@ class HttpTest extends TestCase
 		    'best' => $best,
 	    ]);
 	 }
+
+	  /**
+	   * get('/user-info') request test.
+	   * @test
+		 * @return void
+	   */
+	   public function outputUserInfoTest()
+	   {
+	    factory(GoogleUser::class, 10)->create();
+
+	    $id = '6';
+	    $eloquent = DB::table('google_users')->where('id', $id)->first();
+	    $testUserInfo = [
+		    'id' => $eloquent->id,
+		    'gmail' => $eloquent->gmail,
+		    'name' => $eloquent->name,
+		    'profile' => $eloquent->profile,
+		    'icon' => $eloquent->icon,
+		    'best' => $eloquent->best,
+	    ];
+
+	    $response = $this->get('/user-info?google_user_gmail='.$eloquent->gmail);
+
+	    $response->assertStatus(200);
+	    $response->assertExactJson($testUserInfo);
+	   }
 }

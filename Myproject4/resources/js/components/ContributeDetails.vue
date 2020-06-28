@@ -14,16 +14,7 @@
 			</div>
 
 			<div v-for="review in detailInfo.reviews">
-				<router-link :to="{ path: '/user/' + review.userId }">
-					<p>{{review.userName}}</p>
-				</router-link>
-				<img :src="'/storage' + review.userIcon.slice(6)" alt="picture">
-				<p>{{review.title}}</p>
-				<p>{{review.review}}</p>
-				<p>{{review.spoiler}}</p>
-				<p>{{review.satisfaction}}</p>
-				<p>{{review.recommended}}</p>
-				<p>{{review.goodPoint}}</p>
+				<review-info :review="review"></review-info>
 
 				<div>
 					<form action="/good/push" method="post">
@@ -73,6 +64,8 @@
 </template>
 
 <script>
+import ReviewInfo from './ReviewInfo';
+
 export default {
 	data: function()
 	{
@@ -86,6 +79,10 @@ export default {
 		    type: Object,
 		    required: false,
 	    }
+	},
+	components:
+	{
+		'review-info': ReviewInfo,
 	},
 	mounted: function()
 		{
