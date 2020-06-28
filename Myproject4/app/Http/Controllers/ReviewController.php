@@ -67,7 +67,9 @@ final class ReviewController extends Controller
 
 	    if(!$inputSuccess)
 	    {
-		    return redirect('home');
+	      $messageVal = json_encode('その映画に対するレビューは既に存在しています。');
+
+		    return redirect('home')->with('message', $messageVal);
 	    }
 
 	    GradeCinema::grade($this->contributeId);
@@ -90,7 +92,9 @@ final class ReviewController extends Controller
 
 	    if(!$deleteSuccess)
 	    {
-		    return redirect('/home');
+	      $messageVal = json_encode('その映画に対するレビューは既に削除されています。');
+
+		    return redirect('/home')->with('message', $messageVal);
 	    }
 
 	    GradeCinema::grade($this->contributeId);
