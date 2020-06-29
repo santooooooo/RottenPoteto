@@ -5,7 +5,8 @@ import Login from './components/Login.vue';
 import Contribute from './components/Contribute.vue';
 import ContributeDetails from './components/ContributeDetails.vue';
 import UserInfo from './components/UserInfo.vue';
-import UserProfile from './components/UserProfile';
+import UserProfile from './components/UserProfile.vue';
+import Home from './components/Home.vue';
 require('./bootstrap');
 
 window.Vue = Vue;
@@ -13,6 +14,10 @@ Vue.use(VueRouter);
 
 const router = new VueRouter({
 	routes: [
+		{
+			path: '/',
+			component: Home
+		},
 		{
 			path: '/contribute',
 			component: ContributeInfo

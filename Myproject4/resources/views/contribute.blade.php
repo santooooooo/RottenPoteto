@@ -17,7 +17,7 @@
 <option value="アニメ">アニメ</option>
 <option value="アクション">アクション</option>
 <option value="アドベンチャー">アドベンチャー</option>
-<option value="SF">SF</option>
+<option value="S F">S F</option>
 <option value="コメディ">コメディ</option>
 <option value="サスペンス">サスペンス</option>
 <option value="青春">青春</option>
