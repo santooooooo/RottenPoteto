@@ -1,16 +1,51 @@
 <template>
-<div name="nav">
-<a v-if="!isUser" href="login/oauth">新規登録orログイン</a>
-<a v-if="isUser" href="/logout">ログアウト</a>
-<p v-if="isUser" @click="signOutForm">退会</p>
-<form v-if="doSignOut" action="/signout" method="post">
-	<input type="hidden" name="gmail" :value="userInfo.gmail">
-	<input type="submit" value="退会を実行">
-</form>
-<router-link v-if="isUser" :to="{ path: '/user-profile/' + userInfo.gmail }">プロフィールの変更
-</router-link>
-</div>
+	<div>
+		<a v-if="!isUser" href="login/oauth">新規登録orログイン</a>
+		<a v-if="isUser" href="/logout">ログアウト</a>
+		<router-link v-if="isUser" :to="{ path: '/user-profile/' + userInfo.gmail }">プロフィールの変更
+		</router-link>
+
+		<p v-if="isUser" @click="signOutForm">退会</p>
+		<form v-if="doSignOut" action="/signout" method="post">
+			<input type="hidden" name="gmail" :value="userInfo.gmail">
+			<input type="submit" value="退会を実行">
+		</form>
+
+	</div>
 </template>
+
+<style scoped>
+div {
+	display: flex;
+	justify-content: space-between;
+	margin: 30px 2% 0 0;
+}
+
+a {
+	margin: 0 0 0 1%;
+	padding: 5px 0;
+	border: solid 3px cyan;
+	border-radius: 10px;
+	color: cyan;
+}
+a:hover {
+	color: black;
+	background-color: cyan;
+}
+
+p {
+	margin: 0 0 0 1%;
+	padding: 5px 0;
+	border: solid 3px red;
+	border-radius: 10px;
+	color: red;
+}
+p:hover {
+	color: black;
+	background-color: red;
+}
+
+</style>
 
 <script>
     export default {

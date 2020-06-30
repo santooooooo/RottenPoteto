@@ -21,7 +21,9 @@
 <router-link to="/">
 <img src="storage/home/potatoTop">
 </router-link>
+<div>
 <login :user-info='user'></login>
+</div>
 </div>
 
 <nav>
@@ -48,7 +50,10 @@ body {
  margin: 30px 3%;
 }
 .header img {
- width: 20vw;
+ width: 40%;
+}
+.header div {
+ width: 70%;
 }
 
 nav {
