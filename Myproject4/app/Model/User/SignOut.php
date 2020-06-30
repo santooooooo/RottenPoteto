@@ -14,11 +14,18 @@ final class SignOut
 
 	    if($isUser != null)
 	    {
-		    //compare satisfaction and recommende in each contributes.
-		    $eloquents = DB::table('user_reviews')->where('google_user_id', $isUser)->get();
+		    //deletng record in child DB and recalculating good points in each review.
+		    $goodEloquents = DB::table('good_points')->where('google_user_id', $isUser)->get();
+		    foreach($goodEloquents as $eloquent)
+		    {
+			    DeleteGood::delete($isUser, $eloquent->user_review_id);
+		    }
+
+		    //deletng record in child DB and recalculating satisfaction and recommende in each contribute.
+		    $reviewEloquents = DB::table('user_reviews')->where('google_user_id', $isUser)->get();
 		    DB::table('user_reviews')->where('google_user_id', $isUser)->delete();
 
-		    foreach($eloquents as $eloquent)
+		    foreach($reviewEloquents as $eloquent)
 		    {
 			    GradeCinema::grade($eloquent->contribute_id);
 		    }

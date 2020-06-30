@@ -1,15 +1,17 @@
 <template>
 	<div>
-		<p>映画一覧</p>
+		<h1>映画一覧</h1>
 
-		<div>
-			<p>ジャンル別</p>
-			<div v-for="category in categories">
-				<input type="radio" :value="category" v-model="genre">{{category}}
+		<div class="genre">
+			<p>ジャンル</p>
+			<div class="category">
+				<div v-for="category in categories">
+					<input type="radio" :value="category" v-model="genre">{{category}}
+				</div>			
 			</div>
 		</div>
 
-		<div>
+		<div class="contributes">
 			<div v-for="info in contributesInfo">
 				<p>タイトル</p>
 				<router-link :to="{ path: '/contribute/' + info.id }">{{info.title}}
@@ -26,6 +28,35 @@
 
 	</div>
 </template>
+
+<style>
+
+h1 {
+	margin: 10px 0;
+	text-align: center;
+}
+
+.genre {
+	width: 95%;
+	margin: 0 auto;
+	border: solid 5px white;
+	border-radius: 10px;
+}
+.genre p {
+	margin: 2px 0 0 2px;
+}
+
+.category {
+	display: flex;
+	justify-content: space-between;
+	margin: 3px 3px 0 3px;
+	color: white;
+}
+.category div {
+	margin: 0 2px 0 0;
+}
+
+</style>
 
 <script>
 

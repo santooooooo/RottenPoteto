@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\DB;
 use App\Eloquent\GoogleUser;
 use App\Eloquent\UserReview;
 use App\Eloquent\Contribute;
+use App\Eloquent\GoodPoint;
 use Illuminate\Http\UploadedFile;
 
 class HttpTest extends TestCase
@@ -25,11 +26,36 @@ class HttpTest extends TestCase
     {
 	    factory(Contribute::class, 10)->create();
 	    factory(GoogleUser::class, 10)->create();
-	    factory(UserReview::class)->create();
 
 	    $userId = 4;
 	    $testData = DB::table('google_users')->where('id', $userId)->value('gmail');
 
+			$contributeId = 2;
+	    $googleUserId = $userId;
+	    $title = 'おもしろかったかなーーーーーーーーーーーーー';
+	    $review = 'ああああああああああああああああああああああああああああああああああああああああ';
+	    $spoiler = 0;
+	    $satisfaction = 3;
+	    $recommended = 2;
+
+	    $this->post('/review/input', [
+		    'contribute_id' => $contributeId,
+		    'google_user_id' => $googleUserId,
+		    'title' => $title,
+		    'review' => $review,
+		    'spoiler' => $spoiler,
+		    'satisfaction' => $satisfaction,
+		    'recommended' => $recommended,
+	    ]);
+
+	    $reviewEloquent = DB::table('user_reviews')->where('id', 1)->first();
+
+	    $this->post('/good/push', [
+		    'google_user_id' => $userId,
+		    'user_review_id' => $reviewEloquent->id,
+	    ]);
+
+	    //test request
 	    $response = $this->post('/signout', [
 		    'gmail' => $testData,
 	    ]);
@@ -42,6 +68,10 @@ class HttpTest extends TestCase
 	    ]);
 
       $this->assertDatabaseMissing('user_reviews', [
+		    'google_user_id' => $userId,
+	    ]);
+	    
+	    $this->assertDatabaseMissing('good_points', [
 		    'google_user_id' => $userId,
 	    ]);
     }

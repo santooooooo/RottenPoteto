@@ -18,7 +18,7 @@ class HttpTestThree extends TestCase
 	use WithoutMiddleware;
     /**
      * post(/good/push) request test.
-     * test
+     * @test
      * @return void
      */
     public function pushGoodTest()
@@ -53,7 +53,7 @@ class HttpTestThree extends TestCase
 
 	/**
 	 * post(/good/delete) request test
-	 * @test
+	 * test
 	 * @return void
 	 */
 	public function deleteGoodTest()
