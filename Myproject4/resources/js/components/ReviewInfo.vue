@@ -5,9 +5,9 @@
 			<router-link :to="{ path: '/user/' + review.userId }">
 				{{review.userName}}
 			</router-link>
+			<p class="spoiler">{{review.spoiler}}</p>
 			<p>{{review.title}}</p>
 			<p>{{review.review}}</p>
-			<p>{{review.spoiler}}</p>
 			<div class="point">
 				<p>満足度：{{review.satisfaction}}</p>
 				<p>オススメ度：{{review.recommended}}</p>
@@ -31,6 +31,10 @@
 
 .info {
 	width: 80%;
+}
+.info .spoiler {
+	color: red;
+	font-weight: 500;
 }
 
 .point {
