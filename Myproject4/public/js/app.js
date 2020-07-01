@@ -2112,6 +2112,43 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 var categories = ['アニメ', 'アクション', 'アドベンチャー', 'S F', 'コメディ', 'サスペンス', '青春', '戦争', 'ドキュメンタリー', 'ドラマ', 'ファンタジー', 'ホラー', 'ミュージカル・音楽', '恋愛', '指定なし'];
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -6990,7 +7027,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\nh1 {\n\tmargin: 10px 0;\n\ttext-align: center;\n}\n.genre {\n\twidth: 95%;\n\tmargin: 0 auto;\n\tborder: solid 5px white;\n\tborder-radius: 10px;\n}\n.genre p {\n\tmargin: 2px 0 0 2px;\n}\n.category {\n\tdisplay: flex;\n\tjustify-content: space-between;\n\tmargin: 3px 3px 0 3px;\n\tcolor: white;\n}\n.category div {\n\tmargin: 0 2px 0 0;\n}\n\n", ""]);
+exports.push([module.i, "\nh1 {\n\tmargin: 10px 0;\n\ttext-align: center;\n}\n.genre {\n\twidth: 95%;\n\tmargin: 0 auto;\n\tborder: solid 5px white;\n\tborder-radius: 10px;\n}\n.genre p {\n\tmargin: 2px 0 0 2px;\n}\n.category {\n\tdisplay: flex;\n\tjustify-content: space-between;\n\tmargin: 3px 3px 0 3px;\n\tcolor: white;\n}\n.category div {\n\tmargin: 0 2px 0 0;\n}\n.contributes {\n\twidth: 95%;\n\tmargin: 0 auto;\n\tpadding: 10px 0;\n}\n.contribute {\n\tdisplay: flex;\n\tjustify-content: space-around;\n\tmargin: 50px 0;\n}\n.contribute img {\n\twidth: 30%;\n}\n.contribute-text {\n\twidth: 30%;\n}\n.contribute-genre {\n\twidth: 30%;\n\tpadding: 3px;\n\tcolor: black;\n\tbackground-color: yellow;\n\tborder-radius: 10px;\n\tfont-weight: 500;\n}\n.satisfaction {\n\twidth: 30%;\n\tpadding: 3px;\n\tcolor: orange;\n\tborder: solid orange 2px;\n\tborder-radius: 10px;\n}\n.recommended {\n\twidth: 30%;\n\tpadding: 3px;\n\tcolor: green;\n\tborder: solid green 2px;\n\tborder-radius: 10px;\n}\n\n", ""]);
 
 // exports
 
@@ -39107,33 +39144,36 @@ var render = function() {
       "div",
       { staticClass: "contributes" },
       _vm._l(_vm.contributesInfo, function(info) {
-        return _c(
-          "div",
-          [
-            _c("p", [_vm._v("タイトル")]),
-            _vm._v(" "),
+        return _c("div", { staticClass: "contribute" }, [
+          _c("img", { attrs: { src: info.picture, alt: "picture" } }),
+          _vm._v(" "),
+          _c("div", { staticClass: "contribute-text" }, [
             _c(
-              "router-link",
-              { attrs: { to: { path: "/contribute/" + info.id } } },
-              [_vm._v(_vm._s(info.title) + "\n\t\t\t")]
+              "p",
+              [
+                _vm._v("タイトル："),
+                _c(
+                  "router-link",
+                  { attrs: { to: { path: "/contribute/" + info.id } } },
+                  [_vm._v(_vm._s(info.title) + "\n\t\t\t\t")]
+                )
+              ],
+              1
             ),
             _vm._v(" "),
-            _c("p", [_vm._v("ジャンル")]),
+            _c("p", { staticClass: "contribute-genre" }, [
+              _vm._v("ジャンル：" + _vm._s(info.genre))
+            ]),
             _vm._v(" "),
-            _c("p", [_vm._v(_vm._s(info.genre))]),
+            _c("p", { staticClass: "satisfaction" }, [
+              _vm._v("満足度：" + _vm._s(info.satisfaction))
+            ]),
             _vm._v(" "),
-            _c("p", [_vm._v("満足度")]),
-            _vm._v(" "),
-            _c("p", [_vm._v(_vm._s(info.satisfaction))]),
-            _vm._v(" "),
-            _c("P", [_vm._v("オススメ度")]),
-            _vm._v(" "),
-            _c("p", [_vm._v(_vm._s(info.recommended))]),
-            _vm._v(" "),
-            _c("img", { attrs: { src: info.picture, alt: "picture" } })
-          ],
-          1
-        )
+            _c("p", { staticClass: "recommended" }, [
+              _vm._v("オススメ度：" + _vm._s(info.recommended))
+            ])
+          ])
+        ])
       }),
       0
     )

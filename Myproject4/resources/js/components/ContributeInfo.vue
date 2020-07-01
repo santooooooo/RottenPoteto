@@ -12,17 +12,15 @@
 		</div>
 
 		<div class="contributes">
-			<div v-for="info in contributesInfo">
-				<p>タイトル</p>
-				<router-link :to="{ path: '/contribute/' + info.id }">{{info.title}}
-				</router-link>
-				<p>ジャンル</p>
-				<p>{{info.genre}}</p>
-				<p>満足度</p>
-				<p>{{info.satisfaction}}</p>
-				<P>オススメ度</P>
-				<p>{{info.recommended}}</p>
+			<div v-for="info in contributesInfo" class="contribute">
 				<img :src="info.picture" alt="picture">
+				<div class="contribute-text">
+					<p>タイトル：<router-link :to="{ path: '/contribute/' + info.id }">{{info.title}}
+					</router-link></p>
+					<p class="contribute-genre">ジャンル：{{info.genre}}</p>
+					<p class="satisfaction">満足度：{{info.satisfaction}}</p>
+					<p class="recommended">オススメ度：{{info.recommended}}</P>
+				</div>
 			</div>
 		</div>
 
@@ -54,6 +52,45 @@ h1 {
 }
 .category div {
 	margin: 0 2px 0 0;
+}
+
+.contributes {
+	width: 95%;
+	margin: 0 auto;
+	padding: 10px 0;
+}
+.contribute {
+	display: flex;
+	justify-content: space-around;
+	margin: 50px 0;
+}
+.contribute img {
+	width: 30%;
+}
+.contribute-text {
+	width: 30%;
+}
+.contribute-genre {
+	width: 30%;
+	padding: 3px;
+	color: black;
+	background-color: yellow;
+	border-radius: 10px;
+	font-weight: 500;
+}
+.satisfaction {
+	width: 30%;
+	padding: 3px;
+	color: orange;
+	border: solid orange 2px;
+	border-radius: 10px;
+}
+.recommended {
+	width: 30%;
+	padding: 3px;
+	color: green;
+	border: solid green 2px;
+	border-radius: 10px;
 }
 
 </style>
