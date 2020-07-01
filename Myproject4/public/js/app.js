@@ -2294,6 +2294,24 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     userInfo: {
@@ -2316,6 +2334,13 @@ __webpack_require__.r(__webpack_exports__);
     },
     doSignOut: function doSignOut() {
       if (this.signOut) {
+        return true;
+      }
+
+      return false;
+    },
+    signOutButton: function signOutButton() {
+      if (this.userInfo.length != 0 && !this.signOut) {
         return true;
       }
 
@@ -7046,7 +7071,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\ndiv[data-v-6bdc8b8e] {\n\tdisplay: flex;\n\tjustify-content: space-between;\n\tmargin: 30px 2% 0 0;\n}\na[data-v-6bdc8b8e] {\n\tmargin: 0 0 0 1%;\n\tpadding: 5px 0;\n\tborder: solid 3px cyan;\n\tborder-radius: 10px;\n\tcolor: cyan;\n}\na[data-v-6bdc8b8e]:hover {\n\tcolor: black;\n\tbackground-color: cyan;\n}\np[data-v-6bdc8b8e] {\n\tmargin: 0 0 0 1%;\n\tpadding: 5px 0;\n\tborder: solid 3px red;\n\tborder-radius: 10px;\n\tcolor: red;\n}\np[data-v-6bdc8b8e]:hover {\n\tcolor: black;\n\tbackground-color: red;\n}\n\n", ""]);
+exports.push([module.i, "\ndiv[data-v-6bdc8b8e] {\n\tdisplay: flex;\n\tjustify-content: space-between;\n\tmargin: 30px 2% 0 0;\n}\na[data-v-6bdc8b8e] {\n\tmargin: 0 0 0 5px;\n\tpadding: 5px 0;\n\tborder: solid 3px cyan;\n\tborder-radius: 10px;\n\tcolor: cyan;\n}\na[data-v-6bdc8b8e]:hover {\n\tcolor: black;\n\tbackground-color: cyan;\n}\np[data-v-6bdc8b8e] {\n\tmargin: 0 0 0 5px;\n\tpadding: 5px 0;\n\tborder: solid 3px red;\n\tborder-radius: 10px;\n\tcolor: red;\n}\np[data-v-6bdc8b8e]:hover {\n\tcolor: black;\n\tbackground-color: red;\n}\ninput[data-v-6bdc8b8e] {\n\tmargin: 0 5px 0 0;\n\tborder: solid 3px red;\n\tborder-radius: 10px;\n\tcolor: red;\n\tbackground-color: black;\n}\ninput[data-v-6bdc8b8e]:hover {\n\tcolor: black;\n\tbackground-color: red;\n}\n.gIcon[data-v-6bdc8b8e] {\n\tmargin: 1px;\n\twidth: 10%;\n}\n\n", ""]);
 
 // exports
 
@@ -39237,7 +39262,11 @@ var render = function() {
     [
       !_vm.isUser
         ? _c("a", { attrs: { href: "login/oauth" } }, [
-            _vm._v("新規登録orログイン")
+            _c("img", {
+              staticClass: "gIcon",
+              attrs: { src: "storage/home/GoogleIcon" }
+            }),
+            _vm._v("\n\t\t新規登録orログイン")
           ])
         : _vm._e(),
       _vm._v(" "),
@@ -39253,7 +39282,7 @@ var render = function() {
           )
         : _vm._e(),
       _vm._v(" "),
-      _vm.isUser
+      _vm.signOutButton
         ? _c("p", { on: { click: _vm.signOutForm } }, [_vm._v("退会")])
         : _vm._e(),
       _vm._v(" "),

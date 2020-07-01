@@ -53,7 +53,7 @@ body {
  width: 40%;
 }
 .header div {
- width: 70%;
+ width: 80%;
 }
 
 nav {

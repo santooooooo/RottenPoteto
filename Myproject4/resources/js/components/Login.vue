@@ -1,11 +1,12 @@
 <template>
 	<div>
-		<a v-if="!isUser" href="login/oauth">新規登録orログイン</a>
+		<a v-if="!isUser" href="login/oauth"><img src="storage/home/GoogleIcon" class="gIcon">
+			新規登録orログイン</a>
 		<a v-if="isUser" href="/logout">ログアウト</a>
 		<router-link v-if="isUser" :to="{ path: '/user-profile/' + userInfo.gmail }">プロフィールの変更
 		</router-link>
 
-		<p v-if="isUser" @click="signOutForm">退会</p>
+		<p v-if="signOutButton" @click="signOutForm">退会</p>
 		<form v-if="doSignOut" action="/signout" method="post">
 			<input type="hidden" name="gmail" :value="userInfo.gmail">
 			<input type="submit" value="退会を実行">
@@ -22,7 +23,7 @@ div {
 }
 
 a {
-	margin: 0 0 0 1%;
+	margin: 0 0 0 5px;
 	padding: 5px 0;
 	border: solid 3px cyan;
 	border-radius: 10px;
@@ -34,7 +35,7 @@ a:hover {
 }
 
 p {
-	margin: 0 0 0 1%;
+	margin: 0 0 0 5px;
 	padding: 5px 0;
 	border: solid 3px red;
 	border-radius: 10px;
@@ -43,6 +44,23 @@ p {
 p:hover {
 	color: black;
 	background-color: red;
+}
+
+input {
+	margin: 0 5px 0 0;
+	border: solid 3px red;
+	border-radius: 10px;
+	color: red;
+	background-color: black;
+}
+input:hover {
+	color: black;
+	background-color: red;
+}
+
+.gIcon {
+	margin: 1px;
+	width: 10%;
 }
 
 </style>
@@ -72,6 +90,13 @@ p:hover {
 		    },
 		    doSignOut: function() {
 			    if(this.signOut)
+			    {
+				    return true
+			    }
+			    return false
+		    },
+		    signOutButton: function() {
+			    if(this.userInfo.length != 0 && !this.signOut)
 			    {
 				    return true
 			    }
