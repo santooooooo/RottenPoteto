@@ -21,6 +21,7 @@
 					<p class="satisfaction">満足度：{{info.satisfaction}}</p>
 					<p class="recommended">オススメ度：{{info.recommended}}</P>
 				</div>
+				<p>{{info.created_at}}</p>
 			</div>
 		</div>
 
@@ -144,7 +145,7 @@ const categories = ['アニメーション','アクション','アドベンチ�
 
 						  results[n] = {id: contribute.id,title: contribute.title,picture: contributePath,
 							  genre: contribute.genre,satisfaction: contribute.satisfaction,
-							  recommended: contribute.recommended};
+							  recommended: contribute.recommended, created_at: contribute.created_at.slice(0, 10)};
 
 						  n++;
 					  }
@@ -162,7 +163,7 @@ const categories = ['アニメーション','アクション','アドベンチ�
 
 					  results[i] = {id: contribute.id,title: contribute.title,picture: contributePath,
 						  genre: contribute.genre,satisfaction: contribute.satisfaction,
-						  recommended: contribute.recommended};
+						  recommended: contribute.recommended, created_at: contribute.created_at.slice(0, 10)};
 			  }
 			  return results;
 		  }

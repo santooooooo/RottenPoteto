@@ -2327,6 +2327,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 var categories = ['アニメーション', 'アクション', 'アドベンチャー', 'S F', 'コメディ', 'サスペンス', '青春', '戦争', 'ドキュメンタリー', 'ドラマ', 'ファンタジー', 'ホラー', 'ミュージカル・音楽', '恋愛', '指定なし'];
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -2370,7 +2371,8 @@ var categories = ['アニメーション', 'アクション', 'アドベンチ�
               picture: contributePath,
               genre: contribute.genre,
               satisfaction: contribute.satisfaction,
-              recommended: contribute.recommended
+              recommended: contribute.recommended,
+              created_at: contribute.created_at.slice(0, 10)
             };
             n++;
           }
@@ -2390,7 +2392,8 @@ var categories = ['アニメーション', 'アクション', 'アドベンチ�
           picture: contributePath,
           genre: contribute.genre,
           satisfaction: contribute.satisfaction,
-          recommended: contribute.recommended
+          recommended: contribute.recommended,
+          created_at: contribute.created_at.slice(0, 10)
         };
       }
 
@@ -39761,7 +39764,9 @@ var render = function() {
             _c("p", { staticClass: "recommended" }, [
               _vm._v("オススメ度：" + _vm._s(info.recommended))
             ])
-          ])
+          ]),
+          _vm._v(" "),
+          _c("p", [_vm._v(_vm._s(info.created_at))])
         ])
       }),
       0
