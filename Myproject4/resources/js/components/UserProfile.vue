@@ -1,20 +1,59 @@
 <template>
-	<div>
+	<div class="main">
 		<form action="/update" method="post" enctype="multipart/form-data">
 			<input type="hidden" name="gmail" :value="userInfo.gmail">
 			<P>アカウント名</P>
 			<input type="text" name="name" :value="userInfo.name">
 			<P>プロフィール</P>
-			<textarea name="profile" rows="6" cols="30" :value="userInfo.profile"></textarea>
+			<textarea name="profile" rows="3" cols="100" :value="userInfo.profile"></textarea>
 			<P>アイコン</P>
-			<img :src="userPicture" alt="picture">
-			<input type="file" name="icon">
+			<div class="icon">
+				<img :src="userPicture" alt="picture">
+				<input type="file" name="icon" class="button">
+			</div>
 			<P>好きな映画</P>
 			<input type="text" name="best" :value="userInfo.best">
-			<input type="submit" value="アカウント情報更新">
+			<input type="submit" value="アカウント情報更新" class="button">
 		</form>
 	</div>
 </template>
+
+<style scoped>
+
+.main {
+	width: 90%;
+	margin: 0 auto;
+}
+.main p {
+	margin: 30px 0 0 0;
+}
+
+.icon {
+	display: flex;
+	justify-content: left;
+}
+.icon img {
+	width: 40%;
+	border-radius: 20px;
+	margin: 0 5% 0 0;
+}
+.icon input {
+	margin: 450px 0 0 0;
+}
+
+.button {
+	margin: 0 0 0 2%;
+	color: white;
+	background-color: black;
+	border: solid white 2px;
+	border-radius: 10px;
+}
+.button:hover {
+	color: black;
+	background-color: white;
+}
+
+</style>
 
 <script>
 export default {
