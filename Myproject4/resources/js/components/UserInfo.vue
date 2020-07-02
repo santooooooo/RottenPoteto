@@ -1,14 +1,45 @@
 <template>
-	<div>
-		<p>ユーザー情報</p>
-		<div>
-			<p>{{userInfo.name}}</p>
-			<p>{{userInfo.profile}}</p>
-			<img :src="userPicture">
-			<p>{{userInfo.best}}</p>
+	<div class="main">
+		<img :src="userPicture">
+		<div class="info">
+			<div>
+				<p>レビュワーネーム</p>
+				<p>{{userInfo.name}}</p>			
+			</div>
+			<div>
+				<p>プロフィール</p>
+				<p>{{userInfo.profile}}</p>			
+			</div>
+			<div>
+				<p>好きな映画</p>
+				<p>{{userInfo.best}}</p>			
+			</div>
 		</div>
 	</div>
 </template>
+
+<style scoped>
+
+.main {
+	width: 90%;
+	margin: 0 auto;
+	display: flex;
+	justify-content: left;
+}
+.main img {
+	width: 40%;
+	margin: 50px 20px 0 0;
+	border-radius: 20px;
+}
+
+.info {
+	margin: 50px 0 0 20px;
+}
+.info div {
+	margin: 40px 0;
+}
+
+</style>
 
 <script>
 export default {
