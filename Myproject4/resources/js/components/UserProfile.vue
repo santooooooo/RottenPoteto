@@ -3,16 +3,17 @@
 		<form action="/update" method="post" enctype="multipart/form-data">
 			<input type="hidden" name="gmail" :value="userInfo.gmail">
 			<P>アカウント名</P>
-			<input type="text" name="name" :value="userInfo.name">
+			<input type="text" name="name" :value="userInfo.name" maxlength="255" required>
 			<P>プロフィール</P>
-			<textarea name="profile" rows="3" cols="100" :value="userInfo.profile"></textarea>
+			<textarea name="profile" rows="3" cols="100" :value="userInfo.profile" maxlength="1000">
+			</textarea>
 			<P>アイコン</P>
 			<div class="icon">
 				<img :src="userPicture" alt="picture">
-				<input type="file" name="icon" class="button">
+				<input type="file" name="icon" class="button" accept="image/*">
 			</div>
 			<P>好きな映画</P>
-			<input type="text" name="best" :value="userInfo.best">
+			<input type="text" name="best" :value="userInfo.best" maxlength="255">
 			<input type="submit" value="アカウント情報更新" class="button">
 		</form>
 	</div>

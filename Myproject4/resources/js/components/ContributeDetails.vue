@@ -52,22 +52,22 @@
 				<input type="hidden" name="contribute_id" :value="detailInfo.contribute.id">
 				<input type="hidden" name="google_user_id" :value="userInfo.id">
 				<p>タイトル<span>※必須(255文字以下)</span></p>
-				<input type="text" name="title" size="100" maxlength="255">
+				<input type="text" name="title" size="100" maxlength="255" required>
 				<p>レビュー<span>※必須(3000文字以下)</span></p>
-				<textarea name="review" rows="20" cols="105" maxlength="3000"></textarea>
+				<textarea name="review" rows="20" cols="105" maxlength="3000" required></textarea>
 				<div class="input-button">
 					<div class="input-spoiler">
 						<p>ネタばれ<span>※必須</span></p>
-						<input type="radio" name="spoiler" value="1">有り
-						<input type="radio" name="spoiler" value="0">無し					
+						<input type="radio" name="spoiler" value="1" required>有り
+						<input type="radio" name="spoiler" value="0" required>無し
 					</div>
 					<div class="input-satisfaction">
 						<p>満足度<span>※必須</span></p>
-						<input type="number" name="satisfaction" min="0" max="5" step="1">					
+						<input type="number" name="satisfaction" min="0" max="5" step="1" required>					
 					</div>
 					<div class="input-recommended">
 						<p>オススメ度<span>※必須</span></p>
-						<input type="number" name="recommended" min="0" max="5" step="1">
+						<input type="number" name="recommended" min="0" max="5" step="1" required>
 					</div>
 					<input class="submit" type="submit" value="レビューを送る">
 				</div>

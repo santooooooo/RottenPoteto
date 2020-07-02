@@ -7,11 +7,11 @@
 <form action="/contribute" method="post" enctype="multipart/form-data">
 @csrf
 <p>タイトル</p>
-<input type="text" name="title" size="100">
+<input type="text" name="title" size="100" maxlength="255" required>
 <p>内容</p>
-<textarea name="contents" rows="5" cols="50"></textarea>
+<textarea name="contents" rows="5" cols="50" required></textarea>
 <p>画像</p>
-<input type="file" name="picture">
+<input type="file" name="picture" accept="image/*">
 <p>ジャンル</p>
 <select name="genre">
 <option value="アニメーション">アニメーション</option>
@@ -36,7 +36,7 @@
 <form action="/contribute/delete" method="post">
 @csrf
 <p>タイトル</p>
-<input type="text" name="title" size="100">
+<input type="text" name="title" size="100" required>
 <input type="submit" value="記事を削除する">
 </form>
 </body>
