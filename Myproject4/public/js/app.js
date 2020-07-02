@@ -2606,6 +2606,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     review: {
@@ -7357,7 +7358,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.main[data-v-33058dd1] {\n\twidth: 60%;\n\tmargin: 0 auto;\n\tdisplay: flex;\n\tjustify-content: space-around;\n}\n.main img[data-v-33058dd1] {\n\twidth: 100px;\n\theight: 100px;\n}\n.info[data-v-33058dd1] {\n\twidth: 80%;\n}\n.info .spoiler[data-v-33058dd1] {\n\tcolor: red;\n\tfont-weight: 500;\n}\n.point[data-v-33058dd1] {\n\tdisplay: flex;\n\tjustify-content: left;\n}\n.point p[data-v-33058dd1] {\n\tmargin: 0 5px;\n\twidth: 10%;\n}\n.point img[data-v-33058dd1] {\n\twidth: 30px;\n\theight: 30px;\n\tmargin: 0 0 0 2px;\n}\n", ""]);
+exports.push([module.i, "\n.main[data-v-33058dd1] {\n\twidth: 60%;\n\tmargin: 0 auto;\n\tdisplay: flex;\n\tjustify-content: space-around;\n}\n.main img[data-v-33058dd1] {\n\twidth: 100px;\n\theight: 100px;\n\tborder-radius: 10px;\n}\n.info[data-v-33058dd1] {\n\twidth: 80%;\n}\n.info .spoiler[data-v-33058dd1] {\n\tcolor: red;\n\tfont-weight: 500;\n}\n.point[data-v-33058dd1] {\n\tdisplay: flex;\n\tjustify-content: left;\n}\n.point p[data-v-33058dd1] {\n\tmargin: 0 5px;\n\twidth: 10%;\n}\n.point img[data-v-33058dd1] {\n\twidth: 30px;\n\theight: 30px;\n\tmargin: 0 0 0 2px;\n}\n", ""]);
 
 // exports
 
