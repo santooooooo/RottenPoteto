@@ -71,7 +71,7 @@ h1 {
 	width: 30%;
 }
 .contribute-genre {
-	width: 30%;
+	width: 60%;
 	padding: 3px;
 	color: black;
 	background-color: yellow;
@@ -97,8 +97,9 @@ h1 {
 
 <script>
 
-const categories = ['アニメ','アクション','アドベンチャー','S F','コメディ','サスペンス','青春',
-	'戦争','ドキュメンタリー','ドラマ','ファンタジー','ホラー','ミュージカル・音楽','恋愛', '指定なし'];
+const categories = ['アニメーション','アクション','アドベンチャー','S F','コメディ','サスペンス',
+'青春','戦争','ドキュメンタリー','ドラマ','ファンタジー','ホラー','ミュージカル・音楽','恋愛', 
+'指定なし'];
 
     export default {
     data: function()
@@ -130,6 +131,7 @@ const categories = ['アニメ','アクション','アドベンチャー','S F',
 
 			  if(this.genre != '指定なし' && this.genre != null)
 			  {
+				  let n = 0;
 
 				  for(let i = 0; i < this.contributes.length; i++)
 				  {
@@ -140,9 +142,11 @@ const categories = ['アニメ','アクション','アドベンチャー','S F',
 						  contribute = this.contributes[i];
 						  contributePath = '/storage' + contribute.picture.slice(6);
 
-						  results[i] = {id: contribute.id,title: contribute.title,picture: contributePath,
+						  results[n] = {id: contribute.id,title: contribute.title,picture: contributePath,
 							  genre: contribute.genre,satisfaction: contribute.satisfaction,
 							  recommended: contribute.recommended};
+
+						  n++;
 					  }
 				  }
 				  return results;

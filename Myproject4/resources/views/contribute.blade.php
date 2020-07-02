@@ -14,7 +14,7 @@
 <input type="file" name="picture">
 <p>ジャンル</p>
 <select name="genre">
-<option value="アニメ">アニメ</option>
+<option value="アニメーション">アニメーション</option>
 <option value="アクション">アクション</option>
 <option value="アドベンチャー">アドベンチャー</option>
 <option value="S F">S F</option>

@@ -36,7 +36,7 @@
 
 <style>
 
-p,a,h1,h2,input {
+p,a,h1,h2 {
  color: white;
 }
 

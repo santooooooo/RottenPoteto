@@ -7,6 +7,7 @@ use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Support\Facades\DB;
 use Tests\TestCase;
+use Illuminate\Http\UploadedFile;
 use App\Eloquent\UserReview;
 use App\Eloquent\GoogleUser;
 use App\Eloquent\Contribute;

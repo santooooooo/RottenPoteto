@@ -2327,7 +2327,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-var categories = ['アニメ', 'アクション', 'アドベンチャー', 'S F', 'コメディ', 'サスペンス', '青春', '戦争', 'ドキュメンタリー', 'ドラマ', 'ファンタジー', 'ホラー', 'ミュージカル・音楽', '恋愛', '指定なし'];
+var categories = ['アニメーション', 'アクション', 'アドベンチャー', 'S F', 'コメディ', 'サスペンス', '青春', '戦争', 'ドキュメンタリー', 'ドラマ', 'ファンタジー', 'ホラー', 'ミュージカル・音楽', '恋愛', '指定なし'];
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2356,13 +2356,15 @@ var categories = ['アニメ', 'アクション', 'アドベンチャー', 'S F'
       var contributePath;
 
       if (this.genre != '指定なし' && this.genre != null) {
+        var n = 0;
+
         for (var i = 0; i < this.contributes.length; i++) {
           if (this.contributes[i].genre == this.genre) {
             //わざわざオブジェクトの変数と写真のパスの変数を作成したのは、computed特有の環境を保持
             //し続ける状況でも、常に同じ値を参照し続けるようにするため
             contribute = this.contributes[i];
             contributePath = '/storage' + contribute.picture.slice(6);
-            results[i] = {
+            results[n] = {
               id: contribute.id,
               title: contribute.title,
               picture: contributePath,
@@ -2370,6 +2372,7 @@ var categories = ['アニメ', 'アクション', 'アドベンチャー', 'S F'
               satisfaction: contribute.satisfaction,
               recommended: contribute.recommended
             };
+            n++;
           }
         }
 
@@ -7285,7 +7288,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\nh1 {\n\tmargin: 10px 0;\n\ttext-align: center;\n}\n.genre {\n\twidth: 95%;\n\tmargin: 0 auto;\n\tborder: solid 5px white;\n\tborder-radius: 10px;\n}\n.genre p {\n\tmargin: 2px 0 0 2px;\n}\n.category {\n\tdisplay: flex;\n\tjustify-content: space-between;\n\tmargin: 3px 3px 0 3px;\n\tcolor: white;\n}\n.category div {\n\tmargin: 0 2px 0 0;\n}\n.contributes {\n\twidth: 95%;\n\tmargin: 0 auto;\n\tpadding: 10px 0;\n}\n.contribute {\n\tdisplay: flex;\n\tjustify-content: space-around;\n\tmargin: 50px 0;\n}\n.contribute img {\n\twidth: 30%;\n}\n.contribute-text {\n\twidth: 30%;\n}\n.contribute-genre {\n\twidth: 30%;\n\tpadding: 3px;\n\tcolor: black;\n\tbackground-color: yellow;\n\tborder-radius: 10px;\n\tfont-weight: 500;\n}\n.satisfaction {\n\twidth: 30%;\n\tpadding: 3px;\n\tcolor: orange;\n\tborder: solid orange 2px;\n\tborder-radius: 10px;\n}\n.recommended {\n\twidth: 30%;\n\tpadding: 3px;\n\tcolor: green;\n\tborder: solid green 2px;\n\tborder-radius: 10px;\n}\n\n", ""]);
+exports.push([module.i, "\nh1 {\n\tmargin: 10px 0;\n\ttext-align: center;\n}\n.genre {\n\twidth: 95%;\n\tmargin: 0 auto;\n\tborder: solid 5px white;\n\tborder-radius: 10px;\n}\n.genre p {\n\tmargin: 2px 0 0 2px;\n}\n.category {\n\tdisplay: flex;\n\tjustify-content: space-between;\n\tmargin: 3px 3px 0 3px;\n\tcolor: white;\n}\n.category div {\n\tmargin: 0 2px 0 0;\n}\n.contributes {\n\twidth: 95%;\n\tmargin: 0 auto;\n\tpadding: 10px 0;\n}\n.contribute {\n\tdisplay: flex;\n\tjustify-content: space-around;\n\tmargin: 50px 0;\n}\n.contribute img {\n\twidth: 30%;\n}\n.contribute-text {\n\twidth: 30%;\n}\n.contribute-genre {\n\twidth: 60%;\n\tpadding: 3px;\n\tcolor: black;\n\tbackground-color: yellow;\n\tborder-radius: 10px;\n\tfont-weight: 500;\n}\n.satisfaction {\n\twidth: 30%;\n\tpadding: 3px;\n\tcolor: orange;\n\tborder: solid orange 2px;\n\tborder-radius: 10px;\n}\n.recommended {\n\twidth: 30%;\n\tpadding: 3px;\n\tcolor: green;\n\tborder: solid green 2px;\n\tborder-radius: 10px;\n}\n\n", ""]);
 
 // exports
 
