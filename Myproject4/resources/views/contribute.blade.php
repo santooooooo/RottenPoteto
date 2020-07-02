@@ -7,7 +7,7 @@
 <form action="/contribute" method="post" enctype="multipart/form-data">
 @csrf
 <p>タイトル</p>
-<input type="text" name="title">
+<input type="text" name="title" size="100">
 <p>内容</p>
 <textarea name="contents" rows="5" cols="50"></textarea>
 <p>画像</p>
@@ -30,6 +30,14 @@
 <option value="恋愛">恋愛</option>
 </select>
 <input type="submit" value="投稿">
+</form>
+
+<h2>記事削除フォーム</h2>
+<form action="/contribute/delete" method="post">
+@csrf
+<p>タイトル</p>
+<input type="text" name="title" size="100">
+<input type="submit" value="記事を削除する">
 </form>
 </body>
 </html>

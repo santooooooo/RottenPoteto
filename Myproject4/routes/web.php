@@ -69,6 +69,9 @@ Route::get('/review-page/user/', 'ReviewPageController@outputUserInfo');
 //contribute func
 Route::post('/contribute', 'Contribute@record');
 
+//deleting a contribute
+Route::post('/contribute/delete', 'Contribute@delete');
+
 //AdminerLogin view
 Route::get('/adminer', function()
 {

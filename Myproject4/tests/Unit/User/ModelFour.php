@@ -38,7 +38,7 @@ class ModelFour extends TestCase
 
 	/**
 	 * App\Model\User\PushGood test
-	 * @test
+	 * test
 	 * @return void
 	 */
 	public function pushGoodTest()
@@ -67,7 +67,7 @@ class ModelFour extends TestCase
 
 	/**
 	 * App\Model\User\DeleteGood test
-	 * test
+	 * @test
 	 * @return void
 	 */
 	public function deleteGoodTest()
