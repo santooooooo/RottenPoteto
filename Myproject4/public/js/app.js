@@ -2078,6 +2078,122 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -7150,7 +7266,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.main[data-v-8a949c8c] {\n\twidth: 95%;\n\tmargin: 0 auto;\n\tpadding: 20px 0;\n}\n.info[data-v-8a949c8c] {\n\tmargin: 20px 0;\n}\n.info .image[data-v-8a949c8c] {\n\tmargin: 50px 0;\n\ttext-align: center;\n}\n.info .image img[data-v-8a949c8c] {\n\twidth: 50%;\n}\n.point[data-v-8a949c8c] {\n\tdisplay: flex;\n\tjustify-content: right;\n}\n.point .satisfaction[data-v-8a949c8c] {\n\twidth: 20%;\n\tmargin: 10px 2%;\n\tpadding: 3px;\n\tcolor: orange;\n\tborder: solid orange 10px;\n\tborder-radius: 20px;\n\ttext-align: center;\n}\n.point .satisfaction p[data-v-8a949c8c] {\n\tcolor: orange;\n}\n.point .satisfaction p span[data-v-8a949c8c] {\n\tfont-size: 40px;\n}\n.point .recommended[data-v-8a949c8c] {\n\twidth: 20%;\n\tmargin: 10px 2%;\n\tpadding: 3px;\n\tcolor: green;\n\tborder: solid green 10px;\n\tborder-radius: 20px;\n\ttext-align: center;\n}\n.point .recommended p[data-v-8a949c8c] {\n\tcolor: green;\n}\n.point .recommended p span[data-v-8a949c8c] {\n\tfont-size: 40px;\n}\n\n", ""]);
+exports.push([module.i, "\n.main[data-v-8a949c8c] {\n\twidth: 95%;\n\tmargin: 0 auto;\n\tpadding: 20px 0;\n}\n.detail[data-v-8a949c8c] {\n\tmargin: 0 0 100px 0;\n}\n.info[data-v-8a949c8c] {\n\tmargin: 20px 0 80px 0;\n}\n.info[data-v-8a949c8c] {\n\ttext-align: left;\n}\n.info h1[data-v-8a949c8c] {\n\ttext-align: left;\n}\n.info .image[data-v-8a949c8c] {\n\tmargin: 50px 0;\n\ttext-align: center;\n}\n.info .image img[data-v-8a949c8c] {\n\twidth: 50%;\n}\n.point[data-v-8a949c8c] {\n\tdisplay: flex;\n\tjustify-content: right;\n}\n.satisfaction[data-v-8a949c8c] {\n\twidth: 20%;\n\tmargin: 10px 2%;\n\tpadding: 3px;\n\tcolor: orange;\n\tborder: solid orange 7px;\n\tborder-radius: 20px;\n\ttext-align: center;\n}\n.satisfaction p[data-v-8a949c8c] {\n\tcolor: orange;\n}\n.satisfaction p span[data-v-8a949c8c] {\n\tfont-size: 40px;\n}\n.recommended[data-v-8a949c8c] {\n\twidth: 20%;\n\tmargin: 10px 2%;\n\tpadding: 3px;\n\tcolor: green;\n\tborder: solid green 7px;\n\tborder-radius: 20px;\n\ttext-align: center;\n}\n.recommended p[data-v-8a949c8c] {\n\tcolor: green;\n}\n.recommended p span[data-v-8a949c8c] {\n\tfont-size: 40px;\n}\n.review-title[data-v-8a949c8c] {\n\ttext-align: center;\n}\n.good-form[data-v-8a949c8c] {\n\twidth: 20%;\n\tmargin: 0 0 10px 40%;\n\tdisplay: flex;\n\tjustify-content: left;\n}\n.input-good input[data-v-8a949c8c] {\n\tcolor: yellow;\n\tbackground-color: black;\n\tborder: solid yellow 3px;\n\tborder-radius: 10px;\n}\n.input-good input[data-v-8a949c8c]:hover {\n\tcolor: black;\n\tbackground-color: yellow;\n}\n.delete-good input[data-v-8a949c8c] {\n\tcolor: red;\n\tbackground-color: black;\n\tborder: solid red 3px;\n\tborder-radius: 10px;\n\tmargin: 0 0 0 10px;\n}\n.delete-good input[data-v-8a949c8c]:hover {\n\tcolor: black;\n\tbackground-color: red;\n}\n.input-review[data-v-8a949c8c] {\n\twidth: 90%;\n\tmargin: 0 auto;\n\tborder: solid white 5px;\n\tborder-radius: 10px;\n}\n.input-review form[data-v-8a949c8c] {\n\tpadding: 20px;\n}\n.input-review span[data-v-8a949c8c] {\n\tcolor: red;\n}\n.input-button[data-v-8a949c8c] {\n\tdisplay: flex;\n\tjustify-content: left;\n}\n.input-spoiler[data-v-8a949c8c] {\n\tcolor: white;\n\tmargin: 10px 20px 0 0;\n}\n.input-satisfaction[data-v-8a949c8c], .input-recommended[data-v-8a949c8c] {\n\tmargin: 10px 20px 0 0;\n}\n.input-satisfaction input[data-v-8a949c8c], .input-recommended input[data-v-8a949c8c] {\n\tcolor: black;\n}\n.submit[data-v-8a949c8c] {\n\tcolor: white;\n\tbackground-color: black;\n\tborder: solid white 3px;\n\tborder-radius: 10px;\n\tmargin: 10px 0 0 0;\n}\n.submit[data-v-8a949c8c]:hover {\n\tcolor: black;\n\tbackground-color: white;\n}\n.delete-review[data-v-8a949c8c] {\n\tmargin: 20px 0 20px 5%;\n\twidth: 90%;\n}\n.delete-review input[data-v-8a949c8c] {\n\tcolor: red;\n\tborder: solid red 3px;\n\tborder-radius: 10px;\n\tbackground-color: black;\n}\n.delete-review input[data-v-8a949c8c]:hover {\n\tcolor: black;\n\tbackground-color: red;\n}\n\n", ""]);
 
 // exports
 
@@ -39155,9 +39271,10 @@ var render = function() {
   return _c("div", { staticClass: "main" }, [
     _c(
       "div",
+      { staticClass: "detail" },
       [
         _c("div", { staticClass: "info" }, [
-          _c("h2", [_vm._v(_vm._s(_vm.detailInfo.contribute.title))]),
+          _c("h1", [_vm._v(_vm._s(_vm.detailInfo.contribute.title))]),
           _vm._v(" "),
           _c("p", [
             _vm._v("ジャンル：" + _vm._s(_vm.detailInfo.contribute.genre))
@@ -39195,54 +39312,58 @@ var render = function() {
           ])
         ]),
         _vm._v(" "),
+        _vm._m(0),
+        _vm._v(" "),
         _vm._l(_vm.detailInfo.reviews, function(review) {
           return _c(
             "div",
             [
               _c("review-info", { attrs: { review: review } }),
               _vm._v(" "),
-              _c("div", { staticClass: "inputGood" }, [
-                _c(
-                  "form",
-                  { attrs: { action: "/good/push", method: "post" } },
-                  [
-                    _c("input", {
-                      attrs: { type: "hidden", name: "google_user_id" },
-                      domProps: { value: _vm.userInfo.id }
-                    }),
-                    _vm._v(" "),
-                    _c("input", {
-                      attrs: { type: "hidden", name: "user_review_id" },
-                      domProps: { value: review.reviewId }
-                    }),
-                    _vm._v(" "),
-                    _c("input", {
-                      attrs: { type: "submit", value: "ポテトを送る" }
-                    })
-                  ]
-                )
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "deleteGood" }, [
-                _c(
-                  "form",
-                  { attrs: { action: "/good/delete", method: "post" } },
-                  [
-                    _c("input", {
-                      attrs: { type: "hidden", name: "google_user_id" },
-                      domProps: { value: _vm.userInfo.id }
-                    }),
-                    _vm._v(" "),
-                    _c("input", {
-                      attrs: { type: "hidden", name: "user_review_id" },
-                      domProps: { value: review.reviewId }
-                    }),
-                    _vm._v(" "),
-                    _c("input", {
-                      attrs: { type: "submit", value: "取り消し" }
-                    })
-                  ]
-                )
+              _c("div", { staticClass: "good-form" }, [
+                _c("div", { staticClass: "input-good" }, [
+                  _c(
+                    "form",
+                    { attrs: { action: "/good/push", method: "post" } },
+                    [
+                      _c("input", {
+                        attrs: { type: "hidden", name: "google_user_id" },
+                        domProps: { value: _vm.userInfo.id }
+                      }),
+                      _vm._v(" "),
+                      _c("input", {
+                        attrs: { type: "hidden", name: "user_review_id" },
+                        domProps: { value: review.reviewId }
+                      }),
+                      _vm._v(" "),
+                      _c("input", {
+                        attrs: { type: "submit", value: "ポテトを送る" }
+                      })
+                    ]
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "delete-good" }, [
+                  _c(
+                    "form",
+                    { attrs: { action: "/good/delete", method: "post" } },
+                    [
+                      _c("input", {
+                        attrs: { type: "hidden", name: "google_user_id" },
+                        domProps: { value: _vm.userInfo.id }
+                      }),
+                      _vm._v(" "),
+                      _c("input", {
+                        attrs: { type: "hidden", name: "user_review_id" },
+                        domProps: { value: review.reviewId }
+                      }),
+                      _vm._v(" "),
+                      _c("input", {
+                        attrs: { type: "submit", value: "取り消し" }
+                      })
+                    ]
+                  )
+                ])
               ])
             ],
             1
@@ -39252,7 +39373,9 @@ var render = function() {
       2
     ),
     _vm._v(" "),
-    _c("div", { staticClass: "inputReview" }, [
+    _c("div", { staticClass: "input-review" }, [
+      _c("h2", [_vm._v("レビューホーム")]),
+      _vm._v(" "),
       _c("form", { attrs: { action: "/review/input", method: "post" } }, [
         _c("input", {
           attrs: { type: "hidden", name: "contribute_id" },
@@ -39264,49 +39387,23 @@ var render = function() {
           domProps: { value: _vm.userInfo.id }
         }),
         _vm._v(" "),
-        _c("p", [_vm._v("タイトル")]),
-        _vm._v(" "),
-        _c("input", { attrs: { type: "text", name: "title" } }),
-        _vm._v(" "),
-        _c("p", [_vm._v("レビュー")]),
-        _vm._v(" "),
-        _c("textarea", { attrs: { name: "review", rows: "7", cols: "50" } }),
-        _vm._v(" "),
-        _c("p", [_vm._v("ネタばれ")]),
-        _vm._v(" "),
-        _c("input", { attrs: { type: "radio", name: "spoiler", value: "1" } }),
-        _vm._v("有り\n\t\t\t"),
-        _c("input", { attrs: { type: "radio", name: "spoiler", value: "0" } }),
-        _vm._v("無し\n\t\t\t"),
-        _c("p", [_vm._v("満足度")]),
+        _vm._m(1),
         _vm._v(" "),
         _c("input", {
-          attrs: {
-            type: "number",
-            name: "satisfaction",
-            min: "0",
-            max: "5",
-            step: "1"
-          }
+          attrs: { type: "text", name: "title", size: "100", maxlength: "255" }
         }),
         _vm._v(" "),
-        _c("p", [_vm._v("オススメ度")]),
+        _vm._m(2),
         _vm._v(" "),
-        _c("input", {
-          attrs: {
-            type: "number",
-            name: "recommended",
-            min: "0",
-            max: "5",
-            step: "1"
-          }
+        _c("textarea", {
+          attrs: { name: "review", rows: "20", cols: "105", maxlength: "3000" }
         }),
         _vm._v(" "),
-        _c("input", { attrs: { type: "submit", value: "レビューを送る" } })
+        _vm._m(3)
       ])
     ]),
     _vm._v(" "),
-    _c("div", { staticClass: "deleteReview" }, [
+    _c("div", { staticClass: "delete-review" }, [
       _c("form", { attrs: { action: "/review/delete", method: "post" } }, [
         _c("input", {
           attrs: { type: "hidden", name: "contribute_id" },
@@ -39318,12 +39415,89 @@ var render = function() {
           domProps: { value: _vm.userInfo.id }
         }),
         _vm._v(" "),
-        _c("input", { attrs: { type: "submit", value: "レビューを削除する" } })
+        _c("input", {
+          attrs: { type: "submit", value: "自分のレビューを削除する" }
+        })
       ])
     ])
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "review-title" }, [
+      _c("h2", [_vm._v("みんなのレビュー")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("p", [
+      _vm._v("タイトル"),
+      _c("span", [_vm._v("※必須(255文字以下)")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("p", [
+      _vm._v("レビュー"),
+      _c("span", [_vm._v("※必須(3000文字以下)")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "input-button" }, [
+      _c("div", { staticClass: "input-spoiler" }, [
+        _c("p", [_vm._v("ネタばれ"), _c("span", [_vm._v("※必須")])]),
+        _vm._v(" "),
+        _c("input", { attrs: { type: "radio", name: "spoiler", value: "1" } }),
+        _vm._v("有り\n\t\t\t\t\t"),
+        _c("input", { attrs: { type: "radio", name: "spoiler", value: "0" } }),
+        _vm._v("無し\t\t\t\t\t\n\t\t\t\t")
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "input-satisfaction" }, [
+        _c("p", [_vm._v("満足度"), _c("span", [_vm._v("※必須")])]),
+        _vm._v(" "),
+        _c("input", {
+          attrs: {
+            type: "number",
+            name: "satisfaction",
+            min: "0",
+            max: "5",
+            step: "1"
+          }
+        })
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "input-recommended" }, [
+        _c("p", [_vm._v("オススメ度"), _c("span", [_vm._v("※必須")])]),
+        _vm._v(" "),
+        _c("input", {
+          attrs: {
+            type: "number",
+            name: "recommended",
+            min: "0",
+            max: "5",
+            step: "1"
+          }
+        })
+      ]),
+      _vm._v(" "),
+      _c("input", {
+        staticClass: "submit",
+        attrs: { type: "submit", value: "レビューを送る" }
+      })
+    ])
+  }
+]
 render._withStripped = true
 
 
