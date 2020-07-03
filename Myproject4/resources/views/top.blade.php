@@ -36,8 +36,11 @@
 
 <style>
 
-p,a,h1,h2 {
+p,a,h1,h2, h3 {
  color: white;
+}
+a {
+ text-decoration: none;
 }
 
 body {
