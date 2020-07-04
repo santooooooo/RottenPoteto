@@ -46,7 +46,7 @@
 
 		</div>
 
-		<div class="input-review">
+		<div v-if="isUser" class="input-review">
 			<h2>レビューホーム</h2>
 			<form action="/review/input" method="post">
 				<input type="hidden" name="contribute_id" :value="detailInfo.contribute.id">
@@ -75,7 +75,7 @@
 			</form>
 		</div>
 
-		<div class="delete-review">
+		<div v-if="isUser" class="delete-review">
 			<form action="/review/delete" method="post">
 				<input type="hidden" name="contribute_id" :value="detailInfo.contribute.id">
 				<input type="hidden" name="google_user_id" :value="userInfo.id">
@@ -285,6 +285,15 @@ export default {
 	components:
 	{
 		'review-info': ReviewInfo,
+	},
+	computed: {
+    isUser: function() {
+	    if(this.userInfo.length != 0)
+	    {
+		    return true
+	    }
+	    return false
+    },
 	},
 	mounted: function()
 		{

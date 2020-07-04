@@ -2192,6 +2192,15 @@ __webpack_require__.r(__webpack_exports__);
   components: {
     'review-info': _ReviewInfo__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
+  computed: {
+    isUser: function isUser() {
+      if (this.userInfo.length != 0) {
+        return true;
+      }
+
+      return false;
+    }
+  },
   mounted: function mounted() {
     var _this = this;
 
@@ -39642,67 +39651,71 @@ var render = function() {
       2
     ),
     _vm._v(" "),
-    _c("div", { staticClass: "input-review" }, [
-      _c("h2", [_vm._v("レビューホーム")]),
-      _vm._v(" "),
-      _c("form", { attrs: { action: "/review/input", method: "post" } }, [
-        _c("input", {
-          attrs: { type: "hidden", name: "contribute_id" },
-          domProps: { value: _vm.detailInfo.contribute.id }
-        }),
-        _vm._v(" "),
-        _c("input", {
-          attrs: { type: "hidden", name: "google_user_id" },
-          domProps: { value: _vm.userInfo.id }
-        }),
-        _vm._v(" "),
-        _vm._m(1),
-        _vm._v(" "),
-        _c("input", {
-          staticClass: "input",
-          attrs: {
-            type: "text",
-            name: "title",
-            size: "100",
-            maxlength: "255",
-            required: ""
-          }
-        }),
-        _vm._v(" "),
-        _vm._m(2),
-        _vm._v(" "),
-        _c("textarea", {
-          staticClass: "input",
-          attrs: {
-            name: "review",
-            rows: "20",
-            cols: "105",
-            maxlength: "3000",
-            required: ""
-          }
-        }),
-        _vm._v(" "),
-        _vm._m(3)
-      ])
-    ]),
+    _vm.isUser
+      ? _c("div", { staticClass: "input-review" }, [
+          _c("h2", [_vm._v("レビューホーム")]),
+          _vm._v(" "),
+          _c("form", { attrs: { action: "/review/input", method: "post" } }, [
+            _c("input", {
+              attrs: { type: "hidden", name: "contribute_id" },
+              domProps: { value: _vm.detailInfo.contribute.id }
+            }),
+            _vm._v(" "),
+            _c("input", {
+              attrs: { type: "hidden", name: "google_user_id" },
+              domProps: { value: _vm.userInfo.id }
+            }),
+            _vm._v(" "),
+            _vm._m(1),
+            _vm._v(" "),
+            _c("input", {
+              staticClass: "input",
+              attrs: {
+                type: "text",
+                name: "title",
+                size: "100",
+                maxlength: "255",
+                required: ""
+              }
+            }),
+            _vm._v(" "),
+            _vm._m(2),
+            _vm._v(" "),
+            _c("textarea", {
+              staticClass: "input",
+              attrs: {
+                name: "review",
+                rows: "20",
+                cols: "105",
+                maxlength: "3000",
+                required: ""
+              }
+            }),
+            _vm._v(" "),
+            _vm._m(3)
+          ])
+        ])
+      : _vm._e(),
     _vm._v(" "),
-    _c("div", { staticClass: "delete-review" }, [
-      _c("form", { attrs: { action: "/review/delete", method: "post" } }, [
-        _c("input", {
-          attrs: { type: "hidden", name: "contribute_id" },
-          domProps: { value: _vm.detailInfo.contribute.id }
-        }),
-        _vm._v(" "),
-        _c("input", {
-          attrs: { type: "hidden", name: "google_user_id" },
-          domProps: { value: _vm.userInfo.id }
-        }),
-        _vm._v(" "),
-        _c("input", {
-          attrs: { type: "submit", value: "自分のレビューを削除する" }
-        })
-      ])
-    ])
+    _vm.isUser
+      ? _c("div", { staticClass: "delete-review" }, [
+          _c("form", { attrs: { action: "/review/delete", method: "post" } }, [
+            _c("input", {
+              attrs: { type: "hidden", name: "contribute_id" },
+              domProps: { value: _vm.detailInfo.contribute.id }
+            }),
+            _vm._v(" "),
+            _c("input", {
+              attrs: { type: "hidden", name: "google_user_id" },
+              domProps: { value: _vm.userInfo.id }
+            }),
+            _vm._v(" "),
+            _c("input", {
+              attrs: { type: "submit", value: "自分のレビューを削除する" }
+            })
+          ])
+        ])
+      : _vm._e()
   ])
 }
 var staticRenderFns = [

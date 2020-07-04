@@ -87,7 +87,7 @@ export default {
 				return '/storage/home/userPotatoImage';
 			}
 			return '/storage' + this.userInfo.icon.slice(6);
-		}
+		},
 	},
 	mounted: function()
 		{
