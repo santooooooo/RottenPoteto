@@ -13,10 +13,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-	echo("Welcome home!");
-	return view('welcome');
-});
 //User`s Zone
 //
 //home view
