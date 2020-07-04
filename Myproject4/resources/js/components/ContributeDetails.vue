@@ -52,9 +52,10 @@
 				<input type="hidden" name="contribute_id" :value="detailInfo.contribute.id">
 				<input type="hidden" name="google_user_id" :value="userInfo.id">
 				<p>タイトル<span>※必須(255文字以下)</span></p>
-				<input type="text" name="title" size="100" maxlength="255" required>
+				<input type="text" name="title" size="100" maxlength="255" required class="input">
 				<p>レビュー<span>※必須(3000文字以下)</span></p>
-				<textarea name="review" rows="20" cols="105" maxlength="3000" required></textarea>
+				<textarea name="review" rows="20" cols="105" maxlength="3000" required class="input">
+				</textarea>
 				<div class="input-button">
 					<div class="input-spoiler">
 						<p>ネタばれ<span>※必須</span></p>
@@ -147,6 +148,18 @@
 .recommended p span {
 	font-size: 40px;
 }
+@media screen and (max-width:480px) {
+	.point {
+		display: flex;
+		justify-content: center;
+	}
+	.satisfaction {
+		width: 40%;
+	}
+	.recommended {
+		width: 47%;
+	}
+}
 
 .review-title {
 	text-align: center;
@@ -194,10 +207,21 @@
 .input-review span {
 	color: red;
 }
-
+.input-review .input {
+	width: 90%;
+}
 .input-button {
 	display: flex;
 	justify-content: left;
+}
+@media screen and (max-width:480px) {
+	.input-review {
+			width: 90%;
+			margin: 0 auto;
+	}
+	.input-button {
+		display: unset;
+	}
 }
 
 .input-spoiler {

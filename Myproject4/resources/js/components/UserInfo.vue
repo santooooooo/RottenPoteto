@@ -31,6 +31,13 @@
 	margin: 50px 20px 0 0;
 	border-radius: 20px;
 }
+@media screen and (max-width:480px) {
+	.main img {
+		width: 50%;
+		height: 200px;
+		margin: 100px 20px 0 0;
+	}
+}
 
 .info {
 	margin: 50px 0 0 20px;

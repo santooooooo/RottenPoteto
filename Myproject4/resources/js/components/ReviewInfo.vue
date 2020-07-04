@@ -29,6 +29,11 @@
 	height: 100px;
 	border-radius: 10px;
 }
+@media screen and (max-width:480px) {
+	.main img {
+		margin: 30px 20px 0 0;
+	}
+}
 
 .info {
 	width: 80%;
@@ -50,6 +55,16 @@
 	width: 30px;
 	height: 30px;
 	margin: 0 0 0 2px;
+}
+@media screen and (max-width:480px) {
+	.point {
+		display: unset;
+		justify-content: left;
+	}
+	.point p {
+		margin: 0 5px;
+		width: 100%;
+	}
 }
 </style>
 

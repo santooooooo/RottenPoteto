@@ -3,6 +3,7 @@
 <meta charset="UTF-8">
 <title>ロッテンポテト</title>
 <meta name="csrf-token" content="{{ csrf_token() }}">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="icon" href="storage/home/potatoIcon">
 <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 </head>
@@ -57,6 +58,22 @@ body {
 }
 .header div {
  width: 80%;
+}
+@media screen and (max-width:480px) {
+ .header {
+   display: unset;
+   margin: 30px 3%;
+ }
+ .header a {
+  width:;
+ }
+.header img {
+  width: 90%;
+ }
+.header div {
+  width: 90%;
+  margin: 0 auto;
+ }
 }
 
 nav {

@@ -41,6 +41,21 @@
 .icon input {
 	margin: 450px 0 0 0;
 }
+@media screen and (max-width:480px) {
+	.main form textarea {
+		width: 80%;
+	}
+
+	.icon {
+		display: unset;
+	}
+	.icon img {
+		width: 90%;
+	}
+	.icon input {
+		margin: 50px 0 0 0;
+	}
+}
 
 .button {
 	margin: 0 0 0 2%;

@@ -13,15 +13,16 @@
 
 		<div class="contributes">
 			<div v-for="info in contributesInfo" class="contribute">
-				<img :src="info.picture" alt="picture">
+				<router-link :to="{ path: '/contribute/' + info.id }"><img :src="info.picture" alt="picture">
+				</router-link>
 				<div class="contribute-text">
 					<p>タイトル：<router-link :to="{ path: '/contribute/' + info.id }">{{info.title}}
 					</router-link></p>
+					<p>紹介日：{{info.created_at}}</p>
 					<p class="contribute-genre">ジャンル：{{info.genre}}</p>
 					<p class="satisfaction">満足度：{{info.satisfaction}}</p>
 					<p class="recommended">オススメ度：{{info.recommended}}</P>
 				</div>
-				<p>{{info.created_at}}</p>
 			</div>
 		</div>
 
@@ -35,6 +36,11 @@ h1 {
 	text-align: center;
 }
 
+@media screen and ( max-width:480 ) {
+	.genre {
+		width: 30%;
+	}
+}
 .genre {
 	width: 95%;
 	margin: 0 auto;
@@ -54,9 +60,17 @@ h1 {
 .category div {
 	margin: 0 2px 0 0;
 }
+@media screen and (max-width:480px) {
+	.category {
+		display: unset;
+	}
+	.category div {
+		margin: 5px 0 0 3%;
+	}
+}
 
 .contributes {
-	width: 95%;
+	width: 90%;
 	margin: 0 auto;
 	padding: 10px 0;
 }
@@ -65,14 +79,17 @@ h1 {
 	justify-content: space-around;
 	margin: 50px 0;
 }
+.contribute a {
+	width: 40%;
+}
 .contribute img {
-	width: 30%;
+	width: 100%;
 }
 .contribute-text {
 	width: 30%;
 }
 .contribute-genre {
-	width: 60%;
+	width: 80%;
 	padding: 3px;
 	color: black;
 	background-color: yellow;
@@ -80,18 +97,27 @@ h1 {
 	font-weight: 500;
 }
 .satisfaction {
-	width: 30%;
+	width: 40%;
 	padding: 3px;
 	color: orange;
 	border: solid orange 2px;
 	border-radius: 10px;
 }
 .recommended {
-	width: 30%;
+	width: 40%;
 	padding: 3px;
 	color: green;
 	border: solid green 2px;
 	border-radius: 10px;
+}
+@media screen and (max-width:480px) {
+	.contribute {
+		display: unset;
+		margin: 50px 0;
+	}
+	.contribute-text {
+		width: 100%;
+	}
 }
 
 </style>

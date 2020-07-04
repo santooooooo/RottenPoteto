@@ -63,6 +63,19 @@ input:hover {
 	width: 10%;
 }
 
+@media screen and (max-width:480px) {
+	a {
+		margin: 0 0 20px 5px;
+	}
+
+	p {
+		margin: 0 0 20px 5px;
+	}
+
+	input {
+		margin: 3px 0 0 0;
+	}
+	}
 </style>
 
 <script>

@@ -67,7 +67,7 @@
 	margin: 70px 0;
 }
 .section h2 {
-	width: 60%;
+	width: 40%;
 	margin: 30px 0;
 	padding: 5px;
 	color: black;
@@ -92,6 +92,11 @@
 	background-color: cyan;
 }
 
+@media screen and (max-width:480px) {
+	.section h2 {
+		width: 100%;
+	}
+}
 </style>
 
 <script>
