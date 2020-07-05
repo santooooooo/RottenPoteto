@@ -46,6 +46,6 @@ final class OAuth extends Controller
 
 	    session(['user' => $jsonData]);
 
-	    return redirect('/home');
+	    return redirect('/');
     }
 }

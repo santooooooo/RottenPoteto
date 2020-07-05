@@ -2363,7 +2363,7 @@ var categories = ['アニメーション', 'アクション', 'アドベンチ�
   mounted: function mounted() {
     var _this = this;
 
-    axios.get('top').then(function (response) {
+    axios.get('/top').then(function (response) {
       return _this.contributes = response.data;
     });
   },

@@ -146,7 +146,7 @@ const categories = ['アニメーション','アクション','アドベンチ�
 	  },
 		mounted: function()
 		{
-			axios.get('top').then(response => this.contributes = response.data)
+			axios.get('/top').then(response => this.contributes = response.data)
 		},
 	  computed: {
 		  contributesInfo: function()

@@ -16,13 +16,13 @@ use Illuminate\Support\Facades\Route;
 //User`s Zone
 //
 //home view
-Route::get('/home', function()
+Route::get('/', function()
 {
 	return view('top');
 });
 
 //getting contribution's info
-Route::get('top', 'Contribute@response');
+Route::get('/top', 'Contribute@response');
 
 //recording users or authorize users
 Route::get('login/oauth', 'OAuth@redirect');

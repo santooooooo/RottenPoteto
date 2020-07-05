@@ -69,14 +69,14 @@ final class ReviewController extends Controller
 	    {
 	      $messageVal = json_encode('その映画に対するレビューは既に存在しています。');
 
-		    return redirect('home')->with('message', $messageVal);
+		    return redirect('/')->with('message', $messageVal);
 	    }
 
 	    GradeCinema::grade($this->contributeId);
 
 	    $messageVal = json_encode('レビューの投稿に成功しました。');
 
-	    return redirect('home')->with('message', $messageVal);
+	    return redirect('/')->with('message', $messageVal);
     }
 
 		/**
@@ -94,13 +94,13 @@ final class ReviewController extends Controller
 	    {
 	      $messageVal = json_encode('その映画に対するレビューは既に削除されています。');
 
-		    return redirect('/home')->with('message', $messageVal);
+		    return redirect('/')->with('message', $messageVal);
 	    }
 
 	    GradeCinema::grade($this->contributeId);
 
 	    $messageVal = json_encode('レビューの削除に成功しました。');
 
-	    return redirect('/home')->with('message', $messageVal);
+	    return redirect('/')->with('message', $messageVal);
     }
 }

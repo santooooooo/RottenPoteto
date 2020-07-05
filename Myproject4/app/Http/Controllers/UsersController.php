@@ -27,7 +27,7 @@ final class UsersController extends Controller
 
 	    $messageVal = json_encode("アカウントを削除しました。");
 
-	    return redirect('/home')->with('message', $messageVal);
+	    return redirect('/')->with('message', $messageVal);
     }
 
     /**
@@ -37,7 +37,7 @@ final class UsersController extends Controller
     {
 	    session(['user' => null]);
 
-	    return redirect('/home');
+	    return redirect('/');
     }
 
     /**
@@ -49,7 +49,7 @@ final class UsersController extends Controller
 	    $update = new UpdateProfile($request);
 	    $update->update();
 
-	    return redirect('/home');
+	    return redirect('/');
     }
 
     /**

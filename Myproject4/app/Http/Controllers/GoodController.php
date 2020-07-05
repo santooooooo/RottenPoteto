@@ -22,10 +22,10 @@ final class GoodController extends Controller
 	    if($success)
 	    {
 		    $messageVal = json_encode('レビューへポテトを送りました。');
-		    return redirect('/home')->with('message', $messageVal);
+		    return redirect('/')->with('message', $messageVal);
 	    }
 		  $messageVal = json_encode('同じレビューへ二つポテトを送ることはできません。');
-	    return redirect('/home')->with('message', $messageVal);
+	    return redirect('/')->with('message', $messageVal);
     }
 
 	/**
@@ -41,9 +41,9 @@ final class GoodController extends Controller
 	    if($success)
 	    {
 		    $messageVal = json_encode('レビューへのポテトを取り消しました。');
-		    return redirect('/home')->with('message', $messageVal);
+		    return redirect('/')->with('message', $messageVal);
 	    }
 		  $messageVal = json_encode('レビューへポテトを送っていないため、取り消しができません。');
-	    return redirect('/home')->with('message', $messageVal);
+	    return redirect('/')->with('message', $messageVal);
     }
 }
