@@ -2529,6 +2529,10 @@ var categories = ['アニメーション', 'アクション', 'アドベンチ�
 //
 //
 //
+//
+//
+//
+//
 
 /***/ }),
 
@@ -7544,7 +7548,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.main[data-v-f2b6376c] {\n\twidth: 90%;\n\tmargin: 0 auto;\n}\n.picture img[data-v-f2b6376c] {\n\twidth: 90%;\n\tmargin: 30px 0;\n}\n.section[data-v-f2b6376c] {\n\tmargin: 70px 0;\n}\n.section h2[data-v-f2b6376c] {\n\twidth: 40%;\n\tmargin: 30px 0;\n\tpadding: 5px;\n\tcolor: black;\n\tbackground-color: orange;\n\tborder-radius: 20px;\n}\n.section h3[data-v-f2b6376c] {\n\tmargin: 20px 0;\n}\n.section span[data-v-f2b6376c] {\n\tcolor: yellow;\n}\n.section a[data-v-f2b6376c] {\n\tcolor: cyan;\n\tbackground-color: black;\n\tborder: solid 3px cyan;\n\tborder-radius: 10px;\n\ttext-decoration: none;\n}\n.section a[data-v-f2b6376c]:hover {\n\tcolor: black;\n\tbackground-color: cyan;\n}\n@media screen and (max-width:480px) {\n.section h2[data-v-f2b6376c] {\n\t\twidth: 100%;\n}\n}\n", ""]);
+exports.push([module.i, "\n.main[data-v-f2b6376c] {\n\twidth: 90%;\n\tmargin: 0 auto;\n}\n.picture img[data-v-f2b6376c] {\n\twidth: 90%;\n\tmargin: 30px 0;\n}\n.section[data-v-f2b6376c] {\n\tmargin: 70px 0;\n}\n.section h2[data-v-f2b6376c] {\n\twidth: 40%;\n\tmargin: 30px 0;\n\tpadding: 5px;\n\tcolor: black;\n\tbackground-color: orange;\n\tborder-radius: 20px;\n}\n.section h3[data-v-f2b6376c] {\n\tmargin: 20px 0;\n}\n.section span[data-v-f2b6376c] {\n\tcolor: yellow;\n}\n.section a[data-v-f2b6376c] {\n\tcolor: cyan;\n\tbackground-color: black;\n\tborder: solid 3px cyan;\n\tborder-radius: 10px;\n\ttext-decoration: none;\n}\n.section a[data-v-f2b6376c]:hover {\n\tcolor: black;\n\tbackground-color: cyan;\n}\n@media screen and (max-width:480px) {\n.picture[data-v-f2b6376c] {\n\t\ttext-align: center;\n}\n.section h2[data-v-f2b6376c] {\n\t\twidth: 100%;\n}\n}\n", ""]);
 
 // exports
 
@@ -7601,7 +7605,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.main[data-v-11f66ff8] {\n\twidth: 90%;\n\tmargin: 0 auto;\n\tdisplay: flex;\n\tjustify-content: left;\n}\n.main img[data-v-11f66ff8] {\n\twidth: 40%;\n\tmargin: 50px 20px 0 0;\n\tborder-radius: 20px;\n}\n@media screen and (max-width:480px) {\n.main img[data-v-11f66ff8] {\n\t\twidth: 50%;\n\t\theight: 200px;\n\t\tmargin: 100px 20px 0 0;\n}\n}\n.info[data-v-11f66ff8] {\n\tmargin: 50px 0 0 20px;\n}\n.info div[data-v-11f66ff8] {\n\tmargin: 40px 0;\n}\n\n", ""]);
+exports.push([module.i, "\n.main[data-v-11f66ff8] {\n\twidth: 90%;\n\tmargin: 0 auto;\n\tdisplay: flex;\n\tjustify-content: left;\n}\n.main img[data-v-11f66ff8] {\n\twidth: 40%;\n\tmargin: 50px 20px 0 0;\n\tborder-radius: 20px;\n}\n@media screen and (max-width:480px) {\n.main img[data-v-11f66ff8] {\n\t\twidth: 50%;\n\t\theight: 200px;\n\t\tmargin: 100px 20px 0 0;\n}\n}\n.info[data-v-11f66ff8] {\n\tmargin: 50px 0 0 0;\n}\n.info div[data-v-11f66ff8] {\n\tmargin: 40px 0;\n}\n\n", ""]);
 
 // exports
 
@@ -39966,11 +39970,7 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("p", [_vm._v("1.紹介された映画に対するみんなのレビューが見れる。")]),
         _vm._v(" "),
-        _c("p", [
-          _vm._v(
-            "2.当サイトのレビュワーの方は、映画一覧で紹介している映画のレビューが書ける。"
-          )
-        ]),
+        _c("p", [_vm._v("2.映画一覧で紹介している映画のレビューが書ける。")]),
         _vm._v(" "),
         _c("p", [
           _vm._v(
@@ -39990,7 +39990,7 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("h3", [_vm._v("レビュワーではない方")]),
         _vm._v(" "),
-        _c("p", [_vm._v("1.紹介された映画に対するもんなのレビューが見れる。")]),
+        _c("p", [_vm._v("1.紹介された映画に対するみんなのレビューが見れる。")]),
         _vm._v(" "),
         _c("p", [
           _vm._v("2.管理する人が直々に描いたポテトのイラストが楽しめる。")
@@ -40004,7 +40004,7 @@ var staticRenderFns = [
           _vm._v("当サイトの右上にある"),
           _c("span", [_vm._v("「新規登録orログイン」")]),
           _vm._v(
-            "ボタンを押すとGoogleアカウントの\n\t\t\t認証画面が表示され、その認証が通るとレビュワーとなれます。"
+            "ボタンを押すとGoogleアカウントの\n\t\t\t認証画面が表示されます。そして、その認証が通るとレビュワーとなれます。"
           )
         ])
       ]),
@@ -40018,7 +40018,7 @@ var staticRenderFns = [
           )
         ]),
         _vm._v(" "),
-        _c("p", [_vm._v("1.映画に関係ない方々の誹謗中傷")]),
+        _c("p", [_vm._v("1.映画に関係ない方々への誹謗中傷")]),
         _vm._v(" "),
         _c("p", [_vm._v("2.紹介している映画とは全く関係ない書き込み")]),
         _vm._v(" "),

@@ -40,7 +40,7 @@
 }
 
 .info {
-	margin: 50px 0 0 20px;
+	margin: 50px 0 0 0;
 }
 .info div {
 	margin: 40px 0;
