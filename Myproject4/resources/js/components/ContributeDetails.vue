@@ -12,10 +12,12 @@
 				<p>{{detailInfo.contribute.contents}}</p>
 				<div class="point">
 					<div class="satisfaction">
-						<p>みんなの満足度：<span>{{detailInfo.contribute.satisfaction}}</span></p>
+						<p>みんなの満足度</p>
+						<p><span>{{detailInfo.contribute.satisfaction}}</span></p>
 					</div>
 					<div class="recommended">
-						<p>みんなのオススメ度：<span>{{detailInfo.contribute.recommended}}</span></p>
+						<p>みんなのオススメ度</p>
+						<p><span>{{detailInfo.contribute.recommended}}</span></p>
 					</div>
 				</div>
 			</div>

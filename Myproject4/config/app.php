@@ -67,7 +67,7 @@ return [
     |
     */
 
-    'timezone' => 'UTC',
+    'timezone' => 'Asia/Tokyo',
 
     /*
     |--------------------------------------------------------------------------
@@ -80,7 +80,7 @@ return [
     |
     */
 
-    'locale' => 'en',
+    'locale' => 'ja',
 
     /*
     |--------------------------------------------------------------------------
@@ -231,4 +231,11 @@ return [
 
     ],
 
+    /** added not to display info of this site.
+     */
+    'debug_blacklist' => [
+	    '_COOKIE' => array_keys($_COOKIE),
+	    '_SERVER' => array_keys($_SERVER),
+	    '_ENV' => array_keys($_ENV),        
+	  ],
 ];
