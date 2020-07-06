@@ -22,30 +22,6 @@
 				</div>
 			</div>
 
-			<div class="review-title">
-				<h2>みんなのレビュー</h2>
-			</div>
-
-			<div v-for="review in detailInfo.reviews">
-				<review-info :review="review"></review-info>
-				<div class="good-form">
-					<div class="input-good">
-						<form action="/good/push" method="post">
-							<input type="hidden" name="google_user_id" :value="userInfo.id">
-							<input type="hidden" name="user_review_id" :value="review.reviewId">
-							<input type="submit" value="ポテトを送る">
-						</form>
-					</div>
-					<div class="delete-good">
-						<form action="/good/delete" method="post">
-							<input type="hidden" name="google_user_id" :value="userInfo.id">
-							<input type="hidden" name="user_review_id" :value="review.reviewId">
-							<input type="submit" value="取り消し">
-						</form>
-					</div>
-				</div>
-			</div>
-
 		</div>
 
 		<div v-if="isUser" class="input-review">
@@ -83,6 +59,30 @@
 				<input type="hidden" name="google_user_id" :value="userInfo.id">
 				<input type="submit" value="自分のレビューを削除する">
 			</form>
+		</div>
+
+		<div class="review-title">
+			<h2>みんなのレビュー</h2>
+		</div>
+
+		<div v-for="review in detailInfo.reviews">
+			<review-info :review="review"></review-info>
+			<div  v-if="isUser" class="good-form">
+				<div class="input-good">
+					<form action="/good/push" method="post">
+						<input type="hidden" name="google_user_id" :value="userInfo.id">
+						<input type="hidden" name="user_review_id" :value="review.reviewId">
+						<input type="submit" value="ポテトを送る">
+					</form>
+				</div>
+				<div class="delete-good">
+					<form action="/good/delete" method="post">
+						<input type="hidden" name="google_user_id" :value="userInfo.id">
+						<input type="hidden" name="user_review_id" :value="review.reviewId">
+						<input type="submit" value="取り消し">
+					</form>
+				</div>
+			</div>
 		</div>
 
 	</div>
