@@ -2758,6 +2758,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     review: {
@@ -7590,7 +7596,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.main[data-v-33058dd1] {\n\twidth: 60%;\n\tmargin: 0 auto;\n\tdisplay: flex;\n\tjustify-content: space-around;\n}\n.main img[data-v-33058dd1] {\n\twidth: 100px;\n\theight: 100px;\n\tborder-radius: 10px;\n}\n@media screen and (max-width:480px) {\n.main img[data-v-33058dd1] {\n\t\tmargin: 30px 20px 0 0;\n}\n}\n.info[data-v-33058dd1] {\n\twidth: 80%;\n}\n.info .spoiler[data-v-33058dd1] {\n\tcolor: red;\n\tfont-weight: 500;\n}\n.point[data-v-33058dd1] {\n\tdisplay: flex;\n\tjustify-content: left;\n}\n.point p[data-v-33058dd1] {\n\tmargin: 0 5px;\n\twidth: 10%;\n}\n.point img[data-v-33058dd1] {\n\twidth: 30px;\n\theight: 30px;\n\tmargin: 0 0 0 2px;\n}\n@media screen and (max-width:480px) {\n.point[data-v-33058dd1] {\n\t\tdisplay: unset;\n\t\tjustify-content: left;\n}\n.point p[data-v-33058dd1] {\n\t\tmargin: 0 5px;\n\t\twidth: 100%;\n}\n}\n", ""]);
+exports.push([module.i, "\n.main[data-v-33058dd1] {\n\twidth: 60%;\n\tmargin: 0 auto;\n\tdisplay: flex;\n\tjustify-content: space-around;\n}\n.main img[data-v-33058dd1] {\n\twidth: 100px;\n\theight: 100px;\n\tborder-radius: 10px;\n}\n@media screen and (max-width:480px) {\n.main img[data-v-33058dd1] {\n\t\tmargin: 30px 20px 0 0;\n}\n}\n.info[data-v-33058dd1] {\n\twidth: 80%;\n}\n.info .spoiler[data-v-33058dd1] {\n\tcolor: red;\n\tfont-weight: 500;\n}\n.title[data-v-33058dd1] {\n\tfont-weight: bold;\n}\n.point[data-v-33058dd1] {\n\tdisplay: flex;\n\tjustify-content: left;\n}\n.point p[data-v-33058dd1] {\n\tmargin: 0 5px;\n\twidth: 10%;\n}\n.point img[data-v-33058dd1] {\n\twidth: 30px;\n\theight: 30px;\n\tmargin: 0 0 0 2px;\n}\n@media screen and (max-width:480px) {\n.point[data-v-33058dd1] {\n\t\tdisplay: unset;\n\t\tjustify-content: left;\n}\n.point p[data-v-33058dd1] {\n\t\tmargin: 0 5px;\n\t\twidth: 100%;\n}\n}\n", ""]);
 
 // exports
 
@@ -40167,41 +40173,50 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "main" }, [
-    _c("img", { attrs: { src: _vm.userPicture, alt: "picture" } }),
-    _vm._v(" "),
-    _c(
-      "div",
-      { staticClass: "info" },
-      [
-        _c(
-          "router-link",
-          { attrs: { to: { path: "/user/" + _vm.review.userId } } },
-          [_vm._v("\n\t\t\t" + _vm._s(_vm.review.userName) + "\n\t\t")]
-        ),
-        _vm._v(" "),
-        _c("p", { staticClass: "spoiler" }, [
-          _vm._v(_vm._s(_vm.review.spoiler))
-        ]),
-        _vm._v(" "),
-        _c("p", [_vm._v(_vm._s(_vm.review.title))]),
-        _vm._v(" "),
-        _c("p", [_vm._v(_vm._s(_vm.review.review))]),
-        _vm._v(" "),
-        _c("div", { staticClass: "point" }, [
-          _c("p", [_vm._v("満足度：" + _vm._s(_vm.review.satisfaction))]),
+  return _c(
+    "div",
+    { staticClass: "main" },
+    [
+      _c(
+        "router-link",
+        { attrs: { to: { path: "/user/" + _vm.review.userId } } },
+        [_c("img", { attrs: { src: _vm.userPicture, alt: "picture" } })]
+      ),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "info" },
+        [
+          _c(
+            "router-link",
+            { attrs: { to: { path: "/user/" + _vm.review.userId } } },
+            [_vm._v("\n\t\t\t" + _vm._s(_vm.review.userName) + "\n\t\t")]
+          ),
           _vm._v(" "),
-          _c("p", [_vm._v("オススメ度：" + _vm._s(_vm.review.recommended))]),
+          _c("p", { staticClass: "spoiler" }, [
+            _vm._v(_vm._s(_vm.review.spoiler))
+          ]),
           _vm._v(" "),
-          _c("p", [
-            _c("img", { attrs: { src: "storage/home/potatoIcon" } }),
-            _vm._v(" × " + _vm._s(_vm.review.goodPoint))
+          _c("p", { staticClass: "title" }, [_vm._v(_vm._s(_vm.review.title))]),
+          _vm._v(" "),
+          _c("p", [_vm._v(_vm._s(_vm.review.review))]),
+          _vm._v(" "),
+          _c("div", { staticClass: "point" }, [
+            _c("p", [_vm._v("満足度：" + _vm._s(_vm.review.satisfaction))]),
+            _vm._v(" "),
+            _c("p", [_vm._v("オススメ度：" + _vm._s(_vm.review.recommended))]),
+            _vm._v(" "),
+            _c("p", [
+              _c("img", { attrs: { src: "storage/home/potatoIcon" } }),
+              _vm._v(" × " + _vm._s(_vm.review.goodPoint))
+            ])
           ])
-        ])
-      ],
-      1
-    )
-  ])
+        ],
+        1
+      )
+    ],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true

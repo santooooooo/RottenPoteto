@@ -1,12 +1,14 @@
 <template>
 	<div class="main">
-		<img :src="userPicture" alt="picture">
+		<router-link :to="{ path: '/user/' + review.userId }">
+			<img :src="userPicture" alt="picture">
+		</router-link>
 		<div class="info">
 			<router-link :to="{ path: '/user/' + review.userId }">
 				{{review.userName}}
 			</router-link>
 			<p class="spoiler">{{review.spoiler}}</p>
-			<p>{{review.title}}</p>
+			<p class="title">{{review.title}}</p>
 			<p>{{review.review}}</p>
 			<div class="point">
 				<p>満足度：{{review.satisfaction}}</p>
@@ -41,6 +43,10 @@
 .info .spoiler {
 	color: red;
 	font-weight: 500;
+}
+
+.title {
+	font-weight: bold;
 }
 
 .point {
