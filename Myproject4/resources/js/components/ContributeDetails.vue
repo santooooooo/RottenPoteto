@@ -13,11 +13,11 @@
 				<div class="point">
 					<div class="satisfaction">
 						<p>みんなの満足度</p>
-						<p><span>{{detailInfo.contribute.satisfaction}}</span></p>
+						<p><span>{{detailInfo.contribute.satisfaction}}</span>/5</p>
 					</div>
 					<div class="recommended">
 						<p>みんなのオススメ度</p>
-						<p><span>{{detailInfo.contribute.recommended}}</span></p>
+						<p><span>{{detailInfo.contribute.recommended}}</span>/5</p>
 					</div>
 				</div>
 			</div>
@@ -41,11 +41,11 @@
 						<input type="radio" name="spoiler" value="0" required>無し
 					</div>
 					<div class="input-satisfaction">
-						<p>満足度<span>※必須</span></p>
+						<p>満足度<span>※必須 ０～５点</span></p>
 						<input type="number" name="satisfaction" min="0" max="5" step="1" required>					
 					</div>
 					<div class="input-recommended">
-						<p>オススメ度<span>※必須</span></p>
+						<p>オススメ度<span>※必須 ０～５点</span></p>
 						<input type="number" name="recommended" min="0" max="5" step="1" required>
 					</div>
 					<input class="submit" type="submit" value="レビューを送る">
