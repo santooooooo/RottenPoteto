@@ -4,6 +4,10 @@
 <title>ロッテンポテト</title>
 <meta name="csrf-token" content="{{ csrf_token() }}">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta property="og:url" content="https://talk-cinema.net">
+<meta property="og:type" content="website">
+<meta property="og:title" content="ロッテンポテト">
+<meta property="og:description" content="気軽に映画の話でもしませんか？">
 <link rel="icon" href="storage/home/potatoIcon">
 <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 </head>
