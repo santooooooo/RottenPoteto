@@ -169,7 +169,7 @@
 
 .good-form {
 	width: 20%;
-	margin: 0 0 10px 40%;
+	margin: 0 0 10px 60%;
 	display: flex;
 	justify-content: left;
 }
@@ -223,6 +223,10 @@
 	}
 	.input-button {
 		display: unset;
+	}
+
+	.good-form {
+		margin: 0 0 10px 40%;
 	}
 }
 

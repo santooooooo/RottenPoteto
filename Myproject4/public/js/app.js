@@ -2178,6 +2178,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -2764,12 +2768,29 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     review: {
       type: Object,
       required: false
     }
+  },
+  data: function data() {
+    return {
+      show: false
+    };
   },
   computed: {
     userPicture: function userPicture() {
@@ -2778,6 +2799,21 @@ __webpack_require__.r(__webpack_exports__);
       }
 
       return '/storage' + this.review.userIcon.slice(6);
+    },
+    reviewInfo: function reviewInfo() {
+      if (this.show) {
+        return true;
+      }
+
+      return false;
+    }
+  },
+  methods: {
+    showReview: function showReview() {
+      return this.show = true;
+    },
+    deleteReview: function deleteReview() {
+      return this.show = false;
     }
   }
 });
@@ -7520,7 +7556,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.main[data-v-8a949c8c] {\n\twidth: 95%;\n\tmargin: 0 auto;\n\tpadding: 20px 0;\n}\n.detail[data-v-8a949c8c] {\n\tmargin: 0 0 100px 0;\n}\n.info[data-v-8a949c8c] {\n\tmargin: 20px 0 80px 0;\n}\n.info[data-v-8a949c8c] {\n\ttext-align: left;\n}\n.info h1[data-v-8a949c8c] {\n\ttext-align: left;\n}\n.info .image[data-v-8a949c8c] {\n\tmargin: 50px 0;\n\ttext-align: center;\n}\n.info .image img[data-v-8a949c8c] {\n\twidth: 50%;\n}\n.point[data-v-8a949c8c] {\n\tdisplay: flex;\n\tjustify-content: right;\n}\n.satisfaction[data-v-8a949c8c] {\n\twidth: 20%;\n\tmargin: 10px 2%;\n\tpadding: 3px;\n\tcolor: orange;\n\tborder: solid orange 7px;\n\tborder-radius: 20px;\n\ttext-align: center;\n}\n.satisfaction p[data-v-8a949c8c] {\n\tcolor: orange;\n}\n.satisfaction p span[data-v-8a949c8c] {\n\tfont-size: 40px;\n}\n.recommended[data-v-8a949c8c] {\n\twidth: 20%;\n\tmargin: 10px 2%;\n\tpadding: 3px;\n\tcolor: green;\n\tborder: solid green 7px;\n\tborder-radius: 20px;\n\ttext-align: center;\n}\n.recommended p[data-v-8a949c8c] {\n\tcolor: green;\n}\n.recommended p span[data-v-8a949c8c] {\n\tfont-size: 40px;\n}\n@media screen and (max-width:480px) {\n.point[data-v-8a949c8c] {\n\t\tdisplay: flex;\n\t\tjustify-content: center;\n}\n.satisfaction[data-v-8a949c8c] {\n\t\twidth: 40%;\n}\n.recommended[data-v-8a949c8c] {\n\t\twidth: 47%;\n}\n}\n.review-title[data-v-8a949c8c] {\n\ttext-align: center;\n}\n.good-form[data-v-8a949c8c] {\n\twidth: 20%;\n\tmargin: 0 0 10px 40%;\n\tdisplay: flex;\n\tjustify-content: left;\n}\n.input-good input[data-v-8a949c8c] {\n\tcolor: yellow;\n\tbackground-color: black;\n\tborder: solid yellow 3px;\n\tborder-radius: 10px;\n}\n.input-good input[data-v-8a949c8c]:hover {\n\tcolor: black;\n\tbackground-color: yellow;\n}\n.delete-good input[data-v-8a949c8c] {\n\tcolor: red;\n\tbackground-color: black;\n\tborder: solid red 3px;\n\tborder-radius: 10px;\n\tmargin: 0 0 0 10px;\n}\n.delete-good input[data-v-8a949c8c]:hover {\n\tcolor: black;\n\tbackground-color: red;\n}\n.input-review[data-v-8a949c8c] {\n\twidth: 90%;\n\tmargin: 0 auto;\n\tborder: solid white 5px;\n\tborder-radius: 10px;\n}\n.input-review form[data-v-8a949c8c] {\n\tpadding: 20px;\n}\n.input-review span[data-v-8a949c8c] {\n\tcolor: red;\n}\n.input-review .input[data-v-8a949c8c] {\n\twidth: 90%;\n}\n.input-button[data-v-8a949c8c] {\n\tdisplay: flex;\n\tjustify-content: left;\n}\n@media screen and (max-width:480px) {\n.input-review[data-v-8a949c8c] {\n\t\t\twidth: 90%;\n\t\t\tmargin: 0 auto;\n}\n.input-button[data-v-8a949c8c] {\n\t\tdisplay: unset;\n}\n}\n.input-spoiler[data-v-8a949c8c] {\n\tcolor: white;\n\tmargin: 10px 20px 0 0;\n}\n.input-satisfaction[data-v-8a949c8c], .input-recommended[data-v-8a949c8c] {\n\tmargin: 10px 20px 0 0;\n}\n.input-satisfaction input[data-v-8a949c8c], .input-recommended input[data-v-8a949c8c] {\n\tcolor: black;\n}\n.submit[data-v-8a949c8c] {\n\tcolor: white;\n\tbackground-color: black;\n\tborder: solid white 3px;\n\tborder-radius: 10px;\n\tmargin: 10px 0 0 0;\n}\n.submit[data-v-8a949c8c]:hover {\n\tcolor: black;\n\tbackground-color: white;\n}\n.delete-review[data-v-8a949c8c] {\n\tmargin: 20px 0 20px 5%;\n\twidth: 90%;\n}\n.delete-review input[data-v-8a949c8c] {\n\tcolor: red;\n\tborder: solid red 3px;\n\tborder-radius: 10px;\n\tbackground-color: black;\n}\n.delete-review input[data-v-8a949c8c]:hover {\n\tcolor: black;\n\tbackground-color: red;\n}\n\n", ""]);
+exports.push([module.i, "\n.main[data-v-8a949c8c] {\n\twidth: 95%;\n\tmargin: 0 auto;\n\tpadding: 20px 0;\n}\n.detail[data-v-8a949c8c] {\n\tmargin: 0 0 100px 0;\n}\n.info[data-v-8a949c8c] {\n\tmargin: 20px 0 80px 0;\n}\n.info[data-v-8a949c8c] {\n\ttext-align: left;\n}\n.info h1[data-v-8a949c8c] {\n\ttext-align: left;\n}\n.info .image[data-v-8a949c8c] {\n\tmargin: 50px 0;\n\ttext-align: center;\n}\n.info .image img[data-v-8a949c8c] {\n\twidth: 50%;\n}\n.point[data-v-8a949c8c] {\n\tdisplay: flex;\n\tjustify-content: right;\n}\n.satisfaction[data-v-8a949c8c] {\n\twidth: 20%;\n\tmargin: 10px 2%;\n\tpadding: 3px;\n\tcolor: orange;\n\tborder: solid orange 7px;\n\tborder-radius: 20px;\n\ttext-align: center;\n}\n.satisfaction p[data-v-8a949c8c] {\n\tcolor: orange;\n}\n.satisfaction p span[data-v-8a949c8c] {\n\tfont-size: 40px;\n}\n.recommended[data-v-8a949c8c] {\n\twidth: 20%;\n\tmargin: 10px 2%;\n\tpadding: 3px;\n\tcolor: green;\n\tborder: solid green 7px;\n\tborder-radius: 20px;\n\ttext-align: center;\n}\n.recommended p[data-v-8a949c8c] {\n\tcolor: green;\n}\n.recommended p span[data-v-8a949c8c] {\n\tfont-size: 40px;\n}\n@media screen and (max-width:480px) {\n.point[data-v-8a949c8c] {\n\t\tdisplay: flex;\n\t\tjustify-content: center;\n}\n.satisfaction[data-v-8a949c8c] {\n\t\twidth: 40%;\n}\n.recommended[data-v-8a949c8c] {\n\t\twidth: 47%;\n}\n}\n.review-title[data-v-8a949c8c] {\n\ttext-align: center;\n}\n.good-form[data-v-8a949c8c] {\n\twidth: 20%;\n\tmargin: 0 0 10px 60%;\n\tdisplay: flex;\n\tjustify-content: left;\n}\n.input-good input[data-v-8a949c8c] {\n\tcolor: yellow;\n\tbackground-color: black;\n\tborder: solid yellow 3px;\n\tborder-radius: 10px;\n}\n.input-good input[data-v-8a949c8c]:hover {\n\tcolor: black;\n\tbackground-color: yellow;\n}\n.delete-good input[data-v-8a949c8c] {\n\tcolor: red;\n\tbackground-color: black;\n\tborder: solid red 3px;\n\tborder-radius: 10px;\n\tmargin: 0 0 0 10px;\n}\n.delete-good input[data-v-8a949c8c]:hover {\n\tcolor: black;\n\tbackground-color: red;\n}\n.input-review[data-v-8a949c8c] {\n\twidth: 90%;\n\tmargin: 0 auto;\n\tborder: solid white 5px;\n\tborder-radius: 10px;\n}\n.input-review form[data-v-8a949c8c] {\n\tpadding: 20px;\n}\n.input-review span[data-v-8a949c8c] {\n\tcolor: red;\n}\n.input-review .input[data-v-8a949c8c] {\n\twidth: 90%;\n}\n.input-button[data-v-8a949c8c] {\n\tdisplay: flex;\n\tjustify-content: left;\n}\n@media screen and (max-width:480px) {\n.input-review[data-v-8a949c8c] {\n\t\t\twidth: 90%;\n\t\t\tmargin: 0 auto;\n}\n.input-button[data-v-8a949c8c] {\n\t\tdisplay: unset;\n}\n.good-form[data-v-8a949c8c] {\n\t\tmargin: 0 0 10px 40%;\n}\n}\n.input-spoiler[data-v-8a949c8c] {\n\tcolor: white;\n\tmargin: 10px 20px 0 0;\n}\n.input-satisfaction[data-v-8a949c8c], .input-recommended[data-v-8a949c8c] {\n\tmargin: 10px 20px 0 0;\n}\n.input-satisfaction input[data-v-8a949c8c], .input-recommended input[data-v-8a949c8c] {\n\tcolor: black;\n}\n.submit[data-v-8a949c8c] {\n\tcolor: white;\n\tbackground-color: black;\n\tborder: solid white 3px;\n\tborder-radius: 10px;\n\tmargin: 10px 0 0 0;\n}\n.submit[data-v-8a949c8c]:hover {\n\tcolor: black;\n\tbackground-color: white;\n}\n.delete-review[data-v-8a949c8c] {\n\tmargin: 20px 0 20px 5%;\n\twidth: 90%;\n}\n.delete-review input[data-v-8a949c8c] {\n\tcolor: red;\n\tborder: solid red 3px;\n\tborder-radius: 10px;\n\tbackground-color: black;\n}\n.delete-review input[data-v-8a949c8c]:hover {\n\tcolor: black;\n\tbackground-color: red;\n}\n\n", ""]);
 
 // exports
 
@@ -7596,7 +7632,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.main[data-v-33058dd1] {\n\twidth: 60%;\n\tmargin: 0 auto;\n\tdisplay: flex;\n\tjustify-content: space-around;\n}\n.main img[data-v-33058dd1] {\n\twidth: 100px;\n\theight: 100px;\n\tborder-radius: 10px;\n}\n@media screen and (max-width:480px) {\n.main img[data-v-33058dd1] {\n\t\tmargin: 30px 20px 0 0;\n}\n}\n.info[data-v-33058dd1] {\n\twidth: 80%;\n}\n.info .spoiler[data-v-33058dd1] {\n\tcolor: red;\n\tfont-weight: 500;\n}\n.title[data-v-33058dd1] {\n\tfont-weight: bold;\n}\n.point[data-v-33058dd1] {\n\tdisplay: flex;\n\tjustify-content: left;\n}\n.point p[data-v-33058dd1] {\n\tmargin: 0 5px;\n\twidth: 10%;\n}\n.point img[data-v-33058dd1] {\n\twidth: 30px;\n\theight: 30px;\n\tmargin: 0 0 0 2px;\n}\n@media screen and (max-width:480px) {\n.point[data-v-33058dd1] {\n\t\tdisplay: unset;\n\t\tjustify-content: left;\n}\n.point p[data-v-33058dd1] {\n\t\tmargin: 0 5px;\n\t\twidth: 100%;\n}\n}\n", ""]);
+exports.push([module.i, "\n.main[data-v-33058dd1] {\n\twidth: 80%;\n\tmargin: 0 auto;\n}\n.review-top[data-v-33058dd1] {\n\tdisplay: flex;\n\tjustify-content: left;\n\tmargin: 0 0 10px 0;\n}\n.review-top img[data-v-33058dd1] {\n\twidth: 100px;\n\theight: 100px;\n\tborder-radius: 10px;\n}\n.info[data-v-33058dd1] {\n\twidth: 80%;\n\tmargin: 0 0 0 3%;\n}\n.point[data-v-33058dd1] {\n\tdisplay: flex;\n\tjustify-content: left;\n\tmargin: 20px 0 0 0;\n}\n.point p[data-v-33058dd1] {\n\tmargin: 0 5px;\n\twidth: 10%;\n}\n.point img[data-v-33058dd1] {\n\twidth: 30px;\n\theight: 30px;\n\tmargin: 0 0 0 2px;\n}\n@media screen and (max-width:480px) {\n.review-top img[data-v-33058dd1] {\n\t\tmargin: 0 20px 0 0;\n}\n.point[data-v-33058dd1] {\n\t\tdisplay: unset;\n\t\tjustify-content: left;\n}\n.point p[data-v-33058dd1] {\n\t\tmargin: 0 5px;\n\t\twidth: 100%;\n}\n}\n.title[data-v-33058dd1] {\n\tfont-weight: bold;\n}\n.spoiler[data-v-33058dd1] {\n\tcolor: red;\n\tfont-weight: bold;\n}\n\n", ""]);
 
 // exports
 
@@ -40173,50 +40209,64 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "main" },
-    [
-      _c(
-        "router-link",
-        { attrs: { to: { path: "/user/" + _vm.review.userId } } },
-        [_c("img", { attrs: { src: _vm.userPicture, alt: "picture" } })]
-      ),
-      _vm._v(" "),
-      _c(
-        "div",
-        { staticClass: "info" },
-        [
-          _c(
-            "router-link",
-            { attrs: { to: { path: "/user/" + _vm.review.userId } } },
-            [_vm._v("\n\t\t\t" + _vm._s(_vm.review.userName) + "\n\t\t")]
-          ),
-          _vm._v(" "),
-          _c("p", { staticClass: "spoiler" }, [
-            _vm._v(_vm._s(_vm.review.spoiler))
-          ]),
-          _vm._v(" "),
-          _c("p", { staticClass: "title" }, [_vm._v(_vm._s(_vm.review.title))]),
-          _vm._v(" "),
-          _c("p", [_vm._v(_vm._s(_vm.review.review))]),
-          _vm._v(" "),
-          _c("div", { staticClass: "point" }, [
-            _c("p", [_vm._v("満足度：" + _vm._s(_vm.review.satisfaction))]),
+  return _c("div", { staticClass: "main" }, [
+    _c(
+      "div",
+      { staticClass: "review-top" },
+      [
+        _c(
+          "router-link",
+          { attrs: { to: { path: "/user/" + _vm.review.userId } } },
+          [_c("img", { attrs: { src: _vm.userPicture, alt: "picture" } })]
+        ),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "info" },
+          [
+            _c(
+              "router-link",
+              { attrs: { to: { path: "/user/" + _vm.review.userId } } },
+              [_vm._v("\n\t\t\t\t" + _vm._s(_vm.review.userName) + "\n\t\t\t")]
+            ),
             _vm._v(" "),
-            _c("p", [_vm._v("オススメ度：" + _vm._s(_vm.review.recommended))]),
-            _vm._v(" "),
-            _c("p", [
-              _c("img", { attrs: { src: "storage/home/potatoIcon" } }),
-              _vm._v(" × " + _vm._s(_vm.review.goodPoint))
+            _c("div", { staticClass: "point" }, [
+              _c("p", [_vm._v("満足度：" + _vm._s(_vm.review.satisfaction))]),
+              _vm._v(" "),
+              _c("p", [
+                _vm._v("オススメ度：" + _vm._s(_vm.review.recommended))
+              ]),
+              _vm._v(" "),
+              _c("p", [
+                _c("img", { attrs: { src: "storage/home/potatoIcon" } }),
+                _vm._v(" × " + _vm._s(_vm.review.goodPoint))
+              ])
             ])
+          ],
+          1
+        )
+      ],
+      1
+    ),
+    _vm._v(" "),
+    _c("div", { staticClass: "review-bottom" }, [
+      _c("p", { staticClass: "title" }, [_vm._v(_vm._s(_vm.review.title))]),
+      _vm._v(" "),
+      _c("p", { staticClass: "spoiler" }, [_vm._v(_vm._s(_vm.review.spoiler))]),
+      _vm._v(" "),
+      !_vm.reviewInfo
+        ? _c("p", { on: { click: _vm.showReview } }, [_vm._v("レビューを読む")])
+        : _vm._e(),
+      _vm._v(" "),
+      _vm.reviewInfo ? _c("p", [_vm._v(_vm._s(_vm.review.review))]) : _vm._e(),
+      _vm._v(" "),
+      _vm.reviewInfo
+        ? _c("p", { on: { click: _vm.deleteReview } }, [
+            _vm._v("レビューを閉じる")
           ])
-        ],
-        1
-      )
-    ],
-    1
-  )
+        : _vm._e()
+    ])
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
