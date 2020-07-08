@@ -39690,15 +39690,20 @@ var render = function() {
         ])
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "openButton" }, [
-        !_vm.reviewStatus
-          ? _c(
-              "p",
-              { staticClass: "reviewButton", on: { click: _vm.openReview } },
-              [_vm._v("レビューをする")]
-            )
-          : _vm._e()
-      ]),
+      _vm.isUser
+        ? _c("div", { staticClass: "openButton" }, [
+            !_vm.reviewStatus
+              ? _c(
+                  "p",
+                  {
+                    staticClass: "reviewButton",
+                    on: { click: _vm.openReview }
+                  },
+                  [_vm._v("レビューをする")]
+                )
+              : _vm._e()
+          ])
+        : _vm._e(),
       _vm._v(" "),
       _vm.isUser && _vm.reviewStatus
         ? _c("div", { staticClass: "input-review" }, [

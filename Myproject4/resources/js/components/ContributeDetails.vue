@@ -24,7 +24,7 @@
 
 		</div>
 
-		<div class="openButton">
+		<div v-if="isUser" class="openButton">
 			<p class="reviewButton" v-if="!reviewStatus" @click="openReview">レビューをする</p>
 		</div>
 		<div v-if="isUser && reviewStatus" class="input-review">
