@@ -2987,6 +2987,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -7670,7 +7676,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.main[data-v-67528743] {\n\twidth: 90%;\n\tmargin: 0 auto;\n}\n.main p[data-v-67528743] {\n\tmargin: 30px 0 0 0;\n}\n.icon[data-v-67528743] {\n\tdisplay: flex;\n\tjustify-content: left;\n}\n.icon img[data-v-67528743] {\n\twidth: 40%;\n\tborder-radius: 20px;\n\tmargin: 0 5% 0 0;\n}\n.icon input[data-v-67528743] {\n\tmargin: 450px 0 0 0;\n}\n@media screen and (max-width:480px) {\n.main form textarea[data-v-67528743] {\n\t\twidth: 80%;\n}\n.icon[data-v-67528743] {\n\t\tdisplay: unset;\n}\n.icon img[data-v-67528743] {\n\t\twidth: 90%;\n}\n.icon input[data-v-67528743] {\n\t\tmargin: 50px 0 0 0;\n}\n}\n.button[data-v-67528743] {\n\tmargin: 0 0 0 2%;\n\tcolor: white;\n\tbackground-color: black;\n\tborder: solid white 2px;\n\tborder-radius: 10px;\n}\n.button[data-v-67528743]:hover {\n\tcolor: black;\n\tbackground-color: white;\n}\n\n", ""]);
+exports.push([module.i, "\n.main[data-v-67528743] {\n\twidth: 90%;\n\tmargin: 0 auto;\n}\n.main p[data-v-67528743] {\n\tmargin: 30px 0 0 0;\n}\n.icon[data-v-67528743] {\n\tdisplay: flex;\n\tjustify-content: left;\n}\n.icon img[data-v-67528743] {\n\twidth: 40%;\n\tborder-radius: 20px;\n\tmargin: 0 5% 0 0;\n}\n.icon input[data-v-67528743] {\n\tmargin: 450px 0 0 0;\n}\n@media screen and (max-width:480px) {\n.main form textarea[data-v-67528743] {\n\t\twidth: 80%;\n}\n.icon[data-v-67528743] {\n\t\tdisplay: unset;\n}\n.icon img[data-v-67528743] {\n\t\twidth: 90%;\n}\n.icon input[data-v-67528743] {\n\t\tmargin: 50px 0 0 0;\n}\n}\n.button[data-v-67528743] {\n\tmargin: 0 0 0 2%;\n\tcolor: white;\n\tbackground-color: black;\n\tborder: solid white 2px;\n\tborder-radius: 10px;\n}\n.button[data-v-67528743]:hover {\n\tcolor: black;\n\tbackground-color: white;\n}\n@media screen and (max-width:480px) {\n.button[data-v-67528743] {\n\t\tmargin: 10px 0 0 2%;\n}\n}\n\n", ""]);
 
 // exports
 

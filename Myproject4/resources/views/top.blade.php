@@ -1,4 +1,5 @@
 <html lang="ja">
+
 <head>
 <meta charset="UTF-8">
 <title>ロッテンポテト</title>
@@ -7,7 +8,7 @@
 <meta property="og:url" content="https://talk-cinema.net">
 <meta property="og:type" content="website">
 <meta property="og:title" content="ロッテンポテト">
-<meta property="og:description" content="気軽に映画の話でもしませんか？">
+<meta property="og:description" content="気軽に映画の話でもしませんか?">
 <link rel="icon" href="storage/home/potatoIcon">
 <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 </head>

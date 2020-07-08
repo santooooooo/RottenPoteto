@@ -69,6 +69,12 @@
 	background-color: white;
 }
 
+@media screen and (max-width:480px) {
+	.button {
+		margin: 10px 0 0 2%;
+	}
+}
+
 </style>
 
 <script>
