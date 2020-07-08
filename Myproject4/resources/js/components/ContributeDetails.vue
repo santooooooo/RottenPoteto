@@ -24,7 +24,10 @@
 
 		</div>
 
-		<div v-if="isUser" class="input-review">
+		<div class="openButton">
+			<p class="reviewButton" v-if="!reviewStatus" @click="openReview">レビューをする</p>
+		</div>
+		<div v-if="isUser && reviewStatus" class="input-review">
 			<h2>レビューホーム</h2>
 			<form action="/review/input" method="post">
 				<input type="hidden" name="contribute_id" :value="detailInfo.contribute.id">
@@ -50,7 +53,8 @@
 					</div>
 					<input class="submit" type="submit" value="レビューを送る">
 				</div>
-			</form>
+			</form>			
+			<p class="reviewButton" @click="closeReview">レビューをやめる</p>
 		</div>
 
 		<div v-if="isUser" class="delete-review">
@@ -163,6 +167,21 @@
 	}
 }
 
+.openButton {
+	margin: 0 0 0 5%;
+}
+.reviewButton {
+	width: 15%;
+	color: white;
+	background-color: black;
+	border: solid white 2px;
+	border-radius: 10px;
+}
+.reviewButton:hover {
+	color: black;
+	background-color: white;
+}
+
 .review-title {
 	text-align: center;
 }
@@ -217,6 +236,10 @@
 	justify-content: left;
 }
 @media screen and (max-width:480px) {
+	.reviewButton {
+		width: 40%;
+	}
+
 	.input-review {
 			width: 90%;
 			margin: 0 auto;
@@ -279,6 +302,7 @@ export default {
 	{
 		return {
 			detailInfo: [],
+			review: false,
 		}
 	},
 	props:
@@ -296,15 +320,32 @@ export default {
     isUser: function() {
 	    if(this.userInfo.length != 0)
 	    {
-		    return true
+		    return true;
 	    }
-	    return false
+	    return false;
     },
+		reviewStatus: function() {
+			if(this.review == true)
+			{
+				return true;
+			}
+			return false;
+		}
 	},
 	mounted: function()
 		{
 			axios.get('/review-page?contribute_id=' + this.$route.params.contributeId)
 				.then(response => this.detailInfo = response.data);
 		},
+	methods: {
+		openReview: function()
+		{
+			return this.review = true;
+		},
+		closeReview: function()
+		{
+			return this.review = false;
+		},
+	},
 }
 </script>

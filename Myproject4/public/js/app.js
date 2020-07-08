@@ -2182,11 +2182,35 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      detailInfo: []
+      detailInfo: [],
+      review: false
     };
   },
   props: {
@@ -2205,6 +2229,13 @@ __webpack_require__.r(__webpack_exports__);
       }
 
       return false;
+    },
+    reviewStatus: function reviewStatus() {
+      if (this.review == true) {
+        return true;
+      }
+
+      return false;
     }
   },
   mounted: function mounted() {
@@ -2213,6 +2244,14 @@ __webpack_require__.r(__webpack_exports__);
     axios.get('/review-page?contribute_id=' + this.$route.params.contributeId).then(function (response) {
       return _this.detailInfo = response.data;
     });
+  },
+  methods: {
+    openReview: function openReview() {
+      return this.review = true;
+    },
+    closeReview: function closeReview() {
+      return this.review = false;
+    }
   }
 });
 
@@ -7562,7 +7601,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.main[data-v-8a949c8c] {\n\twidth: 95%;\n\tmargin: 0 auto;\n\tpadding: 20px 0;\n}\n.detail[data-v-8a949c8c] {\n\tmargin: 0 0 100px 0;\n}\n.info[data-v-8a949c8c] {\n\tmargin: 20px 0 80px 0;\n}\n.info[data-v-8a949c8c] {\n\ttext-align: left;\n}\n.info h1[data-v-8a949c8c] {\n\ttext-align: left;\n}\n.info .image[data-v-8a949c8c] {\n\tmargin: 50px 0;\n\ttext-align: center;\n}\n.info .image img[data-v-8a949c8c] {\n\twidth: 50%;\n}\n.point[data-v-8a949c8c] {\n\tdisplay: flex;\n\tjustify-content: right;\n}\n.satisfaction[data-v-8a949c8c] {\n\twidth: 20%;\n\tmargin: 10px 2%;\n\tpadding: 3px;\n\tcolor: orange;\n\tborder: solid orange 7px;\n\tborder-radius: 20px;\n\ttext-align: center;\n}\n.satisfaction p[data-v-8a949c8c] {\n\tcolor: orange;\n}\n.satisfaction p span[data-v-8a949c8c] {\n\tfont-size: 40px;\n}\n.recommended[data-v-8a949c8c] {\n\twidth: 20%;\n\tmargin: 10px 2%;\n\tpadding: 3px;\n\tcolor: green;\n\tborder: solid green 7px;\n\tborder-radius: 20px;\n\ttext-align: center;\n}\n.recommended p[data-v-8a949c8c] {\n\tcolor: green;\n}\n.recommended p span[data-v-8a949c8c] {\n\tfont-size: 40px;\n}\n@media screen and (max-width:480px) {\n.point[data-v-8a949c8c] {\n\t\tdisplay: flex;\n\t\tjustify-content: center;\n}\n.satisfaction[data-v-8a949c8c] {\n\t\twidth: 40%;\n}\n.recommended[data-v-8a949c8c] {\n\t\twidth: 47%;\n}\n}\n.review-title[data-v-8a949c8c] {\n\ttext-align: center;\n}\n.good-form[data-v-8a949c8c] {\n\twidth: 20%;\n\tmargin: 0 0 10px 60%;\n\tdisplay: flex;\n\tjustify-content: left;\n}\n.input-good input[data-v-8a949c8c] {\n\tcolor: yellow;\n\tbackground-color: black;\n\tborder: solid yellow 3px;\n\tborder-radius: 10px;\n}\n.input-good input[data-v-8a949c8c]:hover {\n\tcolor: black;\n\tbackground-color: yellow;\n}\n.delete-good input[data-v-8a949c8c] {\n\tcolor: red;\n\tbackground-color: black;\n\tborder: solid red 3px;\n\tborder-radius: 10px;\n\tmargin: 0 0 0 10px;\n}\n.delete-good input[data-v-8a949c8c]:hover {\n\tcolor: black;\n\tbackground-color: red;\n}\n.input-review[data-v-8a949c8c] {\n\twidth: 90%;\n\tmargin: 0 auto;\n\tborder: solid white 5px;\n\tborder-radius: 10px;\n}\n.input-review form[data-v-8a949c8c] {\n\tpadding: 20px;\n}\n.input-review span[data-v-8a949c8c] {\n\tcolor: red;\n}\n.input-review .input[data-v-8a949c8c] {\n\twidth: 90%;\n}\n.input-button[data-v-8a949c8c] {\n\tdisplay: flex;\n\tjustify-content: left;\n}\n@media screen and (max-width:480px) {\n.input-review[data-v-8a949c8c] {\n\t\t\twidth: 90%;\n\t\t\tmargin: 0 auto;\n}\n.input-button[data-v-8a949c8c] {\n\t\tdisplay: unset;\n}\n.good-form[data-v-8a949c8c] {\n\t\tmargin: 0 0 10px 40%;\n}\n}\n.input-spoiler[data-v-8a949c8c] {\n\tcolor: white;\n\tmargin: 10px 20px 0 0;\n}\n.input-satisfaction[data-v-8a949c8c], .input-recommended[data-v-8a949c8c] {\n\tmargin: 10px 20px 0 0;\n}\n.input-satisfaction input[data-v-8a949c8c], .input-recommended input[data-v-8a949c8c] {\n\tcolor: black;\n}\n.submit[data-v-8a949c8c] {\n\tcolor: white;\n\tbackground-color: black;\n\tborder: solid white 3px;\n\tborder-radius: 10px;\n\tmargin: 10px 0 0 0;\n}\n.submit[data-v-8a949c8c]:hover {\n\tcolor: black;\n\tbackground-color: white;\n}\n.delete-review[data-v-8a949c8c] {\n\tmargin: 20px 0 20px 5%;\n\twidth: 90%;\n}\n.delete-review input[data-v-8a949c8c] {\n\tcolor: red;\n\tborder: solid red 3px;\n\tborder-radius: 10px;\n\tbackground-color: black;\n}\n.delete-review input[data-v-8a949c8c]:hover {\n\tcolor: black;\n\tbackground-color: red;\n}\n\n", ""]);
+exports.push([module.i, "\n.main[data-v-8a949c8c] {\n\twidth: 95%;\n\tmargin: 0 auto;\n\tpadding: 20px 0;\n}\n.detail[data-v-8a949c8c] {\n\tmargin: 0 0 100px 0;\n}\n.info[data-v-8a949c8c] {\n\tmargin: 20px 0 80px 0;\n}\n.info[data-v-8a949c8c] {\n\ttext-align: left;\n}\n.info h1[data-v-8a949c8c] {\n\ttext-align: left;\n}\n.info .image[data-v-8a949c8c] {\n\tmargin: 50px 0;\n\ttext-align: center;\n}\n.info .image img[data-v-8a949c8c] {\n\twidth: 50%;\n}\n.point[data-v-8a949c8c] {\n\tdisplay: flex;\n\tjustify-content: right;\n}\n.satisfaction[data-v-8a949c8c] {\n\twidth: 20%;\n\tmargin: 10px 2%;\n\tpadding: 3px;\n\tcolor: orange;\n\tborder: solid orange 7px;\n\tborder-radius: 20px;\n\ttext-align: center;\n}\n.satisfaction p[data-v-8a949c8c] {\n\tcolor: orange;\n}\n.satisfaction p span[data-v-8a949c8c] {\n\tfont-size: 40px;\n}\n.recommended[data-v-8a949c8c] {\n\twidth: 20%;\n\tmargin: 10px 2%;\n\tpadding: 3px;\n\tcolor: green;\n\tborder: solid green 7px;\n\tborder-radius: 20px;\n\ttext-align: center;\n}\n.recommended p[data-v-8a949c8c] {\n\tcolor: green;\n}\n.recommended p span[data-v-8a949c8c] {\n\tfont-size: 40px;\n}\n@media screen and (max-width:480px) {\n.point[data-v-8a949c8c] {\n\t\tdisplay: flex;\n\t\tjustify-content: center;\n}\n.satisfaction[data-v-8a949c8c] {\n\t\twidth: 40%;\n}\n.recommended[data-v-8a949c8c] {\n\t\twidth: 47%;\n}\n}\n.openButton[data-v-8a949c8c] {\n\tmargin: 0 0 0 5%;\n}\n.reviewButton[data-v-8a949c8c] {\n\twidth: 15%;\n\tcolor: white;\n\tbackground-color: black;\n\tborder: solid white 2px;\n\tborder-radius: 10px;\n}\n.reviewButton[data-v-8a949c8c]:hover {\n\tcolor: black;\n\tbackground-color: white;\n}\n.review-title[data-v-8a949c8c] {\n\ttext-align: center;\n}\n.good-form[data-v-8a949c8c] {\n\twidth: 20%;\n\tmargin: 0 0 10px 60%;\n\tdisplay: flex;\n\tjustify-content: left;\n}\n.input-good input[data-v-8a949c8c] {\n\tcolor: yellow;\n\tbackground-color: black;\n\tborder: solid yellow 3px;\n\tborder-radius: 10px;\n}\n.input-good input[data-v-8a949c8c]:hover {\n\tcolor: black;\n\tbackground-color: yellow;\n}\n.delete-good input[data-v-8a949c8c] {\n\tcolor: red;\n\tbackground-color: black;\n\tborder: solid red 3px;\n\tborder-radius: 10px;\n\tmargin: 0 0 0 10px;\n}\n.delete-good input[data-v-8a949c8c]:hover {\n\tcolor: black;\n\tbackground-color: red;\n}\n.input-review[data-v-8a949c8c] {\n\twidth: 90%;\n\tmargin: 0 auto;\n\tborder: solid white 5px;\n\tborder-radius: 10px;\n}\n.input-review form[data-v-8a949c8c] {\n\tpadding: 20px;\n}\n.input-review span[data-v-8a949c8c] {\n\tcolor: red;\n}\n.input-review .input[data-v-8a949c8c] {\n\twidth: 90%;\n}\n.input-button[data-v-8a949c8c] {\n\tdisplay: flex;\n\tjustify-content: left;\n}\n@media screen and (max-width:480px) {\n.reviewButton[data-v-8a949c8c] {\n\t\twidth: 40%;\n}\n.input-review[data-v-8a949c8c] {\n\t\t\twidth: 90%;\n\t\t\tmargin: 0 auto;\n}\n.input-button[data-v-8a949c8c] {\n\t\tdisplay: unset;\n}\n.good-form[data-v-8a949c8c] {\n\t\tmargin: 0 0 10px 40%;\n}\n}\n.input-spoiler[data-v-8a949c8c] {\n\tcolor: white;\n\tmargin: 10px 20px 0 0;\n}\n.input-satisfaction[data-v-8a949c8c], .input-recommended[data-v-8a949c8c] {\n\tmargin: 10px 20px 0 0;\n}\n.input-satisfaction input[data-v-8a949c8c], .input-recommended input[data-v-8a949c8c] {\n\tcolor: black;\n}\n.submit[data-v-8a949c8c] {\n\tcolor: white;\n\tbackground-color: black;\n\tborder: solid white 3px;\n\tborder-radius: 10px;\n\tmargin: 10px 0 0 0;\n}\n.submit[data-v-8a949c8c]:hover {\n\tcolor: black;\n\tbackground-color: white;\n}\n.delete-review[data-v-8a949c8c] {\n\tmargin: 20px 0 20px 5%;\n\twidth: 90%;\n}\n.delete-review input[data-v-8a949c8c] {\n\tcolor: red;\n\tborder: solid red 3px;\n\tborder-radius: 10px;\n\tbackground-color: black;\n}\n.delete-review input[data-v-8a949c8c]:hover {\n\tcolor: black;\n\tbackground-color: red;\n}\n\n", ""]);
 
 // exports
 
@@ -39651,7 +39690,17 @@ var render = function() {
         ])
       ]),
       _vm._v(" "),
-      _vm.isUser
+      _c("div", { staticClass: "openButton" }, [
+        !_vm.reviewStatus
+          ? _c(
+              "p",
+              { staticClass: "reviewButton", on: { click: _vm.openReview } },
+              [_vm._v("レビューをする")]
+            )
+          : _vm._e()
+      ]),
+      _vm._v(" "),
+      _vm.isUser && _vm.reviewStatus
         ? _c("div", { staticClass: "input-review" }, [
             _c("h2", [_vm._v("レビューホーム")]),
             _vm._v(" "),
@@ -39693,7 +39742,13 @@ var render = function() {
               }),
               _vm._v(" "),
               _vm._m(2)
-            ])
+            ]),
+            _vm._v(" "),
+            _c(
+              "p",
+              { staticClass: "reviewButton", on: { click: _vm.closeReview } },
+              [_vm._v("レビューをやめる")]
+            )
           ])
         : _vm._e(),
       _vm._v(" "),
