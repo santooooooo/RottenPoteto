@@ -21,8 +21,9 @@ final class OAuth extends Controller
      */
     public function redirect()
     {
-	    $aouth = new GoogleOAuth();
-	    return $aouth->redirectToGoogle();
+	   // $aouth = new GoogleOAuth();
+	   // return $aouth->redirectToGoogle();
+	   return redirect('/login/oauth/callback');
     }
 
     /**
@@ -30,11 +31,14 @@ final class OAuth extends Controller
      */
     public function handle()
     {
-	    $user = new GoogleOAuth();
-	    $gUser = $user->googleUser();
+	   // $user = new GoogleOAuth();
+	   // $gUser = $user->googleUser();
 
-	    $this->info['gmail'] = $gUser['email'];
-	    $this->info['name'] = $gUser['nickname'] ?? $gUser['name'];
+	   // $this->info['gmail'] = $gUser['email'];
+	   // $this->info['name'] = $gUser['nickname'] ?? $gUser['name'];
+
+	    $this->info['gmail'] = 'testsun@gmail.com';
+	    $this->info['name'] = 'testsun';
 
 	    $is_user = Judge::judge($this->info['gmail']);
 	    if(!$is_user)

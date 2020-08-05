@@ -4,22 +4,11 @@ namespace App;
 
 class TestModel
 {
-    static $test;
-
-    public function setTest(): void
-    {
-	    self::$test = 'testdayo';
-    }
-
-    public function getTest()
-    {
-	    return self::$test;
-    }
+	private $level = "saiyajin2";
 }
 
-$sample = new TestModel();
-echo $sample->getTest()."\n";
-
-$sample->setTest();
-echo $sample->getTest()."\n";
-echo $sample->getTest()."\n";
+$dbz                = new TestModel();
+$ReflectionProperty = new \ReflectionProperty(TestModel::class, "level");
+$ReflectionProperty->setAccessible(true);
+$level              = $ReflectionProperty->getValue($dbz);
+print_r($level);
