@@ -9,10 +9,7 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 
 final class GoodController extends Controller
 {
-	/**
-	 * @return RedirectResponse
-	 */
-    public function pushGood(GoodForm $request)
+    public function pushGood(GoodForm $request): bool
     {
 	    $userId = $request->input('google_user_id');
 	    $reviewId = $request->input('user_review_id');
@@ -21,17 +18,12 @@ final class GoodController extends Controller
 
 	    if($success)
 	    {
-		    $messageVal = json_encode('レビューへポテトを送りました。');
-		    return redirect('/')->with('message', $messageVal);
+		    return true;
 	    }
-		  $messageVal = json_encode('同じレビューへ二つポテトを送ることはできません。');
-	    return redirect('/')->with('message', $messageVal);
+		  return false;
     }
 
-	/**
-	 * @return RedirectResponse
-	 */
-    public function deleteGood(GoodForm $request)
+    public function deleteGood(GoodForm $request): bool
     {
 	    $userId = $request->input('google_user_id');
 	    $reviewId = $request->input('user_review_id');
@@ -40,10 +32,8 @@ final class GoodController extends Controller
 
 	    if($success)
 	    {
-		    $messageVal = json_encode('レビューへのポテトを取り消しました。');
-		    return redirect('/')->with('message', $messageVal);
+		   return true;
 	    }
-		  $messageVal = json_encode('レビューへポテトを送っていないため、取り消しができません。');
-	    return redirect('/')->with('message', $messageVal);
+		  return false;
     }
 }

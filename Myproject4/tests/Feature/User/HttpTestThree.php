@@ -18,7 +18,7 @@ class HttpTestThree extends TestCase
 	use WithoutMiddleware;
     /**
      * post(/good/push) request test.
-     * @test
+     * test
      * @return void
      */
     public function pushGoodTest()
@@ -35,9 +35,7 @@ class HttpTestThree extends TestCase
 		    'user_review_id' => $reviewEloquent->id,
 	    ]);
 
-		  $messageVal = json_encode('レビューへポテトを送りました。');
-
-      $response->assertSessionHas('message', $messageVal);
+      $response->assertOK();
 
 	    $this->assertDatabaseHas('good_points', [
 		    'id' => 1,
@@ -53,7 +51,7 @@ class HttpTestThree extends TestCase
 
 	/**
 	 * post(/good/delete) request test
-	 * test
+	 * @test
 	 * @return void
 	 */
 	public function deleteGoodTest()
@@ -72,9 +70,7 @@ class HttpTestThree extends TestCase
 	    'user_review_id' => $goodEloquent->user_review_id,
     ]);
 
-    $messageVal = json_encode('レビューへのポテトを取り消しました。');
-
-    $response->assertSessionHas('message', $messageVal);
+    $response->assertOK();
 
     $this->assertDatabaseMissing('good_points', [
 	    'id' => 1,
