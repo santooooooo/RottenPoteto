@@ -7,7 +7,7 @@
 			<div class="category">
 				<div v-for="category in categories">
 					<input type="radio" :value="category" v-model="genre">{{category}}
-				</div>			
+				</div>
 			</div>
 		</div>
 

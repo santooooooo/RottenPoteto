@@ -22,6 +22,22 @@
 			<p v-if="reviewInfo">{{review.review}}</p>
 			<p v-if="reviewInfo" @click="deleteReview">レビューを閉じる</p>
 		</div>
+		<div  v-if="isUser" class="good-form">
+			<div class="input-good">
+				<form action="/good/push" method="post">
+					<input type="hidden" name="google_user_id" :value="userInfo.id">
+					<input type="hidden" name="user_review_id" :value="review.reviewId">
+					<input type="submit" value="ポテトを送る">
+				</form>
+			</div>
+			<div class="delete-good">
+				<form action="/good/delete" method="post">
+					<input type="hidden" name="google_user_id" :value="userInfo.id">
+					<input type="hidden" name="user_review_id" :value="review.reviewId">
+					<input type="submit" value="取り消し">
+				</form>
+			</div>
+		</div>
 	</div>
 </template>
 
@@ -84,6 +100,52 @@
 	font-weight: bold;
 }
 
+.good-form {
+	width: 20%;
+	margin: 0 0 10px 60%;
+	display: flex;
+	justify-content: left;
+}
+
+.input-good input {
+	color: yellow;
+	background-color: black;
+	border: solid yellow 3px;
+	border-radius: 10px;
+}
+.input-good input:hover {
+	color: black;
+	background-color: yellow;
+}
+
+.delete-good input {
+	color: red;
+	background-color: black;
+	border: solid red 3px;
+	border-radius: 10px;
+	margin: 0 0 0 10px;
+}
+.delete-good input:hover {
+	color: black;
+	background-color: red;
+}
+@media screen and (max-width:480px) {
+	.reviewButton {
+		width: 40%;
+	}
+
+	.input-review {
+			width: 90%;
+			margin: 0 auto;
+	}
+	.input-button {
+		display: unset;
+	}
+
+	.good-form {
+		margin: 0 0 10px 40%;
+	}
+}
 </style>
 
 <script>
@@ -92,7 +154,11 @@ export default {
 		review: {
 			type: Object,
 			required: false
-		}
+		},
+		userInfo: {
+		    type: Object,
+		    required: false,
+	  },
 	},
 	data: function() {
 		return {
@@ -115,7 +181,15 @@ export default {
 				return true;
 			}
 			return false;
-		}
+		},
+    isUser: function() 
+		{
+	    if(this.userInfo.length != 0)
+	    {
+		    return true;
+	    }
+	    return false;
+    },
 	},
 	methods: {
 		showReview: function()

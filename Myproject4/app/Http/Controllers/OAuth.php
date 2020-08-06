@@ -37,8 +37,8 @@ final class OAuth extends Controller
 	   // $this->info['gmail'] = $gUser['email'];
 	   // $this->info['name'] = $gUser['nickname'] ?? $gUser['name'];
 
-	    $this->info['gmail'] = 'testsun@gmail.com';
-	    $this->info['name'] = 'testsun';
+	    $this->info['gmail'] = 'testsuntesuto@gmail.com';
+	    $this->info['name'] = 'testsun2';
 
 	    $is_user = Judge::judge($this->info['gmail']);
 	    if(!$is_user)
