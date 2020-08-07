@@ -2823,14 +2823,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     review: {
@@ -2876,6 +2868,48 @@ __webpack_require__.r(__webpack_exports__);
     },
     deleteReview: function deleteReview() {
       return this.show = false;
+    },
+    pushGood: function pushGood() {
+      var _this = this;
+
+      var data = {
+        google_user_id: this.userInfo.id,
+        user_review_id: this.review.reviewId
+      };
+
+      var addGood = function addGood() {
+        return _this.review.goodPoint += 1;
+      };
+
+      axios.post('/api/good/push', data).then(function (response) {
+        if (response.data.bool) {
+          alert('ポテトの送信が完了しました。');
+          return addGood();
+        }
+
+        return alert('ポテトは一つのレビューにつき一個まで！');
+      });
+    },
+    deleteGood: function deleteGood() {
+      var _this2 = this;
+
+      var data = {
+        google_user_id: this.userInfo.id,
+        user_review_id: this.review.reviewId
+      };
+
+      var subGood = function subGood() {
+        return _this2.review.goodPoint -= 1;
+      };
+
+      axios.post('/api/good/delete', data).then(function (response) {
+        if (response.data.bool) {
+          alert('ポテトを取り消しました。');
+          return subGood();
+        }
+
+        return alert('あなたはこのレビューにポテトを送っていないので、取り消しはできませんよ');
+      });
     }
   }
 });
@@ -40251,35 +40285,17 @@ var render = function() {
     _vm.isUser
       ? _c("div", { staticClass: "good-form" }, [
           _c("div", { staticClass: "input-good" }, [
-            _c("form", { attrs: { action: "/good/push", method: "post" } }, [
-              _c("input", {
-                attrs: { type: "hidden", name: "google_user_id" },
-                domProps: { value: _vm.userInfo.id }
-              }),
-              _vm._v(" "),
-              _c("input", {
-                attrs: { type: "hidden", name: "user_review_id" },
-                domProps: { value: _vm.review.reviewId }
-              }),
-              _vm._v(" "),
-              _c("input", { attrs: { type: "submit", value: "ポテトを送る" } })
-            ])
+            _c("input", {
+              attrs: { type: "submit", value: "ポテトを送る" },
+              on: { click: _vm.pushGood }
+            })
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "delete-good" }, [
-            _c("form", { attrs: { action: "/good/delete", method: "post" } }, [
-              _c("input", {
-                attrs: { type: "hidden", name: "google_user_id" },
-                domProps: { value: _vm.userInfo.id }
-              }),
-              _vm._v(" "),
-              _c("input", {
-                attrs: { type: "hidden", name: "user_review_id" },
-                domProps: { value: _vm.review.reviewId }
-              }),
-              _vm._v(" "),
-              _c("input", { attrs: { type: "submit", value: "取り消し" } })
-            ])
+            _c("input", {
+              attrs: { type: "submit", value: "取り消し" },
+              on: { click: _vm.deleteGood }
+            })
           ])
         ])
       : _vm._e()

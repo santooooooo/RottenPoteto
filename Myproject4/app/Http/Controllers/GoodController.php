@@ -9,7 +9,7 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 
 final class GoodController extends Controller
 {
-    public function pushGood(GoodForm $request): bool
+    public function pushGood(GoodForm $request): string
     {
 	    $userId = $request->input('google_user_id');
 	    $reviewId = $request->input('user_review_id');
@@ -18,12 +18,12 @@ final class GoodController extends Controller
 
 	    if($success)
 	    {
-		    return true;
+		    return json_encode(['bool' =>true]);
 	    }
-		  return false;
+		  return json_encode(['bool' => false]);
     }
 
-    public function deleteGood(GoodForm $request): bool
+    public function deleteGood(GoodForm $request): string
     {
 	    $userId = $request->input('google_user_id');
 	    $reviewId = $request->input('user_review_id');
@@ -32,8 +32,8 @@ final class GoodController extends Controller
 
 	    if($success)
 	    {
-		   return true;
+		   return json_encode(['bool' => true]);
 	    }
-		  return false;
+		  return json_encode(['bool' => false]);
     }
 }

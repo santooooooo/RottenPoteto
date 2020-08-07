@@ -24,18 +24,10 @@
 		</div>
 		<div  v-if="isUser" class="good-form">
 			<div class="input-good">
-				<form action="/good/push" method="post">
-					<input type="hidden" name="google_user_id" :value="userInfo.id">
-					<input type="hidden" name="user_review_id" :value="review.reviewId">
-					<input type="submit" value="ポテトを送る">
-				</form>
+				<input type="submit" value="ポテトを送る" @click="pushGood">
 			</div>
 			<div class="delete-good">
-				<form action="/good/delete" method="post">
-					<input type="hidden" name="google_user_id" :value="userInfo.id">
-					<input type="hidden" name="user_review_id" :value="review.reviewId">
-					<input type="submit" value="取り消し">
-				</form>
+				<input type="submit" value="取り消し" @click="deleteGood">
 			</div>
 		</div>
 	</div>
@@ -199,7 +191,39 @@ export default {
 		deleteReview: function()
 		{
 			return this.show = false;
-		}
+		},
+		pushGood: function()
+		{
+			const data = {
+				google_user_id: this.userInfo.id ,
+				user_review_id: this.review.reviewId
+			};
+			const addGood = () =>{ return this.review.goodPoint += 1};
+			axios.post('/api/good/push', data).then(function(response){
+				if(response.data.bool)
+				{
+					alert('ポテトの送信が完了しました。');
+					return addGood();
+				}
+				return alert('ポテトは一つのレビューにつき一個まで！');
+			});
+		},
+		deleteGood: function()
+		{
+			const data = {
+				google_user_id: this.userInfo.id ,
+				user_review_id: this.review.reviewId
+			};
+			const subGood = () =>{ return this.review.goodPoint -= 1};
+			axios.post('/api/good/delete', data).then(function(response){
+				if(response.data.bool)
+				{
+					alert('ポテトを取り消しました。');
+					return subGood();
+				}
+				return alert('あなたはこのレビューにポテトを送っていないので、取り消しはできませんよ');
+			});
+		},
 	},
 }
 </script>

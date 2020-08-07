@@ -18,7 +18,7 @@ class HttpTestThree extends TestCase
 	use WithoutMiddleware;
     /**
      * post(/good/push) request test.
-     * test
+     * @test
      * @return void
      */
     public function pushGoodTest()
@@ -30,12 +30,14 @@ class HttpTestThree extends TestCase
 	    $userEloquent = DB::table('google_users')->where('id', 2)->first();
 	    $reviewEloquent = DB::table('user_reviews')->where('id', 4)->first();
 
-	    $response = $this->post('/good/push', [
+	    $response = $this->post('/api/good/push', [
 		    'google_user_id' => $userEloquent->id,
 		    'user_review_id' => $reviewEloquent->id,
 	    ]);
 
-      $response->assertOK();
+	    $returnJson = ['bool' => true];
+
+	    $response->assertJson($returnJson);
 
 	    $this->assertDatabaseHas('good_points', [
 		    'id' => 1,
@@ -51,7 +53,7 @@ class HttpTestThree extends TestCase
 
 	/**
 	 * post(/good/delete) request test
-	 * @test
+	 * test
 	 * @return void
 	 */
 	public function deleteGoodTest()
@@ -65,12 +67,15 @@ class HttpTestThree extends TestCase
 
     $reviewEloquent = DB::table('user_reviews')->where('id', $goodEloquent->user_review_id)->first();
 
-    $response = $this->post('/good/delete', [
+    $response = $this->post('/api/good/delete', [
 	    'google_user_id' => $goodEloquent->google_user_id,
 	    'user_review_id' => $goodEloquent->user_review_id,
     ]);
 
-    $response->assertOK();
+    $returnJson = ['bool' => true];
+
+    $response->assertJson($returnJson);
+
 
     $this->assertDatabaseMissing('good_points', [
 	    'id' => 1,
