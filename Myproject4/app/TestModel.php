@@ -2,14 +2,13 @@
 
 namespace App;
 
-class MyDestructableClass 
+class TestModel
 {
-	public function test()
-	{
-		return "hello!";
-	}
+	private $level = "saiyajin2";
 }
 
-$obj = new MyDestructableClass();
-return $obj->test();
-exit();
+$dbz                = new TestModel();
+$ReflectionProperty = new \ReflectionProperty(TestModel::class, "level");
+$ReflectionProperty->setAccessible(true);
+$level              = $ReflectionProperty->getValue($dbz);
+print_r($level);

@@ -30,14 +30,14 @@ class HttpTestThree extends TestCase
 	    $userEloquent = DB::table('google_users')->where('id', 2)->first();
 	    $reviewEloquent = DB::table('user_reviews')->where('id', 4)->first();
 
-	    $response = $this->post('/good/push', [
+	    $response = $this->post('/api/good/push', [
 		    'google_user_id' => $userEloquent->id,
 		    'user_review_id' => $reviewEloquent->id,
 	    ]);
 
-		  $messageVal = json_encode('レビューへポテトを送りました。');
+	    $returnJson = ['bool' => true];
 
-      $response->assertSessionHas('message', $messageVal);
+	    $response->assertJson($returnJson);
 
 	    $this->assertDatabaseHas('good_points', [
 		    'id' => 1,
@@ -67,14 +67,15 @@ class HttpTestThree extends TestCase
 
     $reviewEloquent = DB::table('user_reviews')->where('id', $goodEloquent->user_review_id)->first();
 
-    $response = $this->post('/good/delete', [
+    $response = $this->post('/api/good/delete', [
 	    'google_user_id' => $goodEloquent->google_user_id,
 	    'user_review_id' => $goodEloquent->user_review_id,
     ]);
 
-    $messageVal = json_encode('レビューへのポテトを取り消しました。');
+    $returnJson = ['bool' => true];
 
-    $response->assertSessionHas('message', $messageVal);
+    $response->assertJson($returnJson);
+
 
     $this->assertDatabaseMissing('good_points', [
 	    'id' => 1,

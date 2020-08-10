@@ -2654,7 +2654,7 @@
                 "dev-master": "0.12-dev"
             }
         },
-        "installation-source": "dist",
+        "installation-source": "source",
         "autoload": {
             "files": [
                 "bootstrap.php"

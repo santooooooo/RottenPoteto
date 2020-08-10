@@ -22,6 +22,14 @@
 			<p v-if="reviewInfo">{{review.review}}</p>
 			<p v-if="reviewInfo" @click="deleteReview">レビューを閉じる</p>
 		</div>
+		<div  v-if="isUser" class="good-form">
+			<div class="input-good">
+				<input type="submit" value="ポテトを送る" @click="pushGood">
+			</div>
+			<div class="delete-good">
+				<input type="submit" value="取り消し" @click="deleteGood">
+			</div>
+		</div>
 	</div>
 </template>
 
@@ -84,6 +92,52 @@
 	font-weight: bold;
 }
 
+.good-form {
+	width: 20%;
+	margin: 0 0 10px 60%;
+	display: flex;
+	justify-content: left;
+}
+
+.input-good input {
+	color: yellow;
+	background-color: black;
+	border: solid yellow 3px;
+	border-radius: 10px;
+}
+.input-good input:hover {
+	color: black;
+	background-color: yellow;
+}
+
+.delete-good input {
+	color: red;
+	background-color: black;
+	border: solid red 3px;
+	border-radius: 10px;
+	margin: 0 0 0 10px;
+}
+.delete-good input:hover {
+	color: black;
+	background-color: red;
+}
+@media screen and (max-width:480px) {
+	.reviewButton {
+		width: 40%;
+	}
+
+	.input-review {
+			width: 90%;
+			margin: 0 auto;
+	}
+	.input-button {
+		display: unset;
+	}
+
+	.good-form {
+		margin: 0 0 10px 40%;
+	}
+}
 </style>
 
 <script>
@@ -92,7 +146,11 @@ export default {
 		review: {
 			type: Object,
 			required: false
-		}
+		},
+		userInfo: {
+		    type: Object,
+		    required: false,
+	  },
 	},
 	data: function() {
 		return {
@@ -115,7 +173,15 @@ export default {
 				return true;
 			}
 			return false;
-		}
+		},
+    isUser: function() 
+		{
+	    if(this.userInfo.length != 0)
+	    {
+		    return true;
+	    }
+	    return false;
+    },
 	},
 	methods: {
 		showReview: function()
@@ -125,7 +191,39 @@ export default {
 		deleteReview: function()
 		{
 			return this.show = false;
-		}
+		},
+		pushGood: function()
+		{
+			const data = {
+				google_user_id: this.userInfo.id ,
+				user_review_id: this.review.reviewId
+			};
+			const addGood = () =>{ return this.review.goodPoint += 1};
+			axios.post('/api/good/push', data).then(function(response){
+				if(response.data.bool)
+				{
+					alert('ポテトの送信が完了しました。');
+					return addGood();
+				}
+				return alert('ポテトは一つのレビューにつき一個まで！');
+			});
+		},
+		deleteGood: function()
+		{
+			const data = {
+				google_user_id: this.userInfo.id ,
+				user_review_id: this.review.reviewId
+			};
+			const subGood = () =>{ return this.review.goodPoint -= 1};
+			axios.post('/api/good/delete', data).then(function(response){
+				if(response.data.bool)
+				{
+					alert('ポテトを取り消しました。');
+					return subGood();
+				}
+				return alert('あなたはこのレビューにポテトを送っていないので、取り消しはできませんよ');
+			});
+		},
 	},
 }
 </script>
