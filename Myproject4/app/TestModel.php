@@ -2,24 +2,14 @@
 
 namespace App;
 
-class TestModel
+class MyDestructableClass 
 {
-    static $test;
-
-    public function setTest(): void
-    {
-	    self::$test = 'testdayo';
-    }
-
-    public function getTest()
-    {
-	    return self::$test;
-    }
+	public function test()
+	{
+		return "hello!";
+	}
 }
 
-$sample = new TestModel();
-echo $sample->getTest()."\n";
-
-$sample->setTest();
-echo $sample->getTest()."\n";
-echo $sample->getTest()."\n";
+$obj = new MyDestructableClass();
+return $obj->test();
+exit();

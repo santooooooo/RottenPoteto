@@ -17,7 +17,6 @@
 <input type="password" name="password">
 <input type="submit" value="認証">
 </form>
-
 </div>
 
 </body>
