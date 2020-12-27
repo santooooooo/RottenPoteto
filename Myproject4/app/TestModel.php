@@ -4,11 +4,17 @@ namespace App;
 
 class TestModel
 {
-	private $level = "saiyajin2";
+	public function testfunc():void 
+	{
+		$test = null;
+			if($test == false) {
+				echo 'Success! Foo!';
+				return;
+			}
+			echo 'False';
+			return;
+	}
 }
 
-$dbz                = new TestModel();
-$ReflectionProperty = new \ReflectionProperty(TestModel::class, "level");
-$ReflectionProperty->setAccessible(true);
-$level              = $ReflectionProperty->getValue($dbz);
-print_r($level);
+$testob = TestModel::class;
+var_dump($testob);
