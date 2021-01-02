@@ -47,12 +47,6 @@ Route::post('/review/input', 'ReviewController@inputReview');
 //deleting user's review
 Route::post('/review/delete', 'ReviewController@deleteReview');
 
-//pushing good on user's reviews
-//Route::post('/good/push', 'GoodController@pushGood');
-
-//deleting good on user's reviews
-//Route::post('/good/delete', 'GoodController@deleteGood');
-
 //outputting contribute's info and reviews
 Route::get('/review-page/', 'ReviewPageController@outputInfo');
 
