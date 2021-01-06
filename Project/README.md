@@ -48,7 +48,7 @@
 
 *Model*
 `App/Model/Contribute/Input::writeDB()`  
-リクエストの内容をDB(‘contributes’)へ登録＋画像ファイルの保存
+リクエストの内容を映画のレビュー情報を扱うDBのテーブルへ登録＋画像ファイルの保存
 
 ### ユーザー側の機能
 
@@ -90,7 +90,7 @@ Modelを実行し、`/home`へGETリクエストを送りトップ画面へ戻�
 
 *Model*
 `App/Model/User/SignOut::signOut`  
-DB(‘google_users’)からリクエスト内容を含むレコードを削除
+ユーザーの情報を扱うDBのテーブルからリクエスト内容を含むレコードを削除
 
 **ログアウト(GET /logout)**
 
@@ -104,35 +104,83 @@ DB(‘google_users’)からリクエスト内容を含むレコードを削除
 *Model*
 なし
 
-**自分のアカウント情報の編集**
-*View*
-*Controller*
-*Model*
+**自分のアカウント情報の編集(POST /update)**
 
-**記事一覧の表示**
 *View*
-*Controller*
-*Model*
+`/resources/views/top.blade.php`
 
-**記事ごとの情報とそれに対するレビューの一覧表示**
-*View*
 *Controller*
-*Model*
+`App/Http/Controller/UsersController::updateUserProfile`  
+リクエストの内容をModelへ送り、`/home`へGETリクエストを送る。
 
-**レビューの投稿者の情報の表示**
-*View*
-*Controller*
 *Model*
+`App/Model/User/UpdateProfile::update`  
+リクエストが正規ユーザーからであれば、ユーザーのデータを扱うDBのテーブルにリクエスト情報を更新させる。また、アイコンの写真を既定のフォルダへ保存する。
 
-**記事ごとのレビューの作成**
-*View*
-*Controller*
-*Model*
+**記事一覧の表示(GET /top)**
 
-**記事ごとのレビューの削除**
 *View*
+`/resources/views/top.blade.php`
+
 *Controller*
+`App/Http/ Controller/Contribute::response`  
+Modelを実行し、その結果をViewへ返す。
+
 *Model*
+`App/Model/Contribute/Output::jsonData`  
+映画のレビュー情報を扱うDBのテーブルの情報をjson形式で返す。
+
+**記事ごとの情報とそれに対するレビューの一覧表示(GET ‘/review-page?contribute_id=入力値)**
+
+*View*
+`/resources/views/top.blade.php`
+
+*Controller*
+`App/Http/Controller/ReviewPageController::outputInfo`  
+リクエストの内容をModelへ送り、結果をViewへ返す。
+
+*Model*
+`App/Model/User/ReviewPageInfo::outputInfo`  
+入力値を含む映画のレビュー情報を扱うDBのテーブルのレコードとそれに対するユーザーのレビュー全てをjson形式で返す。
+
+**レビューの投稿者の情報の表示(POST /review-page/user?google_user_id=入力値)**
+
+*View*
+`/resources/views/top.blade.php`
+
+*Controller*
+`App/Http/Controller/ReviewPageController::outputUserInfo`  
+リクエストの内容をModelへ送り、結果をViewへ返す。
+
+*Model*
+`App/Model/User/UserInfo::output`
+入力値を含むユーザーの情報を扱うDBのテーブルのレコードをjson形式で返す。
+
+**記事ごとのレビューの作成(POST /review/input)**
+
+*View*
+`/resources/views/top.blade.php`
+
+*Controller*
+`App/Http/Controller/ReviewController::inputReview`  
+リクエストの内容をModelへ送り、Modelの処理が成功した場合、成功または失敗をViewへ伝えるデータをセッションと共に`/home`へGETリクエストを送る。
+
+*Model*
+`App/Model/User/InputReview::input`  
+一つの紹介記事に対するレビューがない場合、リクエストの情報をレビューの情報を扱うDBのテーブルへ新たに追加してtrueを返し、そうではない場合はfalseを返す。
+
+**記事ごとのレビューの削除(POST /review/delete)**
+
+*View*
+`/resources/views/top.blade.php`
+
+*Controller*
+`App/Http/Controller/ReviewController::deleteReview`  
+リクエストの内容をModelへ送り、Modelの処理が成功した場合、成功または失敗をViewへ伝えるデータをセッションと共に`/home`へGETリクエストを送る。
+
+*Model*
+`App/Model/User/DeleteReview::delete`  
+一つの紹介記事に対するレビューがある場合、リクエストの情報を含むレビューの情報を扱うDBのテーブルのレコードを削除してtrueを返し、そうではない場合はfalseを返す。
 
 **良いレビューに「いいね」を付ける**
 *View*
