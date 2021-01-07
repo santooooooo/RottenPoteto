@@ -47,8 +47,24 @@
 リクエスト内容をModelへ送り、Modelの結果のメッセージと共に`/adminer`へGETリクエストを送る。
 
 *Model*
-`App/Model/Contribute/Input::writeDB()`  
-リクエストの内容を映画のレビュー情報を扱うDBのテーブルへ登録＋画像ファイルの保存
+`App/Model/Contribute/Input::writeDB`  
+リクエストの内容を映画の紹介記事を扱うDBのテーブルへ追加し、画像ファイルを既定のフォルダへ保存する。
+
+**映画の紹介記事の作成(POST /contribute/delete)**
+
+*View*
+`/resources/views/contribute.blade.php`  
+
+*Controller*
+`App/Http/Controller/Contribute::delete`  
+リクエスト内容をModelへ送り、Modelの結果のメッセージと共に`/adminer`へGETリクエストを送る。
+
+*Model*
+`App/Model/Contribute/Delete::delete`  
+リクエストの内容を含むレコードが映画の紹介記事を扱うDBのテーブルに存在する場合、そのレコードと、ユーザーのレビュー情報を扱うDBのテーブルとユーザーごとの「いいね」
+の状態を扱うDBのテーブルからそのレコードに関係しているレコードを削除する。なぜ他のテーブルのレコードまで削除するのかというと、レビュー情報を扱うDBのテーブルのレコ
+ードは映画の紹介記事を扱うテーブルレコードのIDを外部キーに持ち、ユーザーごとの「いいね」の状態を扱うDBのテーブルのレコードはユーザーのレビュー情報を扱うDBのテーブ
+ルのレコードのIDを外部キーに持つから。
 
 ### ユーザー側の機能
 
@@ -77,7 +93,8 @@ Modelを実行し、その結果をセッションで保存させ、Viewへ送�
 *Model*
 `App/Model/User/GoogleOAuth::googleUser` `App/Model/User/Judge::judge` `App/Model/User/SignUp::siginUp` `App/Model/User/SignIn::siginIn`  
 `googleUser`でAPIから送られてきたデータを取り出し、`judge`でそのデータを持つユーザーが新規のユーザーか既存のユーザーか確かめる。  
-もし新規のユーザーであれば`signUp`で新規登録とそのユーザーのデータを返し、既存のユーザーであれば`siginIn`でそのユーザーのデータを返す。
+もし新規のユーザーであれば同クラス内の`signUp`メソッドでユーザーの情報を扱うDBのテーブルに新規ユーザーの情報を追加した後そのユーザーのデータを返し、
+既存のユーザーであれば同クラス内の`siginIn`メソッドでそのユーザーのデータを返す。
 
 **アカウントの削除(POST /signout)**
 
@@ -90,6 +107,7 @@ Modelを実行し、`/home`へGETリクエストを送りトップ画面へ戻�
 
 *Model*
 `App/Model/User/SignOut::signOut`  
+ユーザーごとの「いいね」の状態を扱うDBのテーブルのレコードとレビューを扱うDBのテーブル内のレコードから削除対象のユーザーの情報を削除した後、
 ユーザーの情報を扱うDBのテーブルからリクエスト内容を含むレコードを削除
 
 **ログアウト(GET /logout)**
@@ -180,19 +198,49 @@ Modelを実行し、その結果をViewへ返す。
 
 *Model*
 `App/Model/User/DeleteReview::delete`  
-一つの紹介記事に対するレビューがある場合、リクエストの情報を含むレビューの情報を扱うDBのテーブルのレコードを削除してtrueを返し、そうではない場合はfalseを返す。
+一つの紹介記事に対するレビューがある場合、ユーザーごとの「いいね」の状態を扱うDBのテーブルのレコードから削除対象のレビューに対して「いいね」を付けたレコードをすべ
+て削除したあと、リクエストの情報を含むレビューの情報を扱うDBのテーブルのレコードを削除してtrueを返し、そうではない場合はfalseを返す。
 
-**良いレビューに「いいね」を付ける**
-*View*
-*Controller*
-*Model*
+**良いレビューに「いいね」を付ける(POST /good/push)**
 
-**レビューにつけた「いいね」を取り消す**
 *View*
-*Controller*
-*Model*
+`/resources/views/top.blade.php`
 
-**ユーザーが自身のアカウント内容を変更する際に、それまでの内容を表示する**
-*View*
 *Controller*
+`App/Http/Controller/GoodController::pushGood`  
+リクエストの内容をModelへ送り、Modelの処理が成功した場合、成功または失敗をViewへ伝えるデータをセッションと共に`/home`へGETリクエストを送る。
+
 *Model*
+`App/Model/User/PushGood::push` 
+リクエストが正規ユーザーからであるかつ「いいね」を付けるレビューが存在する場合、ユーザーごとの「いいね」の状態を扱うDBのテーブルにリクエストの内容を追加し、
+レビューをの情報を扱うDBのテーブルのレコードのうち、「いいね」を付ける対象のレコードの「いいね数」の項目に記されたデータに1を加算し、trueを返す。
+もしリクエストが正規のユーザーからではない、または「いいね」を付ける対象のレコードが存在しない場合は何もせずfalseを返す。
+
+**レビューにつけた「いいね」を取り消す(POST /good/delete)**
+
+*View*
+`/resources/views/top.blade.php`
+
+*Controller*
+`App/Http/Controller/GoodController::deleteGood`  
+リクエストの内容をModelへ送り、Modelの処理が成功した場合、成功または失敗をViewへ伝えるデータをセッションと共に`/home`へGETリクエストを送る。
+
+*Model*
+`App/Model/User/deleteGood::delete`  
+リクエストが正規ユーザーからであるかつ「いいね」を取り消す対象のレビューが存在する場合、ユーザーごとの「いいね」の状態を扱うDBのテーブルにリクエストの内容を追加し
+、レビューをの情報を扱うDBのテーブルのレコードのうち、「いいね」を取り消す対象のレコードの「いいね数」の項目に記されたデータに1を減算し、trueを返す。
+もしリクエストが正規のユーザーからではない、または「いいね」を削除する対象のレコードが存在しない場合は何もせずfalseを返す。
+
+**ユーザーの情報を表示する(GET /review-page/user?google_user_id)**
+
+*View*
+`/resources/views/top.blade.php`  
+
+*Controller*
+`App/Http/Controller/ReviewPageController::outputUserInfo`  
+リクエストの内容をModelへ送り、Modelの処理の結果を返す。
+
+*Model*
+`App/Model/User/UserInfo::output`  
+ユーザーの情報を扱うDBのテーブルからリクエストの値を含むレコードのデータをjson形式で返す。
+
