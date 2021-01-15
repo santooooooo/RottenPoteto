@@ -6,8 +6,8 @@
 		<router-link v-if="isUser" :to="{ path: '/user-profile/' + userInfo.gmail }">プロフィールの変更
 		</router-link>
 
-		<p v-if="signOutButton" @click="signOutForm">退会</p>
-		<form v-if="doSignOut" action="/cancel" method="post">
+		<p v-if="CancelButton" @click="CancelForm">退会</p>
+		<form v-if="doCancel" action="/cancel" method="post">
 			<input type="hidden" name="gmail" :value="userInfo.gmail">
 			<input type="submit" value="退会を実行">
 		</form>
@@ -89,7 +89,7 @@ input:hover {
 	    },
 	    data: function() {
 		    return {
-			    signOut: false,
+			    cancel: false,
 		    }
 	    },
 	    computed: 
@@ -101,15 +101,15 @@ input:hover {
 			    }
 			    return false
 		    },
-		    doSignOut: function() {
-			    if(this.signOut)
+		    doCancel: function() {
+			    if(this.cancel)
 			    {
 				    return true
 			    }
 			    return false
 		    },
-		    signOutButton: function() {
-			    if(this.userInfo.length != 0 && !this.signOut)
+		    CancelButton: function() {
+			    if(this.userInfo.length != 0 && !this.cancel)
 			    {
 				    return true
 			    }
@@ -117,11 +117,11 @@ input:hover {
 		    }
 	    },
 	    methods: {
-		    signOutForm: function() {
+		    CancelForm: function() {
 			    const check = window.confirm("本当に退会しますか？")
 			    if(check)
 			    {
-				    return this.signOut = true
+				    return this.cancel = true
 			    }
 			    return ;
 		    }

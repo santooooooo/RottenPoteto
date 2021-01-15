@@ -2631,7 +2631,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      signOut: false
+      cancel: false
     };
   },
   computed: {
@@ -2642,15 +2642,15 @@ __webpack_require__.r(__webpack_exports__);
 
       return false;
     },
-    doSignOut: function doSignOut() {
-      if (this.signOut) {
+    doCancel: function doCancel() {
+      if (this.cancel) {
         return true;
       }
 
       return false;
     },
-    signOutButton: function signOutButton() {
-      if (this.userInfo.length != 0 && !this.signOut) {
+    CancelButton: function CancelButton() {
+      if (this.userInfo.length != 0 && !this.cancel) {
         return true;
       }
 
@@ -2658,11 +2658,11 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   methods: {
-    signOutForm: function signOutForm() {
+    CancelForm: function CancelForm() {
       var check = window.confirm("本当に退会しますか？");
 
       if (check) {
-        return this.signOut = true;
+        return this.cancel = true;
       }
 
       return;
@@ -40192,11 +40192,11 @@ var render = function() {
           )
         : _vm._e(),
       _vm._v(" "),
-      _vm.signOutButton
-        ? _c("p", { on: { click: _vm.signOutForm } }, [_vm._v("退会")])
+      _vm.CancelButton
+        ? _c("p", { on: { click: _vm.CancelForm } }, [_vm._v("退会")])
         : _vm._e(),
       _vm._v(" "),
-      _vm.doSignOut
+      _vm.doCancel
         ? _c("form", { attrs: { action: "/cancel", method: "post" } }, [
             _c("input", {
               attrs: { type: "hidden", name: "gmail" },
