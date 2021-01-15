@@ -96,17 +96,17 @@ Modelを実行し、その結果をセッションで保存させ、Viewへ送�
 もし新規のユーザーであれば同クラス内の`signUp`メソッドでユーザーの情報を扱うDBのテーブルに新規ユーザーの情報を追加した後そのユーザーのデータを返し、
 既存のユーザーであれば同クラス内の`siginIn`メソッドでそのユーザーのデータを返す。
 
-**アカウントの削除(POST /signout)**
+**アカウントの削除(POST /cancel)**
 
 *View*
 `/resources/views/top.blade.php`
 
 *Controller*
-`App/Http/Controller/UsersController::userSignOut`  
+`App/Http/Controller/UsersController::userCancel`  
 Modelを実行し、`/home`へGETリクエストを送りトップ画面へ戻る。
 
 *Model*
-`App/Model/User/SignOut::signOut`  
+`App/Model/User/Cancel::cancel`  
 ユーザーごとの「いいね」の状態を扱うDBのテーブルのレコードとレビューを扱うDBのテーブル内のレコードから削除対象のユーザーの情報を削除した後、
 ユーザーの情報を扱うDBのテーブルからリクエスト内容を含むレコードを削除
 

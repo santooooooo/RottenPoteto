@@ -3,11 +3,10 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\UsersSignOut;
-use App\Http\Requests\UserSignOutForm;
+use App\Http\Requests\UserCancelForm;
 use App\Http\Requests\OutputProfileForm;
 use App\Http\Requests\UserProfile;
-use App\Model\User\SignOut;
+use App\Model\User\Cancel;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use App\Model\User\UpdateProfile;
 use App\Model\User\Profile;
@@ -18,10 +17,10 @@ final class UsersController extends Controller
 	 * @var string $gail
 	 * @return RedirectResponse
 	 */
-    public function userSignOut(UserSignOutForm $request)
+    public function userCancel(UserCancelForm $request)
     {
 	    $gmail = $request->input('gmail');
-	    SignOut::signOut($gmail);
+	    Cancel::Cancel($gmail);
 
 	    session(['user' => null]);
 

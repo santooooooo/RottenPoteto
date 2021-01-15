@@ -7,7 +7,7 @@
 		</router-link>
 
 		<p v-if="signOutButton" @click="signOutForm">退会</p>
-		<form v-if="doSignOut" action="/signout" method="post">
+		<form v-if="doSignOut" action="/cancel" method="post">
 			<input type="hidden" name="gmail" :value="userInfo.gmail">
 			<input type="submit" value="退会を実行">
 		</form>

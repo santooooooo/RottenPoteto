@@ -30,7 +30,7 @@ Route::get('/top', 'Contribute@response');
 Route::get('/login/oauth', 'OAuth@handle');
 
 //deleting user's account
-Route::post('/signout', 'UsersController@userSignOut');
+Route::post('/cancel', 'UsersController@userCancel');
 
 //log out func for users
 Route::get('/logout', 'UsersController@userLogOut');

@@ -6,9 +6,9 @@ namespace App\Model\User;
 use Illuminate\Support\Facades\DB;
 use App\Eloquent\GoogleUser;
 
-final class SignOut
+final class Cancel
 {
-    static function signOut(string $gmail): void
+    static function Cancel(string $gmail): void
     {
 	    $isUser = DB::table('google_users')->where('gmail', $gmail)->value('id');
 
