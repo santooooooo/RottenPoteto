@@ -9,6 +9,7 @@
 <meta property="og:type" content="website">
 <meta property="og:title" content="ロッテンポテト">
 <meta property="og:description" content="気軽に映画の話でもしませんか?">
+<meta property="og:image" content="https://talk-cinema.net/storage/home/potatoMain">
 <link rel="icon" href="storage/home/potatoIcon">
 <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 </head>
