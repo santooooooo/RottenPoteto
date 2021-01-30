@@ -7,10 +7,6 @@
 		</router-link>
 
 		<p v-if="CancelButton" @click="CancelForm">退会</p>
-		<form v-if="doCancel" action="/cancel" method="post">
-			<input type="hidden" name="gmail" :value="userInfo.gmail">
-			<input type="submit" value="退会を実行">
-		</form>
 
 	</div>
 </template>
@@ -85,6 +81,10 @@ input:hover {
 		    userInfo: {
 			    type: Object,
 			    required: false,
+		    },
+		    csrfToken: {
+			    type: String,
+			    required: false,
 		    }
 	    },
 	    data: function() {
@@ -121,7 +121,23 @@ input:hover {
 			    const check = window.confirm("本当に退会しますか？")
 			    if(check)
 			    {
-				    return this.cancel = true
+				    axios({
+					    method: 'post',
+					    url: '/cancel',
+					    data: {
+						    'gmail': this.userInfo.gmail
+					    },
+					    headers: {
+						    'X-CSRF-TOKEN': this.csrfToken
+					    }
+				    }).then(function(response) {
+					    if(response) {
+						    alert("アカウントを削除しました。")
+						    window.location = '/'
+						    return
+					    }
+					    return
+				    })
 			    }
 			    return ;
 		    }

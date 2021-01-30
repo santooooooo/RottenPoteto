@@ -14,19 +14,17 @@ use App\Model\User\Profile;
 final class UsersController extends Controller
 {
 	/**
-	 * @var string $gail
-	 * @return RedirectResponse
+	 * @var string $gmail
+	 * 
 	 */
-    public function userCancel(UserCancelForm $request)
+    public function userCancel(UserCancelForm $request): string
     {
 	    $gmail = $request->input('gmail');
 	    Cancel::Cancel($gmail);
 
 	    session(['user' => null]);
 
-	    $messageVal = json_encode("アカウントを削除しました。");
-
-	    return redirect('/')->with('message', $messageVal);
+	    return json_encode(True);
     }
 
     /**

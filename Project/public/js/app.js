@@ -2618,14 +2618,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     userInfo: {
       type: Object,
+      required: false
+    },
+    csrfToken: {
+      type: String,
       required: false
     }
   },
@@ -2662,7 +2662,24 @@ __webpack_require__.r(__webpack_exports__);
       var check = window.confirm("本当に退会しますか？");
 
       if (check) {
-        return this.cancel = true;
+        axios({
+          method: 'post',
+          url: '/cancel',
+          data: {
+            'gmail': this.userInfo.gmail
+          },
+          headers: {
+            'X-CSRF-TOKEN': this.csrfToken
+          }
+        }).then(function (response) {
+          if (response) {
+            alert("アカウントを削除しました。");
+            window.location = '/';
+            return;
+          }
+
+          return;
+        });
       }
 
       return;
@@ -40194,17 +40211,6 @@ var render = function() {
       _vm._v(" "),
       _vm.CancelButton
         ? _c("p", { on: { click: _vm.CancelForm } }, [_vm._v("退会")])
-        : _vm._e(),
-      _vm._v(" "),
-      _vm.doCancel
-        ? _c("form", { attrs: { action: "/cancel", method: "post" } }, [
-            _c("input", {
-              attrs: { type: "hidden", name: "gmail" },
-              domProps: { value: _vm.userInfo.gmail }
-            }),
-            _vm._v(" "),
-            _c("input", { attrs: { type: "submit", value: "退会を実行" } })
-          ])
         : _vm._e()
     ],
     1
@@ -55735,7 +55741,8 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
   el: '#app',
   data: {
     user: [],
-    message: null
+    message: null,
+    csrf_token: null
   },
   router: router,
   components: {

@@ -22,12 +22,14 @@
 <div :value="message = {{session('message')}}"></div>
 @endif
 
+<div :value="csrf_token = {{json_encode(csrf_token())}}"></div>
+
 <div class="header">
 <router-link to="/">
 <img src="storage/home/potatoTop">
 </router-link>
 <div>
-<login :user-info='user'></login>
+<login :user-info='user' :csrf-token='csrf_token'></login>
 </div>
 </div>
 
@@ -35,7 +37,7 @@
 <router-link to="/">Top</router-link>
 <router-link to="/contribute">映画一覧</router-link>
 </nav>
-<router-view :user-info='user'></router-view>
+<router-view :user-info='user' :csrf-token='csrf_token'></router-view>
 </div>
 
 
@@ -102,9 +104,9 @@ nav a:hover {
 
 <script src="{{ asset('/js/app.js') }}"></script>
 <script>
-$('body').on('submit', 'form', function () {
-	$(this).append('@csrf')
-});
+//	$('body').on('submit', 'form', function () {
+//	$(this).append('@csrf')
+//	});
 </script>
 
 

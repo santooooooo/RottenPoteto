@@ -41,6 +41,7 @@ const app = new Vue({
 		data: {
 			user: [],
 			message: null,
+			csrf_token: null,
 		},
     router:router,
 		components: {
