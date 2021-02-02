@@ -7,26 +7,26 @@ use Illuminate\Support\Facades\DB;
 
 final class DeleteReview
 {
-	static function existReview(int $contributeId, int $userId): bool
+	static function existReview(int $contributeId, int $userId): int
 	{
 		$existReview = DB::table('user_reviews')->where([
 			['contribute_id', $contributeId],
 			['google_user_id', $userId]
-		])->exists();
+		])->value('id');
 
-		return $existReview;
+		$reviewId = $existReview !== null ? $existReview: 0;
+		return $reviewId;
 	}
 
   static function delete(int $contributeId, int $userId): bool
   {
-	  $check = self::existReview($contributeId, $userId);
+	  $checkId = self::existReview($contributeId, $userId);
 
-	  if($check)
+	  if($checkId !== 0)
 	  {
-		  DB::table('user_reviews')->where([
-			  ['contribute_id', $contributeId],
-			  ['google_user_id', $userId],
-		  ])->delete();
+		  DB::table('good_points')->where('user_review_id', $checkId)->delete();
+
+		  DB::table('user_reviews')->where('id', $checkId)->delete();
 
 		  return true;
 	  }

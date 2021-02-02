@@ -80,10 +80,10 @@ final class ReviewController extends Controller
     }
 
 		/**
-		 * @return RedirectResponse
+		 * 
 		 * @var bool $deleteSuccess
 		 */
-    public function deleteReview(DeleteReviewForm $request)
+    public function deleteReview(DeleteReviewForm $request): string
     {
 	    $this->contributeId = $request->input('contribute_id');
 	    $this->googleUserId = $request->input('google_user_id');
@@ -92,15 +92,11 @@ final class ReviewController extends Controller
 
 	    if(!$deleteSuccess)
 	    {
-	      $messageVal = json_encode('その映画に対するレビューは既に削除されています。');
-
-		    return redirect('/')->with('message', $messageVal);
+		    return json_encode(false);
 	    }
 
 	    GradeCinema::grade($this->contributeId);
 
-	    $messageVal = json_encode('レビューの削除に成功しました。');
-
-	    return redirect('/')->with('message', $messageVal);
+	    return json_encode(true);
     }
 }

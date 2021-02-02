@@ -7,9 +7,11 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\DB;
 use App\Eloquent\UserReview;
 use App\Eloquent\GoogleUser;
+use App\Eloquent\GoodPoint;
 use App\Eloquent\Contribute;
 use App\Model\User\InputReview;
 use App\Model\User\DeleteReview;
+use App\Model\User\PushGood;
 
 class ModelTwo extends TestCase
 {
@@ -41,7 +43,7 @@ class ModelTwo extends TestCase
 
 	/**
 	 * Model/User/InputReview test
-	 * @test
+	 * test
 	 * @return void
 	 */
 	public function inputReviewTest()
@@ -81,14 +83,15 @@ class ModelTwo extends TestCase
 
 	/**
 	 * Model/User/DeleteReview
-	 * test
+	 * @test
 	 * @return void
 	 */
 	public function deleteReviewTest()
 	{
 	    factory(Contribute::class, 10)->create();
 	    factory(GoogleUser::class, 10)->create();
-	    factory(UserReview::class)->create();
+	    factory(UserReview::class, 10)->create();
+    	factory(GoodPoint::class, 10)->create();
 
 	    $eloquent = DB::table('user_reviews')->where('id', 1)->first();
 
@@ -105,5 +108,9 @@ class ModelTwo extends TestCase
 		    'recommended' => $eloquent->recommended,
 		    'good_point' => $eloquent->good_point,
 	    ]);
+
+	    //if values entered by someone are unvalid
+//	    $unvalid = DeleteReview::delete(20, $eloquent->google_user_id);
+//	    $this->assertFalse($unvalid);
 	}
 }

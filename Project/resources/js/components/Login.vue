@@ -131,7 +131,7 @@ input:hover {
 						    'X-CSRF-TOKEN': this.csrfToken
 					    }
 				    }).then(function(response) {
-					    if(response) {
+					    if(response.data) {
 						    alert("アカウントを削除しました。")
 						    window.location = '/'
 						    return

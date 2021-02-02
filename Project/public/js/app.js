@@ -2152,9 +2152,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -2166,6 +2163,10 @@ __webpack_require__.r(__webpack_exports__);
   props: {
     userInfo: {
       type: Object,
+      required: false
+    },
+    csrfToken: {
+      type: String,
       required: false
     }
   },
@@ -2201,6 +2202,31 @@ __webpack_require__.r(__webpack_exports__);
     },
     closeReview: function closeReview() {
       return this.review = false;
+    },
+    deleteReview: function deleteReview() {
+      var check = window.confirm("本当に自分のレビューを削除しますか？");
+
+      if (check) {
+        axios({
+          method: 'post',
+          url: '/review/delete',
+          data: {
+            'contribute_id': this.detailInfo.contribute.id,
+            'google_user_id': this.userInfo.id
+          },
+          headers: {
+            'X-CSRF-TOKEN': this.csrfToken
+          }
+        }).then(function (response) {
+          if (response.data == true) {
+            alert('レビューの削除に成功しました。');
+            location.reload();
+            return;
+          }
+
+          alert('その映画に対するレビューは既に削除されています。');
+        });
+      }
     }
   }
 });
@@ -2672,7 +2698,7 @@ __webpack_require__.r(__webpack_exports__);
             'X-CSRF-TOKEN': this.csrfToken
           }
         }).then(function (response) {
-          if (response) {
+          if (response.data) {
             alert("アカウントを削除しました。");
             window.location = '/';
             return;
@@ -39740,6 +39766,11 @@ var render = function() {
                 domProps: { value: _vm.userInfo.id }
               }),
               _vm._v(" "),
+              _c("input", {
+                attrs: { type: "hidden", name: "_token" },
+                domProps: { value: _vm.csrfToken }
+              }),
+              _vm._v(" "),
               _vm._m(0),
               _vm._v(" "),
               _c("input", {
@@ -39779,25 +39810,10 @@ var render = function() {
       _vm._v(" "),
       _vm.isUser
         ? _c("div", { staticClass: "delete-review" }, [
-            _c(
-              "form",
-              { attrs: { action: "/review/delete", method: "post" } },
-              [
-                _c("input", {
-                  attrs: { type: "hidden", name: "contribute_id" },
-                  domProps: { value: _vm.detailInfo.contribute.id }
-                }),
-                _vm._v(" "),
-                _c("input", {
-                  attrs: { type: "hidden", name: "google_user_id" },
-                  domProps: { value: _vm.userInfo.id }
-                }),
-                _vm._v(" "),
-                _c("input", {
-                  attrs: { type: "submit", value: "自分のレビューを削除する" }
-                })
-              ]
-            )
+            _c("input", {
+              attrs: { type: "submit", value: "自分のレビューを削除する" },
+              on: { click: _vm.deleteReview }
+            })
           ])
         : _vm._e(),
       _vm._v(" "),

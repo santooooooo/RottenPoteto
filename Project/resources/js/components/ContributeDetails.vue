@@ -32,6 +32,7 @@
 			<form action="/review/input" method="post">
 				<input type="hidden" name="contribute_id" :value="detailInfo.contribute.id">
 				<input type="hidden" name="google_user_id" :value="userInfo.id">
+				<input type="hidden" name="_token" :value="csrfToken">
 				<p>タイトル<span>※必須(255文字以下)</span></p>
 				<input type="text" name="title" size="100" maxlength="255" required class="input">
 				<p>レビュー<span>※必須(3000文字以下)</span></p>
@@ -58,11 +59,7 @@
 		</div>
 
 		<div v-if="isUser" class="delete-review">
-			<form action="/review/delete" method="post">
-				<input type="hidden" name="contribute_id" :value="detailInfo.contribute.id">
-				<input type="hidden" name="google_user_id" :value="userInfo.id">
-				<input type="submit" value="自分のレビューを削除する">
-			</form>
+			<input @click="deleteReview" type="submit" value="自分のレビューを削除する">
 		</div>
 
 		<div class="review-title">
@@ -260,6 +257,10 @@ export default {
 	    userInfo: {
 		    type: Object,
 		    required: false,
+	    },
+	    csrfToken: {
+		    type: String,
+		    required: false,
 	    }
 	},
 	components:
@@ -296,6 +297,33 @@ export default {
 		{
 			return this.review = false;
 		},
+		deleteReview: function()
+		{
+			const check = window.confirm("本当に自分のレビューを削除しますか？")
+			if(check)
+			{
+				axios({
+					method: 'post',
+					url: '/review/delete',
+					data: {
+						'contribute_id': this.detailInfo.contribute.id,
+						'google_user_id': this.userInfo.id
+					},
+					headers: {
+						'X-CSRF-TOKEN': this.csrfToken
+					}
+				}).then(function(response)
+					{
+						if(response.data == true)
+						{
+							alert('レビューの削除に成功しました。')
+							location.reload()
+							return
+						}
+						alert('その映画に対するレビューは既に削除されています。')
+					})
+			}
+		}
 	},
 }
 </script>
