@@ -42,10 +42,9 @@ final class ReviewController extends Controller
 		private $recommended;
 
 		/**
-		 * @return RedirectResponse
 		 * @var bool $inputSuccess
 		 */
-    public function inputReview(InputReviewForm $request)
+    public function inputReview(InputReviewForm $request): string
     {
 	    $this->contributeId = $request->input('contribute_id');
 	    $this->googleUserId = $request->input('google_user_id');
@@ -67,16 +66,12 @@ final class ReviewController extends Controller
 
 	    if(!$inputSuccess)
 	    {
-	      $messageVal = json_encode('その映画に対するレビューは既に存在しています。');
-
-		    return redirect('/')->with('message', $messageVal);
+		    return json_encode(false);
 	    }
 
 	    GradeCinema::grade($this->contributeId);
 
-	    $messageVal = json_encode('レビューの投稿に成功しました。');
-
-	    return redirect('/')->with('message', $messageVal);
+		  return json_encode(true);
     }
 
 		/**

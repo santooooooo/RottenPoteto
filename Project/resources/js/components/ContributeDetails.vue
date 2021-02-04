@@ -29,32 +29,29 @@
 		</div>
 		<div v-if="isUser && reviewStatus" class="input-review">
 			<h2>レビューホーム</h2>
-			<form action="/review/input" method="post">
-				<input type="hidden" name="contribute_id" :value="detailInfo.contribute.id">
-				<input type="hidden" name="google_user_id" :value="userInfo.id">
-				<input type="hidden" name="_token" :value="csrfToken">
+			<form>
 				<p>タイトル<span>※必須(255文字以下)</span></p>
-				<input type="text" name="title" size="100" maxlength="255" required class="input">
+				<input type="text" v-model="title" size="100" maxlength="255" required class="input">
 				<p>レビュー<span>※必須(3000文字以下)</span></p>
-				<textarea name="review" rows="20" cols="105" maxlength="3000" required class="input">
+				<textarea v-model="reviewContents" rows="20" cols="105" maxlength="3000" required class="input">
 				</textarea>
 				<div class="input-button">
 					<div class="input-spoiler">
 						<p>ネタばれ<span>※必須</span></p>
-						<input type="radio" name="spoiler" value="1" required>有り
-						<input type="radio" name="spoiler" value="0" required>無し
+						<input type="radio" v-model="spoiler" value="1" required>有り
+						<input type="radio" v-model="spoiler" value="0" required>無し
 					</div>
 					<div class="input-satisfaction">
 						<p>満足度<span>※必須 ０～５点</span></p>
-						<input type="number" name="satisfaction" min="0" max="5" step="1" required>					
+						<input type="number" v-model="satisfaction" min="0" max="5" step="1" required>					
 					</div>
 					<div class="input-recommended">
 						<p>オススメ度<span>※必須 ０～５点</span></p>
-						<input type="number" name="recommended" min="0" max="5" step="1" required>
+						<input type="number" v-model="recommended" min="0" max="5" step="1" required>
 					</div>
-					<input class="submit" type="submit" value="レビューを送る">
+					<input @click="pushReview" class="submit" type="submit" value="レビューを送る">
 				</div>
-			</form>			
+			</form>
 			<p class="reviewButton" @click="closeReview">レビューをやめる</p>
 		</div>
 
@@ -250,6 +247,11 @@ export default {
 		return {
 			detailInfo: [],
 			review: false,
+			title: '',
+			reviewContents: '',
+			spoiler: null,
+			satisfaction: null,
+			recommended: null
 		}
 	},
 	props:
@@ -296,6 +298,46 @@ export default {
 		closeReview: function()
 		{
 			return this.review = false;
+		},
+		pushReview: function()
+		{
+			if(this.title == "" | this.reviewContents == "" | this.spoiler == null | this.satisfaction < 0 | this.recommended < 0 
+					| this.satisfaction == null | this.recommended == null)
+			{
+				alert("レビューの内容に空白または想定外の値が含まれています。もう一度入力してください。")
+				return
+			}
+			const check = window.confirm("レビューを投稿してもよろしいですか？")
+			if(check)
+			{
+				axios({
+					method: 'post',
+					url: '/review/input',
+					data: {
+						'contribute_id': this.detailInfo.contribute.id,
+						'google_user_id': this.userInfo.id,
+						'title': this.title,
+						'review': this.reviewContents,
+						'spoiler': this.spoiler,
+						'satisfaction': this.satisfaction,
+						'recommended': this.recommended,
+					},
+					headers: {
+						'X-CSRF-TOKEN': this.csrfToken
+					},
+				}).then(function(response)
+					{
+						if(response.data == true)
+						{
+							alert('レビューの削除に成功しました。')
+							location.reload()
+							return
+						}
+						alert('その映画に対するレビューは既に存在しています。')
+					})
+				return
+			}
+			return
 		},
 		deleteReview: function()
 		{

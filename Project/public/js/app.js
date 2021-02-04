@@ -2149,15 +2149,17 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       detailInfo: [],
-      review: false
+      review: false,
+      title: '',
+      reviewContents: '',
+      spoiler: null,
+      satisfaction: null,
+      recommended: null
     };
   },
   props: {
@@ -2202,6 +2204,44 @@ __webpack_require__.r(__webpack_exports__);
     },
     closeReview: function closeReview() {
       return this.review = false;
+    },
+    pushReview: function pushReview() {
+      if (this.title == "" | this.reviewContents == "" | this.spoiler == null | this.satisfaction < 0 | this.recommended < 0 | this.satisfaction == null | this.recommended == null) {
+        alert("レビューの内容に空白または想定外の値が含まれています。もう一度入力してください。");
+        return;
+      }
+
+      var check = window.confirm("レビューを投稿してもよろしいですか？");
+
+      if (check) {
+        axios({
+          method: 'post',
+          url: '/review/input',
+          data: {
+            'contribute_id': this.detailInfo.contribute.id,
+            'google_user_id': this.userInfo.id,
+            'title': this.title,
+            'review': this.reviewContents,
+            'spoiler': this.spoiler,
+            'satisfaction': this.satisfaction,
+            'recommended': this.recommended
+          },
+          headers: {
+            'X-CSRF-TOKEN': this.csrfToken
+          }
+        }).then(function (response) {
+          if (response.data == true) {
+            alert('レビューの削除に成功しました。');
+            location.reload();
+            return;
+          }
+
+          alert('その映画に対するレビューは既に存在しています。');
+        });
+        return;
+      }
+
+      return;
     },
     deleteReview: function deleteReview() {
       var check = window.confirm("本当に自分のレビューを削除しますか？");
@@ -39755,49 +39795,175 @@ var render = function() {
         ? _c("div", { staticClass: "input-review" }, [
             _c("h2", [_vm._v("レビューホーム")]),
             _vm._v(" "),
-            _c("form", { attrs: { action: "/review/input", method: "post" } }, [
-              _c("input", {
-                attrs: { type: "hidden", name: "contribute_id" },
-                domProps: { value: _vm.detailInfo.contribute.id }
-              }),
-              _vm._v(" "),
-              _c("input", {
-                attrs: { type: "hidden", name: "google_user_id" },
-                domProps: { value: _vm.userInfo.id }
-              }),
-              _vm._v(" "),
-              _c("input", {
-                attrs: { type: "hidden", name: "_token" },
-                domProps: { value: _vm.csrfToken }
-              }),
-              _vm._v(" "),
+            _c("form", [
               _vm._m(0),
               _vm._v(" "),
               _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.title,
+                    expression: "title"
+                  }
+                ],
                 staticClass: "input",
                 attrs: {
                   type: "text",
-                  name: "title",
                   size: "100",
                   maxlength: "255",
                   required: ""
+                },
+                domProps: { value: _vm.title },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.title = $event.target.value
+                  }
                 }
               }),
               _vm._v(" "),
               _vm._m(1),
               _vm._v(" "),
               _c("textarea", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.reviewContents,
+                    expression: "reviewContents"
+                  }
+                ],
                 staticClass: "input",
                 attrs: {
-                  name: "review",
                   rows: "20",
                   cols: "105",
                   maxlength: "3000",
                   required: ""
+                },
+                domProps: { value: _vm.reviewContents },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.reviewContents = $event.target.value
+                  }
                 }
               }),
               _vm._v(" "),
-              _vm._m(2)
+              _c("div", { staticClass: "input-button" }, [
+                _c("div", { staticClass: "input-spoiler" }, [
+                  _vm._m(2),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.spoiler,
+                        expression: "spoiler"
+                      }
+                    ],
+                    attrs: { type: "radio", value: "1", required: "" },
+                    domProps: { checked: _vm._q(_vm.spoiler, "1") },
+                    on: {
+                      change: function($event) {
+                        _vm.spoiler = "1"
+                      }
+                    }
+                  }),
+                  _vm._v("有り\n\t\t\t\t\t"),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.spoiler,
+                        expression: "spoiler"
+                      }
+                    ],
+                    attrs: { type: "radio", value: "0", required: "" },
+                    domProps: { checked: _vm._q(_vm.spoiler, "0") },
+                    on: {
+                      change: function($event) {
+                        _vm.spoiler = "0"
+                      }
+                    }
+                  }),
+                  _vm._v("無し\n\t\t\t\t")
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "input-satisfaction" }, [
+                  _vm._m(3),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.satisfaction,
+                        expression: "satisfaction"
+                      }
+                    ],
+                    attrs: {
+                      type: "number",
+                      min: "0",
+                      max: "5",
+                      step: "1",
+                      required: ""
+                    },
+                    domProps: { value: _vm.satisfaction },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.satisfaction = $event.target.value
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "input-recommended" }, [
+                  _vm._m(4),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.recommended,
+                        expression: "recommended"
+                      }
+                    ],
+                    attrs: {
+                      type: "number",
+                      min: "0",
+                      max: "5",
+                      step: "1",
+                      required: ""
+                    },
+                    domProps: { value: _vm.recommended },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.recommended = $event.target.value
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("input", {
+                  staticClass: "submit",
+                  attrs: { type: "submit", value: "レビューを送る" },
+                  on: { click: _vm.pushReview }
+                })
+              ])
             ]),
             _vm._v(" "),
             _c(
@@ -39817,7 +39983,7 @@ var render = function() {
           ])
         : _vm._e(),
       _vm._v(" "),
-      _vm._m(3),
+      _vm._m(5),
       _vm._v(" "),
       _vm._l(_vm.detailInfo.reviews, function(review) {
         return _c(
@@ -39857,54 +40023,21 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "input-button" }, [
-      _c("div", { staticClass: "input-spoiler" }, [
-        _c("p", [_vm._v("ネタばれ"), _c("span", [_vm._v("※必須")])]),
-        _vm._v(" "),
-        _c("input", {
-          attrs: { type: "radio", name: "spoiler", value: "1", required: "" }
-        }),
-        _vm._v("有り\n\t\t\t\t\t"),
-        _c("input", {
-          attrs: { type: "radio", name: "spoiler", value: "0", required: "" }
-        }),
-        _vm._v("無し\n\t\t\t\t")
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "input-satisfaction" }, [
-        _c("p", [_vm._v("満足度"), _c("span", [_vm._v("※必須 ０～５点")])]),
-        _vm._v(" "),
-        _c("input", {
-          attrs: {
-            type: "number",
-            name: "satisfaction",
-            min: "0",
-            max: "5",
-            step: "1",
-            required: ""
-          }
-        })
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "input-recommended" }, [
-        _c("p", [_vm._v("オススメ度"), _c("span", [_vm._v("※必須 ０～５点")])]),
-        _vm._v(" "),
-        _c("input", {
-          attrs: {
-            type: "number",
-            name: "recommended",
-            min: "0",
-            max: "5",
-            step: "1",
-            required: ""
-          }
-        })
-      ]),
-      _vm._v(" "),
-      _c("input", {
-        staticClass: "submit",
-        attrs: { type: "submit", value: "レビューを送る" }
-      })
+    return _c("p", [_vm._v("ネタばれ"), _c("span", [_vm._v("※必須")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("p", [_vm._v("満足度"), _c("span", [_vm._v("※必須 ０～５点")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("p", [
+      _vm._v("オススメ度"),
+      _c("span", [_vm._v("※必須 ０～５点")])
     ])
   },
   function() {
