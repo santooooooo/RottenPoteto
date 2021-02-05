@@ -314,20 +314,20 @@ export default {
 					method: 'post',
 					url: '/review/input',
 					data: {
-						'contribute_id': this.detailInfo.contribute.id,
-						'google_user_id': this.userInfo.id,
-						'title': this.title,
-						'review': this.reviewContents,
-						'spoiler': this.spoiler,
-						'satisfaction': this.satisfaction,
-						'recommended': this.recommended,
+						contribute_id: this.detailInfo.contribute.id,
+						google_user_id: this.userInfo.id,
+						title: this.title,
+						review: this.reviewContents,
+						spoiler: this.spoiler,
+						satisfaction: this.satisfaction,
+						recommended: this.recommended,
 					},
 					headers: {
 						'X-CSRF-TOKEN': this.csrfToken
 					},
 				}).then(function(response)
 					{
-						if(response.data == true)
+						if(response.data)
 						{
 							alert('レビューの削除に成功しました。')
 							location.reload()
@@ -348,15 +348,15 @@ export default {
 					method: 'post',
 					url: '/review/delete',
 					data: {
-						'contribute_id': this.detailInfo.contribute.id,
-						'google_user_id': this.userInfo.id
+						contribute_id: this.detailInfo.contribute.id,
+						google_user_id: this.userInfo.id
 					},
 					headers: {
 						'X-CSRF-TOKEN': this.csrfToken
 					}
 				}).then(function(response)
 					{
-						if(response.data == true)
+						if(response.data)
 						{
 							alert('レビューの削除に成功しました。')
 							location.reload()
