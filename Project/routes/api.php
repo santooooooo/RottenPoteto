@@ -18,8 +18,3 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-//pushing good on user's reviews
-Route::post('/good/push', 'GoodController@pushGood');
-
-//deleting good on user's reviews
-Route::post('/good/delete', 'GoodController@deleteGood');

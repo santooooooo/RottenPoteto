@@ -64,7 +64,7 @@
 		</div>
 
 		<div v-for="review in detailInfo.reviews">
-			<review-info :review="review" :user-info="userInfo"></review-info>
+			<review-info :review="review" :user-info="userInfo" :csrf-token="csrfToken"></review-info>
 		</div>
 
 	</div>

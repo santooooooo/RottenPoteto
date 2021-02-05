@@ -55,7 +55,11 @@ Route::get('/review-page/', 'ReviewPageController@outputInfo');
 //outputting user's info related to get request
 Route::get('/review-page/user/', 'ReviewPageController@outputUserInfo');
 
+//pushing good on user's reviews
+Route::post('/good/push', 'GoodController@pushGood');
 
+//deleting good on user's reviews
+Route::post('/good/delete', 'GoodController@deleteGood');
 
 //Adminer's Zone
 

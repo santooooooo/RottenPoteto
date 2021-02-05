@@ -18,9 +18,9 @@ final class GoodController extends Controller
 
 	    if($success)
 	    {
-		    return json_encode(['bool' =>true]);
+		    return json_encode(true);
 	    }
-		  return json_encode(['bool' => false]);
+		  return json_encode(false);
     }
 
     public function deleteGood(GoodForm $request): string
@@ -32,8 +32,8 @@ final class GoodController extends Controller
 
 	    if($success)
 	    {
-		   return json_encode(['bool' => true]);
+		   return json_encode(true);
 	    }
-		  return json_encode(['bool' => false]);
+		  return json_encode(false);
     }
 }

@@ -151,6 +151,10 @@ export default {
 		    type: Object,
 		    required: false,
 	  },
+    csrfToken: {
+	    type: String,
+	    required: false,
+    }
 	},
 	data: function() {
 		return {
@@ -199,8 +203,18 @@ export default {
 				user_review_id: this.review.reviewId
 			};
 			const addGood = () =>{ return this.review.goodPoint += 1};
-			axios.post('/api/good/push', data).then(function(response){
-				if(response.data.bool)
+			axios({
+				method: 'post',
+				url: '/good/push',
+				data: {
+					google_user_id: this.userInfo.id ,
+					user_review_id: this.review.reviewId
+				},
+				headers: {
+					'X-CSRF-TOKEN': this.csrfToken
+				}
+			}).then(function(response){
+				if(response.data)
 				{
 					alert('ポテトの送信が完了しました。');
 					return addGood();
@@ -210,18 +224,24 @@ export default {
 		},
 		deleteGood: function()
 		{
-			const data = {
-				google_user_id: this.userInfo.id ,
-				user_review_id: this.review.reviewId
-			};
 			const subGood = () =>{ return this.review.goodPoint -= 1};
-			axios.post('/api/good/delete', data).then(function(response){
-				if(response.data.bool)
+			axios({
+				method: 'post',
+				url: '/good/delete',
+				data: {
+					google_user_id: this.userInfo.id ,
+					user_review_id: this.review.reviewId
+				},
+				headers: {
+					'X-CSRF-TOKEN': this.csrfToken
+				}
+			}).then(function(response){
+				if(response.data)
 				{
 					alert('ポテトを取り消しました。');
 					return subGood();
 				}
-				return alert('あなたはこのレビューにポテトを送っていないので、取り消しはできませんよ');
+				return alert('あなたはこのレビューにポテトを送っていないので、取り消しはできません');
 			});
 		},
 	},

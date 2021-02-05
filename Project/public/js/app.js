@@ -2915,6 +2915,10 @@ __webpack_require__.r(__webpack_exports__);
     userInfo: {
       type: Object,
       required: false
+    },
+    csrfToken: {
+      type: String,
+      required: false
     }
   },
   data: function data() {
@@ -2964,8 +2968,18 @@ __webpack_require__.r(__webpack_exports__);
         return _this.review.goodPoint += 1;
       };
 
-      axios.post('/api/good/push', data).then(function (response) {
-        if (response.data.bool) {
+      axios({
+        method: 'post',
+        url: '/good/push',
+        data: {
+          google_user_id: this.userInfo.id,
+          user_review_id: this.review.reviewId
+        },
+        headers: {
+          'X-CSRF-TOKEN': this.csrfToken
+        }
+      }).then(function (response) {
+        if (response.data) {
           alert('ポテトの送信が完了しました。');
           return addGood();
         }
@@ -2976,22 +2990,27 @@ __webpack_require__.r(__webpack_exports__);
     deleteGood: function deleteGood() {
       var _this2 = this;
 
-      var data = {
-        google_user_id: this.userInfo.id,
-        user_review_id: this.review.reviewId
-      };
-
       var subGood = function subGood() {
         return _this2.review.goodPoint -= 1;
       };
 
-      axios.post('/api/good/delete', data).then(function (response) {
-        if (response.data.bool) {
+      axios({
+        method: 'post',
+        url: '/good/delete',
+        data: {
+          google_user_id: this.userInfo.id,
+          user_review_id: this.review.reviewId
+        },
+        headers: {
+          'X-CSRF-TOKEN': this.csrfToken
+        }
+      }).then(function (response) {
+        if (response.data) {
           alert('ポテトを取り消しました。');
           return subGood();
         }
 
-        return alert('あなたはこのレビューにポテトを送っていないので、取り消しはできませんよ');
+        return alert('あなたはこのレビューにポテトを送っていないので、取り消しはできません');
       });
     }
   }
@@ -39990,7 +40009,11 @@ var render = function() {
           "div",
           [
             _c("review-info", {
-              attrs: { review: review, "user-info": _vm.userInfo }
+              attrs: {
+                review: review,
+                "user-info": _vm.userInfo,
+                "csrf-token": _vm.csrfToken
+              }
             })
           ],
           1
