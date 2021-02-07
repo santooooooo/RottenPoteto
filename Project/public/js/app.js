@@ -3191,11 +3191,18 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       userInfo: []
     };
+  },
+  props: {
+    csrfToken: {
+      type: String,
+      required: false
+    }
   },
   computed: {
     userPicture: function userPicture() {
@@ -40566,6 +40573,11 @@ var render = function() {
         }
       },
       [
+        _c("input", {
+          attrs: { type: "hidden", name: "_token" },
+          domProps: { value: _vm.csrfToken }
+        }),
+        _vm._v(" "),
         _c("input", {
           attrs: { type: "hidden", name: "gmail" },
           domProps: { value: _vm.userInfo.gmail }

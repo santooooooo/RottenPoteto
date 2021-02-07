@@ -1,6 +1,7 @@
 <template>
 	<div class="main">
 		<form action="/update" method="post" enctype="multipart/form-data">
+			<input type="hidden" name="_token" :value="csrfToken">
 			<input type="hidden" name="gmail" :value="userInfo.gmail">
 			<P>アカウント名</P>
 			<input type="text" name="name" :value="userInfo.name" maxlength="255" required>
@@ -84,6 +85,12 @@ export default {
 		return {
 			userInfo: [],
 		}
+	},
+	props: {
+    csrfToken: {
+	    type: String,
+	    required: false,
+    }
 	},
 	computed: {
 		userPicture: function()
