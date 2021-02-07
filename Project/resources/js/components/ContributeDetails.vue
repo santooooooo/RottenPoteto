@@ -250,8 +250,8 @@ export default {
 			title: '',
 			reviewContents: '',
 			spoiler: null,
-			satisfaction: null,
-			recommended: null
+			satisfaction: 0,
+			recommended: 0 
 		}
 	},
 	props:
@@ -301,8 +301,8 @@ export default {
 		},
 		pushReview: function()
 		{
-			if(this.title == "" | this.reviewContents == "" | this.spoiler == null | this.satisfaction < 0 | this.recommended < 0 
-					| this.satisfaction == null | this.recommended == null)
+			if(this.title == "" | this.title.length > 255 | this.reviewContents == "" | this.reviewContents.length > 3000 | this.spoiler == null | 
+				this.satisfaction < 0 | this.recommended < 0 | this.satisfaction > 5 | this.recommended > 5)
 			{
 				alert("レビューの内容に空白または想定外の値が含まれています。もう一度入力してください。")
 				return
@@ -329,7 +329,7 @@ export default {
 					{
 						if(response.data)
 						{
-							alert('レビューの削除に成功しました。')
+							alert('レビューの投稿に成功しました。')
 							location.reload()
 							return
 						}

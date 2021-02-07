@@ -28,8 +28,8 @@ class HttpTwoTest extends TestCase
 
 	    $contributeId = 2;
 	    $googleUserId = 9;
-	    $title = 'おもしろかったかなーーーーーーーーーーーーー';
-	    $review = 'ああああああああああああああああああああああああああああああああああああああああ';
+	    $title = bin2hex(random_bytes(127));
+	    $review = bin2hex(random_bytes(1500));
 	    $spoiler = 0;
 	    $satisfaction = 3;
 	    $recommended = 2;
@@ -43,8 +43,6 @@ class HttpTwoTest extends TestCase
 		    'satisfaction' => $satisfaction,
 		    'recommended' => $recommended,
 	    ]);
-
-      $response->assertSessionHas('message');
 
 	    $this->assertDatabaseHas('user_reviews', [
 		    'id' => 1,
