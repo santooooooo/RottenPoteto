@@ -3195,7 +3195,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      userInfo: []
+      userInfo: [],
+      icon: null
     };
   },
   props: {
@@ -3219,6 +3220,39 @@ __webpack_require__.r(__webpack_exports__);
     axios.get('/user-info?google_user_gmail=' + this.$route.params.userGmail).then(function (response) {
       return _this.userInfo = response.data;
     });
+  },
+  methods: {
+    setFile: function setFile(event) {
+      this.icon = event.target.files[0];
+    },
+    updateProfile: function updateProfile() {
+      var formData = new FormData();
+      formData.append('gmail', this.userInfo.gmail);
+      formData.append('name', this.userInfo.name);
+      formData.append('profile', this.userInfo.profile);
+
+      if (this.icon != null) {
+        formData.append('icon', this.icon);
+      }
+
+      formData.append('best', this.userInfo.best);
+      var config = {
+        headers: {
+          'X-CSRF-TOKEN': this.csrfToken
+        }
+      };
+      axios.post('/update', formData, config).then(function (response) {
+        if (response.data) {
+          alert("プロフィールが更新されました。");
+          location.reload();
+        }
+
+        return;
+      })["catch"](function (error) {
+        alert("プロフィールに使用するファイルが画像ファイルでないなどの理由で、プロフィールの更新ができませんでした。");
+        return;
+      });
+    }
   }
 });
 
@@ -7778,7 +7812,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.main[data-v-67528743] {\n\twidth: 90%;\n\tmargin: 0 auto;\n}\n.main p[data-v-67528743] {\n\tmargin: 30px 0 0 0;\n}\n.icon[data-v-67528743] {\n\tdisplay: flex;\n\tjustify-content: left;\n}\n.icon img[data-v-67528743] {\n\twidth: 40%;\n\tborder-radius: 20px;\n\tmargin: 0 5% 0 0;\n}\n.icon input[data-v-67528743] {\n\tmargin: 450px 0 0 0;\n}\n@media screen and (max-width:480px) {\n.main form textarea[data-v-67528743] {\n\t\twidth: 80%;\n}\n.icon[data-v-67528743] {\n\t\tdisplay: unset;\n}\n.icon img[data-v-67528743] {\n\t\twidth: 90%;\n}\n.icon input[data-v-67528743] {\n\t\tmargin: 50px 0 0 0;\n}\n}\n.button[data-v-67528743] {\n\tmargin: 0 0 0 2%;\n\tcolor: white;\n\tbackground-color: black;\n\tborder: solid white 2px;\n\tborder-radius: 10px;\n}\n.button[data-v-67528743]:hover {\n\tcolor: black;\n\tbackground-color: white;\n}\n@media screen and (max-width:480px) {\n.button[data-v-67528743] {\n\t\tmargin: 10px 0 0 2%;\n}\n}\n\n", ""]);
+exports.push([module.i, "\n.main[data-v-67528743] {\n\twidth: 90%;\n\tmargin: 0 auto;\n}\n.main p[data-v-67528743] {\n\tmargin: 30px 0 0 0;\n}\n.icon[data-v-67528743] {\n\tdisplay: flex;\n\tjustify-content: left;\n}\n.icon img[data-v-67528743] {\n\twidth: 40%;\n\tborder-radius: 20px;\n\tmargin: 0 5% 0 0;\n}\n.icon input[data-v-67528743] {\n\tmargin: 450px 0 0 0;\n}\n@media screen and (max-width:480px) {\n.main form textarea[data-v-67528743] {\n\t\twidth: 80%;\n}\n.icon[data-v-67528743] {\n\t\tdisplay: unset;\n}\n.icon img[data-v-67528743] {\n\t\twidth: 90%;\n}\n.icon input[data-v-67528743] {\n\t\tmargin: 50px 0 0 0;\n}\n}\n.button[data-v-67528743] {\n\tmargin: 0 0 0 2%;\n\tcolor: white;\n\tbackground-color: black;\n\tborder: solid white 2px;\n\tborder-radius: 10px;\n\theight: 2.0rem;\n}\n.button[data-v-67528743]:hover {\n\tcolor: black;\n\tbackground-color: white;\n}\n@media screen and (max-width:480px) {\n.button[data-v-67528743] {\n\t\tmargin: 10px 0 0 2%;\n}\n}\n\n", ""]);
 
 // exports
 
@@ -40565,36 +40599,73 @@ var render = function() {
   return _c("div", { staticClass: "main" }, [
     _c(
       "form",
-      {
-        attrs: {
-          action: "/update",
-          method: "post",
-          enctype: "multipart/form-data"
-        }
-      },
+      { attrs: { enctype: "multipart/form-data" } },
       [
         _c("input", {
-          attrs: { type: "hidden", name: "_token" },
-          domProps: { value: _vm.csrfToken }
-        }),
-        _vm._v(" "),
-        _c("input", {
-          attrs: { type: "hidden", name: "gmail" },
-          domProps: { value: _vm.userInfo.gmail }
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.userInfo.gmail,
+              expression: "userInfo.gmail"
+            }
+          ],
+          attrs: { type: "hidden" },
+          domProps: { value: _vm.userInfo.gmail },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.$set(_vm.userInfo, "gmail", $event.target.value)
+            }
+          }
         }),
         _vm._v(" "),
         _c("P", [_vm._v("アカウント名")]),
         _vm._v(" "),
         _c("input", {
-          attrs: { type: "text", name: "name", maxlength: "255", required: "" },
-          domProps: { value: _vm.userInfo.name }
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.userInfo.name,
+              expression: "userInfo.name"
+            }
+          ],
+          attrs: { type: "text", maxlength: "255", required: "" },
+          domProps: { value: _vm.userInfo.name },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.$set(_vm.userInfo, "name", $event.target.value)
+            }
+          }
         }),
         _vm._v(" "),
         _c("P", [_vm._v("プロフィール")]),
         _vm._v(" "),
         _c("textarea", {
-          attrs: { name: "profile", rows: "3", cols: "100", maxlength: "1000" },
-          domProps: { value: _vm.userInfo.profile }
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.userInfo.profile,
+              expression: "userInfo.profile"
+            }
+          ],
+          attrs: { rows: "3", cols: "100", maxlength: "1000" },
+          domProps: { value: _vm.userInfo.profile },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.$set(_vm.userInfo, "profile", $event.target.value)
+            }
+          }
         }),
         _vm._v(" "),
         _c("P", [_vm._v("アイコン")]),
@@ -40604,20 +40675,38 @@ var render = function() {
           _vm._v(" "),
           _c("input", {
             staticClass: "button",
-            attrs: { type: "file", name: "icon", accept: "image/*" }
+            attrs: { type: "file" },
+            on: { change: _vm.setFile }
           })
         ]),
         _vm._v(" "),
         _c("P", [_vm._v("好きな映画")]),
         _vm._v(" "),
         _c("input", {
-          attrs: { type: "text", name: "best", maxlength: "255" },
-          domProps: { value: _vm.userInfo.best }
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.userInfo.best,
+              expression: "userInfo.best"
+            }
+          ],
+          attrs: { type: "text", maxlength: "255" },
+          domProps: { value: _vm.userInfo.best },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.$set(_vm.userInfo, "best", $event.target.value)
+            }
+          }
         }),
         _vm._v(" "),
         _c("input", {
           staticClass: "button",
-          attrs: { type: "submit", value: "アカウント情報更新" }
+          attrs: { type: "submit", value: "アカウント情報更新" },
+          on: { click: _vm.updateProfile }
         })
       ],
       1

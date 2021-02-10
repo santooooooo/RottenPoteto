@@ -24,7 +24,7 @@ final class UsersController extends Controller
 
 	    session(['user' => null]);
 
-	    return json_encode(True);
+	    return json_encode(true);
     }
 
     /**
@@ -39,18 +39,17 @@ final class UsersController extends Controller
 
     /**
      * @var object $update
-     * @return RedirectResponse
      */
-    public function updateUserProfile(UserProfile $request)
+    public function updateUserProfile(UserProfile $request): string
     {
 	    $update = new UpdateProfile($request);
 	    $update->update();
 
-	    return redirect('/');
+	    return json_encode(true);
     }
 
     /**
-     * @return void | string
+     * @return void|string
      */
     public function outputInfo(OutputProfileForm $request)
     {

@@ -1,21 +1,20 @@
 <template>
 	<div class="main">
-		<form action="/update" method="post" enctype="multipart/form-data">
-			<input type="hidden" name="_token" :value="csrfToken">
-			<input type="hidden" name="gmail" :value="userInfo.gmail">
+		<form enctype="multipart/form-data">
+			<input type="hidden" v-model="userInfo.gmail">
 			<P>アカウント名</P>
-			<input type="text" name="name" :value="userInfo.name" maxlength="255" required>
+			<input type="text" v-model="userInfo.name" maxlength="255" required>
 			<P>プロフィール</P>
-			<textarea name="profile" rows="3" cols="100" :value="userInfo.profile" maxlength="1000">
+			<textarea rows="3" cols="100" v-model="userInfo.profile" maxlength="1000">
 			</textarea>
 			<P>アイコン</P>
 			<div class="icon">
 				<img :src="userPicture" alt="picture">
-				<input type="file" name="icon" class="button" accept="image/*">
+				<input @change="setFile" type="file" class="button" >
 			</div>
 			<P>好きな映画</P>
-			<input type="text" name="best" :value="userInfo.best" maxlength="255">
-			<input type="submit" value="アカウント情報更新" class="button">
+			<input type="text" v-model="userInfo.best" maxlength="255">
+			<input @click="updateProfile" type="submit" value="アカウント情報更新" class="button">
 		</form>
 	</div>
 </template>
@@ -64,6 +63,7 @@
 	background-color: black;
 	border: solid white 2px;
 	border-radius: 10px;
+	height: 2.0rem;
 }
 .button:hover {
 	color: black;
@@ -84,6 +84,7 @@ export default {
 	{
 		return {
 			userInfo: [],
+			icon: null,
 		}
 	},
 	props: {
@@ -107,5 +108,45 @@ export default {
 			axios.get('/user-info?google_user_gmail=' + this.$route.params.userGmail)
 				.then(response => this.userInfo = response.data);
 		},
+	methods: {
+		setFile: function(event) {
+			this.icon = event.target.files[0]
+		},
+		updateProfile: function()
+		{
+			const formData = new FormData()
+			formData.append('gmail', this.userInfo.gmail)
+			formData.append('name', this.userInfo.name)
+			formData.append('profile', this.userInfo.profile)
+
+			if(this.icon != null)
+			{
+				formData.append('icon', this.icon)
+			}
+
+			formData.append('best', this.userInfo.best)
+			const config = {
+			headers: {
+					'X-CSRF-TOKEN': this.csrfToken,
+				}
+			}
+			
+			axios.post('/update', formData, config)
+			.then(function(response)
+				{
+					if(response.data)
+					{
+						alert("プロフィールが更新されました。")
+						location.reload()
+					}
+					return
+				})
+			.catch(function(error)
+			{
+				alert("プロフィールに使用するファイルが画像ファイルでないなどの理由で、プロフィールの更新ができませんでした。")
+				return
+			})
+		}
+	}
 }
 </script>
