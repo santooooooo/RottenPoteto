@@ -18,10 +18,6 @@
 <div :value="user = {{session('user')}}"></div>
 @endif
 
-@if (session('message'))
-<div :value="message = {{session('message')}}"></div>
-@endif
-
 <div :value="csrf_token = {{json_encode(csrf_token())}}"></div>
 
 <div class="header">

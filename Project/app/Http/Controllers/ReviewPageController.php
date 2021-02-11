@@ -17,6 +17,7 @@ final class ReviewPageController extends Controller
 
 	    $viewInfo = ReviewPageInfo::outputInfo($contributeId);
 
+	    header('Content-Type: application/json; charset=UTF-8');
 	    return $viewInfo;
     }
 
@@ -26,6 +27,7 @@ final class ReviewPageController extends Controller
 
 	    $userInfo = UserInfo::output($userId);
 
+	    header('Content-Type: application/json; charset=UTF-8');
 	    return $userInfo;
     }
 }

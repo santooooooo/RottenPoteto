@@ -40,18 +40,10 @@ const app = new Vue({
     el: '#app',
 		data: {
 			user: [],
-			message: null,
 			csrf_token: null,
 		},
     router:router,
 		components: {
 			'login': Login,
 		},
-		mounted: function()
-		{
-			if(this.message != null)
-			{
-				alert(this.message)
-			}
-		}
-		});
+});

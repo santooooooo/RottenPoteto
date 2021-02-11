@@ -358,7 +358,7 @@ export default {
 					{
 						if(response.data)
 						{
-							alert('レビューの削除に成功しました。')
+							alert('レビューを削除しました。')
 							location.reload()
 							return
 						}

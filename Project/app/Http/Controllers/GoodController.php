@@ -18,8 +18,10 @@ final class GoodController extends Controller
 
 	    if($success)
 	    {
+		    header('Content-Type: application/json; charset=UTF-8');
 		    return json_encode(true);
 	    }
+	    header('Content-Type: application/json; charset=UTF-8');
 		  return json_encode(false);
     }
 
@@ -32,8 +34,10 @@ final class GoodController extends Controller
 
 	    if($success)
 	    {
+	     header('Content-Type: application/json; charset=UTF-8');
 		   return json_encode(true);
 	    }
+	    header('Content-Type: application/json; charset=UTF-8');
 		  return json_encode(false);
     }
 }

@@ -2259,7 +2259,7 @@ __webpack_require__.r(__webpack_exports__);
           }
         }).then(function (response) {
           if (response.data) {
-            alert('レビューの削除に成功しました。');
+            alert('レビューを削除しました。');
             location.reload();
             return;
           }
@@ -56014,17 +56014,11 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
   el: '#app',
   data: {
     user: [],
-    message: null,
     csrf_token: null
   },
   router: router,
   components: {
     'login': _components_Login_vue__WEBPACK_IMPORTED_MODULE_3__["default"]
-  },
-  mounted: function mounted() {
-    if (this.message != null) {
-      alert(this.message);
-    }
   }
 });
 

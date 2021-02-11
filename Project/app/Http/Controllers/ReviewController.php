@@ -66,11 +66,13 @@ final class ReviewController extends Controller
 
 	    if(!$inputSuccess)
 	    {
+		    header('Content-Type: application/json; charset=UTF-8');
 		    return json_encode(false);
 	    }
 
 	    GradeCinema::grade($this->contributeId);
 
+      header('Content-Type: application/json; charset=UTF-8');
 		  return json_encode(true);
     }
 
@@ -87,11 +89,13 @@ final class ReviewController extends Controller
 
 	    if(!$deleteSuccess)
 	    {
+		    header('Content-Type: application/json; charset=UTF-8');
 		    return json_encode(false);
 	    }
 
 	    GradeCinema::grade($this->contributeId);
 
+	    header('Content-Type: application/json; charset=UTF-8');
 	    return json_encode(true);
     }
 }

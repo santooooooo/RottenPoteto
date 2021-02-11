@@ -24,6 +24,7 @@ final class UsersController extends Controller
 
 	    session(['user' => null]);
 
+	    header('Content-Type: application/json; charset=UTF-8');
 	    return json_encode(true);
     }
 
@@ -45,6 +46,7 @@ final class UsersController extends Controller
 	    $update = new UpdateProfile($request);
 	    $update->update();
 
+	    header('Content-Type: application/json; charset=UTF-8');
 	    return json_encode(true);
     }
 
@@ -57,6 +59,7 @@ final class UsersController extends Controller
 
 	    $jsonData = Profile::output($gmail);
 
+	    header('Content-Type: application/json; charset=UTF-8');
 	    return $jsonData;
     }
 }

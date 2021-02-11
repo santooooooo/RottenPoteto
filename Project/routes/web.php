@@ -25,8 +25,11 @@ Route::get('/', function()
 Route::get('/top', 'Contribute@response');
 
 //recording users or authorize users
-Route::get('login/oauth', 'OAuth@redirect');
-Route::get('/login/oauth/callback', 'OAuth@handle');
+//Route::get('login/oauth', 'OAuth@redirect');
+//Route::get('/login/oauth/callback', 'OAuth@handle');
+
+//for test
+Route::get('login/oauth', 'OAuth@handle');
 
 //deleting user's account
 Route::post('/cancel', 'UsersController@userCancel');
