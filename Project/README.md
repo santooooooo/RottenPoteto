@@ -332,8 +332,8 @@ Modelを実行し、その結果をViewへ返す。
 |Field |Type |Null |Key |Default |Extra |
 |----|----|----|----|----|----|
 |id|bigint(20) unsigned|NO|PRI|NULL|auto_increment|
-|contribute_id|bigint(20) unsigned|NO|MUL|NULL|auto_increment|
-|google_user_id|bigint(20) unsigned|NO|MUL|NULL|auto_increment|
+|contribute_id|bigint(20) unsigned|NO|MUL|NULL||
+|google_user_id|bigint(20) unsigned|NO|MUL|NULL||
 |titile|varchar(255)|NO||NULL||
 |review|text|NO||NULL||
 |spoiler|varchar(255)|NO||NULL||
@@ -350,8 +350,8 @@ Modelを実行し、その結果をViewへ返す。
 |Field |Type |Null |Key |Default |Extra |
 |----|----|----|----|----|----|
 |id|bigint(20) unsigned|NO|PRI|NULL|auto_increment|
-|google_user_id|bigint(20) unsigned|NO|MUL|NULL|auto_increment|
-|user_review_id|bigint(20) unsigned|NO|MUL|NULL|auto_increment|
+|google_user_id|bigint(20) unsigned|NO|MUL|NULL||
+|user_review_id|bigint(20) unsigned|NO|MUL|NULL|t|
 |created_at|timestamp|YES||NULL||
 |updated_at|timestamp|YES||NUL||
 
