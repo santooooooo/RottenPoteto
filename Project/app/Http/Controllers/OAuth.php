@@ -30,11 +30,11 @@ final class OAuth extends Controller
      */
     public function handle()
     {
-//	   $user = new GoogleOAuth();
-//	   $gUser = $user->googleUser();
+	   $user = new GoogleOAuth();
+	   $gUser = $user->googleUser();
 
-	    $this->info['gmail'] = 'testsan2@gmail.com';//$gUser['email'];
-	    $this->info['name'] = 'testsan2';//$gUser['nickname'] ?? $gUser['name'];
+	    $this->info['gmail'] = $gUser['email'];
+	    $this->info['name'] = $gUser['nickname'] ?? $gUser['name'];
 
 	    $is_user = Judge::judge($this->info['gmail']);
 	    if(!$is_user)
