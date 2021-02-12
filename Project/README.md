@@ -1,4 +1,4 @@
-## 使用しているツール
+# 使用しているツール
 
 |ツール|バージョン|
 |------|------|
@@ -7,12 +7,13 @@
 |npm|3.5.2|
 |Laravel|7.12.0|
 |Vue|2.6.11|
+|mysql|5.7|
 
 
 # フロントエンドの構造(Vue)
 こちらでは、このアプリケーションの画面構成を担う**/resouces/**にあるファイルの役割について紹介します。
 
-## /resouces/views/
+### /resouces/views/
 **adminerLogin.blade.php**
 
 管理者画面のログインフォームを表示します。
@@ -25,12 +26,12 @@
 
 ユーザーの利用画面を表示します。こちらのファイルはVueのcomponentの表示位置を決め、サーバーから送られてきたデータをVueのcomponentへ渡す役割を担います。
 
-## /resouces/js
+### /resouces/js
 **app.js**
 
 routerの設定やサーバーから送られてきたデータの保持などVueのcomponentが機能させる役割を担います。
 
-## /reouces/js/components/
+### /reouces/js/components/
 **ContributeDetails.vue**
 映画の紹介記事を表示します。他にも、ユーザーが自身のレビューを送るフォームとユーザーが自身のレビューを削除するフォームを表示します。
 
@@ -292,4 +293,65 @@ Modelを実行し、その結果をViewへ返す。
 *Model*
 `App/Model/User/UserInfo::output`  
 ユーザーの情報を扱うDBのテーブルからリクエストの値を含むレコードのデータをjson形式で返す。
+
+# データベースの構造
+こちらではこのアプリケーションで使用しているデータベースの構造を紹介します。
+
+### contributes(映画の紹介記事を記録するデータベース)
+
+|Field |Type |Null |Key |Default |Extra |
+|----|----|----|----|----|----|
+|id|bigint(20) unsigned|NO|PRI|NULL|auto_increment|
+|titile|varchar(255)|NO||NULL||
+|contents|text|NO||NULL||
+|picture|varchar(255)|NO||NULL||
+|genre|varchar(255)|NO||NULL||
+|satisfaction|double(5,2)|NO||NULL||
+|recommended|double(5,2)|NO||NULL||
+|created_at|timestamp|YES||NULL||
+|updated_at|timestamp|YES||NUL||
+
+
+### google_users(アカウントを作成したユーザーのデータを記録するデータベース)
+|Field |Type |Null |Key |Default |Extra |
+|----|----|----|----|----|----|
+|id|bigint(20) unsigned|NO|PRI|NULL|auto_increment|
+|gmail|varchar(255)|NO||NULL||
+|name|varchar(255)|NO||NULL||
+|profile|text|NO||NULL||
+|icon|varchar(255)|NO||NULL||
+|best|varchar(255)|NO||NULL||
+|safety|tinyint(1)|NO||1||
+|created_at|timestamp|YES||NULL||
+|updated_at|timestamp|YES||NUL||
+
+
+### user_reviews(ユーザーのレビューを記録するデータベース)
+**contribute_id**は**contributes**テーブルの**id**、**google_user_id**は**google_users**テーブルの**id**に紐づいている。
+
+|Field |Type |Null |Key |Default |Extra |
+|----|----|----|----|----|----|
+|id|bigint(20) unsigned|NO|PRI|NULL|auto_increment|
+|contribute_id|bigint(20) unsigned|NO|MUL|NULL|auto_increment|
+|google_user_id|bigint(20) unsigned|NO|MUL|NULL|auto_increment|
+|titile|varchar(255)|NO||NULL||
+|review|text|NO||NULL||
+|spoiler|varchar(255)|NO||NULL||
+|satisfaction|double(5,2)|NO||NULL||
+|recommended|double(5,2)|NO||NULL||
+|good_point|int(10) unsigned|NO||0||
+|created_at|timestamp|YES||NULL||
+|updated_at|timestamp|YES||NUL||
+
+
+### good_points(ユーザーのレビューに対する反応を記録するデータベース)
+**google_user_id**は**google_users**テーブルの**id**、**user_review_id**は**user_reviews**テーブルの**id**に紐づいている。
+
+|Field |Type |Null |Key |Default |Extra |
+|----|----|----|----|----|----|
+|id|bigint(20) unsigned|NO|PRI|NULL|auto_increment|
+|google_user_id|bigint(20) unsigned|NO|MUL|NULL|auto_increment|
+|user_review_id|bigint(20) unsigned|NO|MUL|NULL|auto_increment|
+|created_at|timestamp|YES||NULL||
+|updated_at|timestamp|YES||NUL||
 
