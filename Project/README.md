@@ -351,7 +351,7 @@ Modelを実行し、その結果をViewへ返す。
 |----|----|----|----|----|----|
 |id|bigint(20) unsigned|NO|PRI|NULL|auto_increment|
 |google_user_id|bigint(20) unsigned|NO|MUL|NULL||
-|user_review_id|bigint(20) unsigned|NO|MUL|NULL|t|
+|user_review_id|bigint(20) unsigned|NO|MUL|NULL||
 |created_at|timestamp|YES||NULL||
 |updated_at|timestamp|YES||NUL||
 
