@@ -5,7 +5,7 @@
 |php|7.4|
 |composer|1.10.5|
 |npm|3.5.2|
-|Laravel|7.12.0|
+|Laravel|7.30.4|
 |Vue|2.6.11|
 |mysql|5.7|
 

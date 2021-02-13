@@ -1,11 +1,10 @@
 <template>
 	<div class="main">
 		<form enctype="multipart/form-data">
-			<input type="hidden" v-model="userInfo.gmail">
 			<P>アカウント名</P>
 			<input type="text" v-model="userInfo.name" maxlength="255" required>
 			<P>プロフィール</P>
-			<textarea rows="3" cols="100" v-model="userInfo.profile" maxlength="1000">
+			<textarea rows="3" cols="100" v-model="profile" maxlength="1000">
 			</textarea>
 			<P>アイコン</P>
 			<div class="icon">
@@ -13,7 +12,7 @@
 				<input @change="setFile" type="file" class="button" >
 			</div>
 			<P>好きな映画</P>
-			<input type="text" v-model="userInfo.best" maxlength="255">
+			<input type="text" v-model="best" maxlength="255">
 			<input @click="updateProfile" type="submit" value="アカウント情報更新" class="button">
 		</form>
 	</div>
@@ -84,6 +83,8 @@ export default {
 	{
 		return {
 			userInfo: [],
+			profile: '',
+			best: '',
 			icon: null,
 		}
 	},
@@ -106,7 +107,11 @@ export default {
 	mounted: function()
 		{
 			axios.get('/user-info?google_user_gmail=' + this.$route.params.userGmail)
-				.then(response => this.userInfo = response.data);
+				.then(response => {
+						this.userInfo = response.data
+						this.profile = this.userInfo.profile != null ? this.userInfo.profile : ''
+						this.best = this.userInfo.best != null ?  this.userInfo.best : ''
+				})
 		},
 	methods: {
 		setFile: function(event) {
@@ -117,14 +122,14 @@ export default {
 			const formData = new FormData()
 			formData.append('gmail', this.userInfo.gmail)
 			formData.append('name', this.userInfo.name)
-			formData.append('profile', this.userInfo.profile)
+			formData.append('profile', this.profile)
 
 			if(this.icon != null)
 			{
 				formData.append('icon', this.icon)
 			}
 
-			formData.append('best', this.userInfo.best)
+			formData.append('best', this.best)
 			const config = {
 			headers: {
 					'X-CSRF-TOKEN': this.csrfToken,
